@@ -1,0 +1,286 @@
+﻿using Cine_app.Modelos;
+using Cine_app.Models;
+using MySql.Data.MySqlClient;
+using System.Data;
+
+namespace Cine_app.Services
+{
+    public class ServicioBaseDeDatos
+    {
+        private readonly string connectionString;
+
+        public ServicioBaseDeDatos()
+        {
+            DotNetEnv.Env.Load();
+            connectionString = Environment.GetEnvironmentVariable("DATABASE") ?? string.Empty;
+        }
+
+        // ============ PELÍCULAS ============
+        public async Task<List<Pelicula>> ObtenerPeliculasActivasAsync()
+        {
+            var peliculas = new List<Pelicula>();
+            string sql = "SELECT * FROM Peliculas WHERE Activa = 1 ORDER BY FechaEstreno DESC";
+
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                await conn.OpenAsync();
+                using (var cmd = new MySqlCommand(sql, conn))
+                using (var reader = await cmd.ExecuteReaderAsync())
+                {
+                    while (await reader.ReadAsync())
+                    {
+                        peliculas.Add(new Pelicula
+                        {
+                            Id = reader.GetInt32("Id"),
+                            Titulo = reader.GetString("Titulo"),
+                            Descripcion = reader.IsDBNull("Descripcion") ? null : reader.GetString("Descripcion"),
+                            Director = reader.IsDBNull("Director") ? null : reader.GetString("Director"),
+                            Duracion = reader.IsDBNull("Duracion") ? null : reader.GetInt32("Duracion"),
+                            Genero = reader.IsDBNull("Genero") ? null : reader.GetString("Genero"),
+                            ImagenUrl = reader.IsDBNull("ImagenUrl") ? null : reader.GetString("ImagenUrl"),
+                            FechaEstreno = reader.IsDBNull("FechaEstreno") ? null : reader.GetDateTime("FechaEstreno"),
+                            Activa = reader.GetBoolean("Activa")
+                        });
+                    }
+                }
+            }
+            return peliculas;
+        }
+
+        // ============ SESIONES ============
+        public async Task<List<Sesion>> ObtenerSesionesPorPeliculaAsync(int peliculaId, DateTime? fecha = null)
+        {
+            var sesiones = new List<Sesion>();
+            string sql = @"
+                SELECT s.*, p.Titulo, sal.Nombre as SalaNombre, sal.Filas, sal.ColumnasPerFila
+                FROM Sesiones s
+                INNER JOIN Peliculas p ON s.PeliculaId = p.Id
+                INNER JOIN Salas sal ON s.SalaId = sal.Id
+                WHERE s.PeliculaId = @PeliculaId 
+                AND s.Activa = 1
+                AND s.FechaHora >= @FechaMinima";
+
+            if (fecha.HasValue)
+            {
+                sql += " AND DATE(s.FechaHora) = DATE(@Fecha)";
+            }
+
+            sql += " ORDER BY s.FechaHora";
+
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                await conn.OpenAsync();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@PeliculaId", peliculaId);
+                    cmd.Parameters.AddWithValue("@FechaMinima", DateTime.Now);
+                    if (fecha.HasValue)
+                        cmd.Parameters.AddWithValue("@Fecha", fecha.Value);
+
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            sesiones.Add(new Sesion
+                            {
+                                Id = reader.GetInt32("Id"),
+                                PeliculaId = reader.GetInt32("PeliculaId"),
+                                SalaId = reader.GetInt32("SalaId"),
+                                FechaHora = reader.GetDateTime("FechaHora"),
+                                Precio = reader.GetDecimal("Precio"),
+                                Activa = reader.GetBoolean("Activa"),
+                                Sala = new Sala
+                                {
+                                    Id = reader.GetInt32("SalaId"),
+                                    Nombre = reader.GetString("SalaNombre"),
+                                    Filas = reader.GetInt32("Filas"),
+                                    ColumnasPerFila = reader.GetInt32("ColumnasPerFila")
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+            return sesiones;
+        }
+
+        // ============ BUTACAS ============
+        public async Task<List<Butaca>> ObtenerButacasPorSalaAsync(int salaId)
+        {
+            var butacas = new List<Butaca>();
+            string sql = "SELECT * FROM Butacas WHERE SalaId = @SalaId AND Activa = 1 ORDER BY Fila, Columna";
+
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                await conn.OpenAsync();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@SalaId", salaId);
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            butacas.Add(new Butaca
+                            {
+                                Id = reader.GetInt32("Id"),
+                                SalaId = reader.GetInt32("SalaId"),
+                                Fila = reader.GetInt32("Fila"),
+                                Columna = reader.GetInt32("Columna"),
+                                Tipo = reader.GetString("Tipo"),
+                                Activa = reader.GetBoolean("Activa")
+                            });
+                        }
+                    }
+                }
+            }
+            return butacas;
+        }
+
+        public async Task<List<int>> ObtenerButacasReservadasAsync(int sesionId)
+        {
+            var butacasReservadas = new List<int>();
+            string sql = @"
+                SELECT rb.ButacaId 
+                FROM ReservasButacas rb
+                INNER JOIN Reservas r ON rb.ReservaId = r.Id
+                WHERE rb.SesionId = @SesionId 
+                AND r.Estado IN ('Pendiente', 'Confirmada')";
+
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                await conn.OpenAsync();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@SesionId", sesionId);
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            butacasReservadas.Add(reader.GetInt32("ButacaId"));
+                        }
+                    }
+                }
+            }
+            return butacasReservadas;
+        }
+
+        // ============ USUARIOS ============
+        public async Task<Usuario?> ValidarUsuarioAsync(string email, string password)
+        {
+            string sql = "SELECT * FROM Usuarios WHERE Email = @Email AND Password = @Password AND Activo = 1";
+
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                await conn.OpenAsync();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Email", email);
+                    cmd.Parameters.AddWithValue("@Password", password); // En producción, usar hash
+
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            return new Usuario
+                            {
+                                Id = reader.GetInt32("Id"),
+                                Nombre = reader.GetString("Nombre"),
+                                Apellidos = reader.GetString("Apellidos"),
+                                Email = reader.GetString("Email"),
+                                Telefono = reader.IsDBNull("Telefono") ? null : reader.GetString("Telefono"),
+                                FechaRegistro = reader.GetDateTime("FechaRegistro"),
+                                Activo = reader.GetBoolean("Activo")
+                            };
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
+        public async Task<bool> RegistrarUsuarioAsync(Usuario usuario)
+        {
+            string sql = @"
+                INSERT INTO Usuarios (Nombre, Apellidos, Email, Password, Telefono, FechaRegistro, Activo)
+                VALUES (@Nombre, @Apellidos, @Email, @Password, @Telefono, @FechaRegistro, @Activo)";
+
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                await conn.OpenAsync();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Nombre", usuario.Nombre);
+                    cmd.Parameters.AddWithValue("@Apellidos", usuario.Apellidos);
+                    cmd.Parameters.AddWithValue("@Email", usuario.Email);
+                    cmd.Parameters.AddWithValue("@Password", usuario.Password); // En producción, usar hash
+                    cmd.Parameters.AddWithValue("@Telefono", usuario.Telefono ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@FechaRegistro", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@Activo", true);
+
+                    int result = await cmd.ExecuteNonQueryAsync();
+                    return result > 0;
+                }
+            }
+        }
+
+        // ============ RESERVAS ============
+        public async Task<int> CrearReservaAsync(Reserva reserva, List<int> butacaIds)
+        {
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                await conn.OpenAsync();
+                using (var transaction = await conn.BeginTransactionAsync())
+                {
+                    try
+                    {
+                        // Generar código de reserva único
+                        string codigoReserva = $"RES{DateTime.Now:yyyyMMddHHmmss}{new Random().Next(1000, 9999)}";
+
+                        // Insertar reserva
+                        string sqlReserva = @"
+                            INSERT INTO Reservas (UsuarioId, SesionId, FechaReserva, Total, Estado, CodigoReserva)
+                            VALUES (@UsuarioId, @SesionId, @FechaReserva, @Total, @Estado, @CodigoReserva);
+                            SELECT LAST_INSERT_ID();";
+
+                        int reservaId;
+                        using (var cmd = new MySqlCommand(sqlReserva, conn, (MySqlTransaction)transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@UsuarioId", reserva.UsuarioId);
+                            cmd.Parameters.AddWithValue("@SesionId", reserva.SesionId);
+                            cmd.Parameters.AddWithValue("@FechaReserva", DateTime.Now);
+                            cmd.Parameters.AddWithValue("@Total", reserva.Total);
+                            cmd.Parameters.AddWithValue("@Estado", "Confirmada");
+                            cmd.Parameters.AddWithValue("@CodigoReserva", codigoReserva);
+
+                            reservaId = Convert.ToInt32(await cmd.ExecuteScalarAsync());
+                        }
+
+                        // Insertar butacas reservadas
+                        string sqlButacas = @"
+                            INSERT INTO ReservasButacas (ReservaId, ButacaId, SesionId)
+                            VALUES (@ReservaId, @ButacaId, @SesionId)";
+
+                        foreach (var butacaId in butacaIds)
+                        {
+                            using (var cmd = new MySqlCommand(sqlButacas, conn, (MySqlTransaction)transaction))
+                            {
+                                cmd.Parameters.AddWithValue("@ReservaId", reservaId);
+                                cmd.Parameters.AddWithValue("@ButacaId", butacaId);
+                                cmd.Parameters.AddWithValue("@SesionId", reserva.SesionId);
+                                await cmd.ExecuteNonQueryAsync();
+                            }
+                        }
+
+                        await transaction.CommitAsync();
+                        return reservaId;
+                    }
+                    catch
+                    {
+                        await transaction.RollbackAsync();
+                        throw;
+                    }
+                }
+            }
+        }
+    }
+}

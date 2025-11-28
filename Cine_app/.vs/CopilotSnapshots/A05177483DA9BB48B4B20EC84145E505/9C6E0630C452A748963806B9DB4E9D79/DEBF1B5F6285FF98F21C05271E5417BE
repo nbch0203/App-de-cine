@@ -1,0 +1,27 @@
+﻿using System.Windows;
+using Cine_app.Modelos;
+using Cine_app.Models;
+
+namespace Cine_app.Views
+{
+    // CLASE TEMPORAL MIENTRAS SE IMPLEMENTA LA VENTANA COMPLETA
+    public partial class SeleccionButacasWindow : Window
+    {
+        public SeleccionButacasWindow(Sesion sesion, Pelicula pelicula)
+        {
+            // Por ahora solo mostramos un mensaje
+            MessageBox.Show($"Sesión seleccionada:\n\n" +
+                          $"Película: {pelicula.Titulo}\n" +
+                          $"Hora: {sesion.FechaHora:HH:mm}\n" +
+                          $"Sala: {sesion.Sala?.Nombre}\n" +
+                          $"Precio: {sesion.Precio:C}\n\n" +
+                          $"La ventana de selección de butacas está pendiente de implementar.",
+                          "Información de Sesión",
+                          MessageBoxButton.OK,
+                          MessageBoxImage.Information);
+
+            // Cerramos inmediatamente esta ventana temporal
+            this.Close();
+        }
+    }
+}

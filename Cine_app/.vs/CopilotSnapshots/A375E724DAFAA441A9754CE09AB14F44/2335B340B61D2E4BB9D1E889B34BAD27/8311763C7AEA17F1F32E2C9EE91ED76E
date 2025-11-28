@@ -1,0 +1,33 @@
+﻿using System.Windows;
+using Cine_app.Views;
+using Cine_app.Modelos;
+
+namespace Cine_app
+{
+    public partial class App : Application
+    {
+        public static Usuario? UsuarioActual { get; set; }
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            // Mostrar ventana de login
+            var loginWindow = new LoginWindow();
+            bool? result = loginWindow.ShowDialog();
+
+            if (result == true)
+            {
+                // Guardar usuario autenticado (puede ser null si es invitado)
+                UsuarioActual = loginWindow.UsuarioAutenticado;
+
+                // Abrir ventana de cartelera
+                var carteleraWindow = new CarteleraWindow();
+                carteleraWindow.Show();
+            }
+            else
+            {
+                // Usuario canceló el login, cerrar aplicación
+                Current.Shutdown();
+            }
+        }
+    }
+}

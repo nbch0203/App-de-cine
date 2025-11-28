@@ -1,0 +1,336 @@
+<Window x:Class="Cine_app.Views.PerfilUsuarioWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Mi Perfil - Cinema" Height="700" Width="1100"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResize"
+        MinHeight="600"
+        MinWidth="900">
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="MenuButtonStyle">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="20,15"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#2a2a3e"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="Button" x:Key="MenuButtonActiveStyle" BasedOn="{StaticResource MenuButtonStyle}">
+            <Setter Property="Background" Value="#e94560"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="LabelStyle">
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,10,0,5"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Padding" Value="10,8"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,0,0,15"/>
+            <Setter Property="BorderBrush" Value="#ddd"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <Style TargetType="PasswordBox">
+            <Setter Property="Padding" Value="10,8"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,0,0,15"/>
+            <Setter Property="BorderBrush" Value="#ddd"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" Background="#1a1a2e">
+            <StackPanel>
+                <Border Background="#16213e" Padding="20" Margin="0,0,0,20">
+                    <StackPanel>
+                        <TextBlock Text="&#x1F464;" 
+                                  FontSize="48" 
+                                  HorizontalAlignment="Center"
+                                  Foreground="White"
+                                  Margin="0,0,0,10"/>
+                        <TextBlock x:Name="txtNombreUsuarioMenu" 
+                                  Text="Usuario" 
+                                  FontSize="16" 
+                                  FontWeight="Bold"
+                                  HorizontalAlignment="Center"
+                                  Foreground="White"
+                                  TextWrapping="Wrap"
+                                  TextAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <Button x:Name="btnMenuInformacion" 
+                        Content="&#x1F4CB; Informacion Personal" 
+                        Click="BtnMenuInformacion_Click"
+                        Style="{StaticResource MenuButtonActiveStyle}"/>
+                
+                <Button x:Name="btnMenuReservas" 
+                        Content="&#x1F3AC; Mis Reservas" 
+                        Click="BtnMenuReservas_Click"
+                        Style="{StaticResource MenuButtonStyle}"/>
+
+                <Separator Background="#2a2a3e" Margin="10,20"/>
+
+                <Button Content="&#x2190; Volver" 
+                        Click="BtnVolver_Click"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Foreground="#cccccc"/>
+            </StackPanel>
+        </Border>
+
+        <Grid Grid.Column="1" Background="#f5f5f5">
+            <ScrollViewer x:Name="panelInformacion" 
+                         VerticalScrollBarVisibility="Auto"
+                         Visibility="Visible">
+                <Border Background="White" 
+                       Margin="30"
+                       Padding="40"
+                       CornerRadius="10">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.2"/>
+                    </Border.Effect>
+
+                    <StackPanel>
+                        <TextBlock Text="Informacion Personal" 
+                                  FontSize="28" 
+                                  FontWeight="Bold"
+                                  Margin="0,0,0,30"/>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0" Margin="0,0,20,0">
+                                <TextBlock Text="Nombre:" Style="{StaticResource LabelStyle}"/>
+                                <TextBlock x:Name="txtNombre" 
+                                          Text="" 
+                                          FontSize="16"
+                                          Padding="10,8"
+                                          Background="#f9f9f9"
+                                          Margin="0,0,0,15"/>
+
+                                <TextBlock Text="Email:" Style="{StaticResource LabelStyle}"/>
+                                <TextBlock x:Name="txtEmail" 
+                                          Text="" 
+                                          FontSize="16"
+                                          Padding="10,8"
+                                          Background="#f9f9f9"
+                                          Margin="0,0,0,15"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Text="Apellidos:" Style="{StaticResource LabelStyle}"/>
+                                <TextBlock x:Name="txtApellidos" 
+                                          Text="" 
+                                          FontSize="16"
+                                          Padding="10,8"
+                                          Background="#f9f9f9"
+                                          Margin="0,0,0,15"/>
+
+                                <TextBlock Text="Telefono:" Style="{StaticResource LabelStyle}"/>
+                                <TextBlock x:Name="txtTelefono" 
+                                          Text="No especificado" 
+                                          FontSize="16"
+                                          Padding="10,8"
+                                          Background="#f9f9f9"
+                                          Foreground="#999"
+                                          Margin="0,0,0,15"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <Separator Margin="0,20"/>
+
+                        <TextBlock Text="Cambiar Contrasena" 
+                                  FontSize="20" 
+                                  FontWeight="Bold"
+                                  Margin="0,20,0,20"/>
+
+                        <TextBlock Text="Contrasena Actual:" Style="{StaticResource LabelStyle}"/>
+                        <PasswordBox x:Name="txtPasswordActual"/>
+
+                        <TextBlock Text="Nueva Contrasena:" Style="{StaticResource LabelStyle}"/>
+                        <PasswordBox x:Name="txtNuevaPassword"/>
+
+                        <TextBlock Text="Confirmar Nueva Contrasena:" Style="{StaticResource LabelStyle}"/>
+                        <PasswordBox x:Name="txtConfirmarPassword"/>
+
+                        <TextBlock x:Name="txtMensajePassword" 
+                                  TextWrapping="Wrap"
+                                  Margin="0,10,0,10"
+                                  Visibility="Collapsed"
+                                  FontWeight="SemiBold"/>
+
+                        <Button x:Name="btnCambiarPassword" 
+                               Content="Cambiar Contrasena"
+                               Click="BtnCambiarPassword_Click"
+                               Background="#e94560"
+                               Foreground="White"
+                               BorderThickness="0"
+                               Padding="20,12"
+                               FontSize="14"
+                               FontWeight="SemiBold"
+                               Cursor="Hand"
+                               HorizontalAlignment="Left"/>
+                    </StackPanel>
+                </Border>
+            </ScrollViewer>
+
+            <ScrollViewer x:Name="panelReservas" 
+                         VerticalScrollBarVisibility="Auto"
+                         Visibility="Collapsed">
+                <Border Background="White" 
+                       Margin="30"
+                       Padding="40"
+                       CornerRadius="10">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.2"/>
+                    </Border.Effect>
+
+                    <StackPanel>
+                        <TextBlock Text="Mis Reservas" 
+                                  FontSize="28" 
+                                  FontWeight="Bold"
+                                  Margin="0,0,0,30"/>
+
+                        <StackPanel x:Name="pnlLoadingReservas" 
+                                   Visibility="Visible"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,50,0,0">
+                            <TextBlock Text="&#x23F3;" FontSize="48" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Cargando reservas..." 
+                                      FontSize="16" 
+                                      Foreground="#666"
+                                      HorizontalAlignment="Center"
+                                      Margin="0,10,0,0"/>
+                        </StackPanel>
+
+                        <StackPanel x:Name="pnlSinReservas" 
+                                   Visibility="Collapsed"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,50,0,0">
+                            <TextBlock Text="&#x1F3AC;" FontSize="64" HorizontalAlignment="Center" Opacity="0.3"/>
+                            <TextBlock Text="No tienes reservas" 
+                                      FontSize="20" 
+                                      Foreground="#999"
+                                      HorizontalAlignment="Center"
+                                      Margin="0,15,0,0"/>
+                            <TextBlock Text="Explora nuestra cartelera y reserva tu pelicula favorita!" 
+                                      FontSize="14" 
+                                      Foreground="#bbb"
+                                      HorizontalAlignment="Center"
+                                      Margin="0,10,0,0"/>
+                        </StackPanel>
+
+                        <ItemsControl x:Name="itemsReservas" Visibility="Collapsed">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Background="#f9f9f9" 
+                                           Padding="20" 
+                                           Margin="0,0,0,20"
+                                           CornerRadius="8"
+                                           BorderBrush="#e0e0e0"
+                                           BorderThickness="1">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="120"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Border Grid.Column="0" 
+                                                   CornerRadius="5"
+                                                   Background="#ddd"
+                                                   Width="100"
+                                                   Height="140">
+                                                <Image Source="{Binding Sesion.Pelicula.ImagenUrl, Mode=OneWay}" 
+                                                      Stretch="UniformToFill"/>
+                                            </Border>
+
+                                            <StackPanel Grid.Column="1" Margin="20,0,0,0">
+                                                <TextBlock Text="{Binding Sesion.Pelicula.Titulo, Mode=OneWay}" 
+                                                          FontSize="20" 
+                                                          FontWeight="Bold"
+                                                          Margin="0,0,0,10"/>
+
+                                                <StackPanel Orientation="Horizontal" Margin="0,5">
+                                                    <TextBlock Text="&#x1F4C5;" FontSize="14" Margin="0,0,5,0"/>
+                                                    <TextBlock Text="{Binding Sesion.FechaHora, StringFormat='dddd, dd MMMM yyyy', Mode=OneWay}" 
+                                                              FontSize="14"/>
+                                                </StackPanel>
+
+                                                <StackPanel Orientation="Horizontal" Margin="0,5">
+                                                    <TextBlock Text="&#x1F550;" FontSize="14" Margin="0,0,5,0"/>
+                                                    <TextBlock Text="{Binding Sesion.FechaHora, StringFormat='HH:mm', Mode=OneWay}" 
+                                                              FontSize="14"
+                                                              FontWeight="SemiBold"/>
+                                                </StackPanel>
+
+                                                <StackPanel Orientation="Horizontal" Margin="0,5">
+                                                    <TextBlock Text="&#x1F3AD;" FontSize="14" Margin="0,0,5,0"/>
+                                                    <TextBlock Text="{Binding Sesion.Sala.Nombre, Mode=OneWay}" 
+                                                              FontSize="14"/>
+                                                </StackPanel>
+
+                                                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                                    <TextBlock Text="Butacas: " 
+                                                              FontWeight="SemiBold"
+                                                              FontSize="14"/>
+                                                    <TextBlock Text="{Binding Butacas, Mode=OneWay}"
+                                                              FontSize="14"/>
+                                                </StackPanel>
+
+                                                <TextBlock FontSize="16" 
+                                                          FontWeight="Bold"
+                                                          Foreground="#e94560"
+                                                          Margin="0,10,0,0">
+                                                    <Run Text="Total: "/>
+                                                    <Run Text="{Binding Total, StringFormat='{}{0:F2}', Mode=OneWay}"/>
+                                                    <Run Text="&#x20AC;"/>
+                                                </TextBlock>
+
+                                                <TextBlock Text="{Binding CodigoReserva, StringFormat='Codigo: {0}', Mode=OneWay}" 
+                                                          FontSize="12" 
+                                                          Foreground="#666"
+                                                          Margin="0,5,0,0"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </Border>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Window>

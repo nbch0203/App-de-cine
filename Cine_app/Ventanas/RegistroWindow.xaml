@@ -1,0 +1,117 @@
+<Window x:Class="Cine_app.Views.RegistroWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Registro - Cinema" Height="650" Width="450"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Padding" Value="10,8"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,5,0,15"/>
+            <Setter Property="BorderBrush" Value="#ddd"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+        <Style TargetType="PasswordBox">
+            <Setter Property="Padding" Value="10,8"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,5,0,15"/>
+            <Setter Property="BorderBrush" Value="#ddd"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Padding" Value="15,10"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="LabelStyle">
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,5,0,5"/>
+            <Setter Property="Foreground" Value="#333"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#1a1a2e" Offset="0"/>
+                <GradientStop Color="#16213e" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <Border Background="White" 
+                    CornerRadius="10" 
+                    Padding="40"
+                    MaxWidth="400"
+                    VerticalAlignment="Center"
+                    Margin="20">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0.3"/>
+                </Border.Effect>
+
+                <StackPanel>
+                    <TextBlock Text="&#x1F3AC;" 
+                              FontSize="50" 
+                              HorizontalAlignment="Center"
+                              Margin="0,0,0,5"/>
+                    <TextBlock Text="Crear Cuenta" 
+                              FontSize="24" 
+                              FontWeight="Bold"
+                              HorizontalAlignment="Center"
+                              Foreground="#1a1a2e"
+                              Margin="0,0,0,20"/>
+
+                    <TextBlock Text="Nombre:" Style="{StaticResource LabelStyle}"/>
+                    <TextBox x:Name="txtNombre" />
+
+                    <TextBlock Text="Apellidos:" Style="{StaticResource LabelStyle}"/>
+                    <TextBox x:Name="txtApellidos" />
+
+                    <TextBlock Text="Email:" Style="{StaticResource LabelStyle}"/>
+                    <TextBox x:Name="txtEmail" />
+
+                    <TextBlock Text="Telefono (opcional):" Style="{StaticResource LabelStyle}"/>
+                    <TextBox x:Name="txtTelefono" />
+
+                    <TextBlock Text="Contrasena:" Style="{StaticResource LabelStyle}"/>
+                    <PasswordBox x:Name="txtPassword" />
+
+                    <TextBlock Text="Confirmar Contrasena:" Style="{StaticResource LabelStyle}"/>
+                    <PasswordBox x:Name="txtConfirmarPassword" />
+
+                    <TextBlock x:Name="txtMensaje" 
+                              TextWrapping="Wrap"
+                              Margin="0,10,0,0"
+                              Visibility="Collapsed"
+                              FontWeight="SemiBold"/>
+
+                    <Button x:Name="btnRegistrar" 
+                            Content="Registrarse" 
+                            Click="BtnRegistrar_Click"
+                            Background="#e94560"
+                            Foreground="White"
+                            BorderThickness="0"
+                            FontWeight="SemiBold"
+                            Margin="0,20,0,0"/>
+
+                    <Button x:Name="btnCancelar" 
+                            Content="Cancelar" 
+                            Click="BtnCancelar_Click"
+                            Background="Transparent"
+                            Foreground="#666"
+                            BorderBrush="#ddd"
+                            BorderThickness="1"/>
+
+                    <TextBlock Text="* Todos los campos son obligatorios excepto el telefono" 
+                              FontSize="11"
+                              Foreground="#999"
+                              TextWrapping="Wrap"
+                              Margin="0,15,0,0"
+                              HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+        </ScrollViewer>
+    </Grid>
+</Window>

@@ -1,0 +1,409 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\cine_app\\documentacion\\documentacion_completa_proyecto.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:documentacion\\documentacion_completa_proyecto.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\cine_app\\guia paso a paso\\readme_guia_estudiantes.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:guia paso a paso\\readme_guia_estudiantes.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\cine_app\\guia paso a paso\\guia_paso_a_paso.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:guia paso a paso\\guia_paso_a_paso.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\cine_app\\guia paso a paso\\guia_paso_a_paso_parte_4.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:guia paso a paso\\guia_paso_a_paso_parte_4.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\cine_app\\guia paso a paso\\guia_paso_a_paso_parte_3.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:guia paso a paso\\guia_paso_a_paso_parte_3.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\cine_app\\guia paso a paso\\guia_paso_a_paso_parte_2.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:guia paso a paso\\guia_paso_a_paso_parte_2.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\cine_app\\servicios\\serviciosesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:servicios\\serviciosesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\cine_app\\ventanas\\seleccionbutacaswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\seleccionbutacaswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\cine_app\\servicios\\serviciobasededatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:servicios\\serviciobasededatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\cine_app\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:.env||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\cine_app\\database\\cinema_database_mysql.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:database\\cinema_database_mysql.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\cine_app\\ventanas\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\cine_app\\ventanas\\registrowindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\registrowindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\cine_app\\ventanas\\cartelerawindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\cartelerawindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\cine_app\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\cine_app\\ventanas\\perfilusuariowindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\perfilusuariowindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\cine_app\\ventanas\\perfilusuariowindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\perfilusuariowindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\cine_app\\ventanas\\registrowindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\registrowindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\cine_app\\ventanas\\seleccionsesionwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\seleccionsesionwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\cine_app\\ventanas\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\cine_app\\ventanas\\cartelerawindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\cartelerawindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\cine_app\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\cine_app\\modelos\\butaca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:modelos\\butaca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\cine_app\\ventanas\\seleccionbutacaswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\seleccionbutacaswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "README_GUIA_ESTUDIANTES.md",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Guia paso a paso\\README_GUIA_ESTUDIANTES.md",
+              "RelativeDocumentMoniker": "Guia paso a paso\\README_GUIA_ESTUDIANTES.md",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Guia paso a paso\\README_GUIA_ESTUDIANTES.md",
+              "RelativeToolTip": "Guia paso a paso\\README_GUIA_ESTUDIANTES.md",
+              "ViewState": "AgIAAKgAAAAAAAAAAAAAAAAAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-11-28T19:45:46.365Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GUIA_PASO_A_PASO_PARTE_4.md",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Guia paso a paso\\GUIA_PASO_A_PASO_PARTE_4.md",
+              "RelativeDocumentMoniker": "Guia paso a paso\\GUIA_PASO_A_PASO_PARTE_4.md",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Guia paso a paso\\GUIA_PASO_A_PASO_PARTE_4.md",
+              "RelativeToolTip": "Guia paso a paso\\GUIA_PASO_A_PASO_PARTE_4.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIkDAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-11-28T19:44:39.02Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GUIA_PASO_A_PASO_PARTE_3.md",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Guia paso a paso\\GUIA_PASO_A_PASO_PARTE_3.md",
+              "RelativeDocumentMoniker": "Guia paso a paso\\GUIA_PASO_A_PASO_PARTE_3.md",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Guia paso a paso\\GUIA_PASO_A_PASO_PARTE_3.md",
+              "RelativeToolTip": "Guia paso a paso\\GUIA_PASO_A_PASO_PARTE_3.md",
+              "ViewState": "AgIAACAEAAAAAAAAAAAAADsEAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-11-28T19:42:27.854Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GUIA_PASO_A_PASO_PARTE_2.md",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Guia paso a paso\\GUIA_PASO_A_PASO_PARTE_2.md",
+              "RelativeDocumentMoniker": "Guia paso a paso\\GUIA_PASO_A_PASO_PARTE_2.md",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Guia paso a paso\\GUIA_PASO_A_PASO_PARTE_2.md",
+              "RelativeToolTip": "Guia paso a paso\\GUIA_PASO_A_PASO_PARTE_2.md",
+              "ViewState": "AgIAAE8EAAAAAAAAAAAAAFYEAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-11-28T19:40:00.647Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GUIA_PASO_A_PASO.md",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Guia paso a paso\\GUIA_PASO_A_PASO.md",
+              "RelativeDocumentMoniker": "Guia paso a paso\\GUIA_PASO_A_PASO.md",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Guia paso a paso\\GUIA_PASO_A_PASO.md",
+              "RelativeToolTip": "Guia paso a paso\\GUIA_PASO_A_PASO.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAOYEAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-11-28T19:37:51.632Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DOCUMENTACION_COMPLETA_PROYECTO.md",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Documentacion\\DOCUMENTACION_COMPLETA_PROYECTO.md",
+              "RelativeDocumentMoniker": "Documentacion\\DOCUMENTACION_COMPLETA_PROYECTO.md",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Documentacion\\DOCUMENTACION_COMPLETA_PROYECTO.md",
+              "RelativeToolTip": "Documentacion\\DOCUMENTACION_COMPLETA_PROYECTO.md",
+              "ViewState": "AgIAAGECAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-11-28T18:51:46.616Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ServicioSesion.cs",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Servicios\\ServicioSesion.cs",
+              "RelativeDocumentMoniker": "Servicios\\ServicioSesion.cs",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Servicios\\ServicioSesion.cs",
+              "RelativeToolTip": "Servicios\\ServicioSesion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T18:00:03.279Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "RegistroWindow.xaml",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Ventanas\\RegistroWindow.xaml",
+              "RelativeDocumentMoniker": "Ventanas\\RegistroWindow.xaml",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Ventanas\\RegistroWindow.xaml",
+              "RelativeToolTip": "Ventanas\\RegistroWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-28T11:09:20.455Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "LoginWindow.xaml",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Ventanas\\LoginWindow.xaml",
+              "RelativeDocumentMoniker": "Ventanas\\LoginWindow.xaml",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Ventanas\\LoginWindow.xaml",
+              "RelativeToolTip": "Ventanas\\LoginWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-28T11:18:05.123Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "SeleccionButacasWindow.xaml",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Ventanas\\SeleccionButacasWindow.xaml",
+              "RelativeDocumentMoniker": "Ventanas\\SeleccionButacasWindow.xaml",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Ventanas\\SeleccionButacasWindow.xaml",
+              "RelativeToolTip": "Ventanas\\SeleccionButacasWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-28T11:41:42.559Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": ".env",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\.env",
+              "RelativeDocumentMoniker": ".env",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\.env",
+              "RelativeToolTip": ".env",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAACFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-11-26T22:26:43.425Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "PerfilUsuarioWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Ventanas\\PerfilUsuarioWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Ventanas\\PerfilUsuarioWindow.xaml.cs",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Ventanas\\PerfilUsuarioWindow.xaml.cs",
+              "RelativeToolTip": "Ventanas\\PerfilUsuarioWindow.xaml.cs",
+              "ViewState": "AgIAACsBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T12:07:32.58Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\App.xaml.cs",
+              "RelativeDocumentMoniker": "App.xaml.cs",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\App.xaml.cs",
+              "RelativeToolTip": "App.xaml.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T12:13:50.495Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "RegistroWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Ventanas\\RegistroWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Ventanas\\RegistroWindow.xaml.cs",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Ventanas\\RegistroWindow.xaml.cs",
+              "RelativeToolTip": "Ventanas\\RegistroWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T11:23:19.186Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "cinema_database_mysql.sql",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Database\\cinema_database_mysql.sql",
+              "RelativeDocumentMoniker": "Database\\cinema_database_mysql.sql",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Database\\cinema_database_mysql.sql",
+              "RelativeToolTip": "Database\\cinema_database_mysql.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-11-28T13:29:37.07Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ServicioBaseDeDatos.cs",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Servicios\\ServicioBaseDeDatos.cs",
+              "RelativeDocumentMoniker": "Servicios\\ServicioBaseDeDatos.cs",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Servicios\\ServicioBaseDeDatos.cs",
+              "RelativeToolTip": "Servicios\\ServicioBaseDeDatos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T10:58:10.748Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "LoginWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Ventanas\\LoginWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Ventanas\\LoginWindow.xaml.cs",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Ventanas\\LoginWindow.xaml.cs",
+              "RelativeToolTip": "Ventanas\\LoginWindow.xaml.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAqwBYAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T11:07:50.678Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "PerfilUsuarioWindow.xaml",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Ventanas\\PerfilUsuarioWindow.xaml",
+              "RelativeDocumentMoniker": "Ventanas\\PerfilUsuarioWindow.xaml",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Ventanas\\PerfilUsuarioWindow.xaml",
+              "RelativeToolTip": "Ventanas\\PerfilUsuarioWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-28T11:59:36.721Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "SeleccionSesionWindow.xaml",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Ventanas\\SeleccionSesionWindow.xaml",
+              "RelativeDocumentMoniker": "Ventanas\\SeleccionSesionWindow.xaml",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Ventanas\\SeleccionSesionWindow.xaml",
+              "RelativeToolTip": "Ventanas\\SeleccionSesionWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-28T12:11:51.472Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "CarteleraWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Ventanas\\CarteleraWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Ventanas\\CarteleraWindow.xaml.cs",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Ventanas\\CarteleraWindow.xaml.cs",
+              "RelativeToolTip": "Ventanas\\CarteleraWindow.xaml.cs",
+              "ViewState": "AgIAAI4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T11:56:52.499Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "SeleccionButacasWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Ventanas\\SeleccionButacasWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Ventanas\\SeleccionButacasWindow.xaml.cs",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Ventanas\\SeleccionButacasWindow.xaml.cs",
+              "RelativeToolTip": "Ventanas\\SeleccionButacasWindow.xaml.cs",
+              "ViewState": "AgIAAFEBAAAAAAAAAABBwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T11:42:22.184Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "CarteleraWindow.xaml",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Ventanas\\CarteleraWindow.xaml",
+              "RelativeDocumentMoniker": "Ventanas\\CarteleraWindow.xaml",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Ventanas\\CarteleraWindow.xaml",
+              "RelativeToolTip": "Ventanas\\CarteleraWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-28T10:54:58.652Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Butaca.cs",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Modelos\\Butaca.cs",
+              "RelativeDocumentMoniker": "Modelos\\Butaca.cs",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Modelos\\Butaca.cs",
+              "RelativeToolTip": "Modelos\\Butaca.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAiwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T10:47:41.222Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "App.xaml",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\App.xaml",
+              "RelativeDocumentMoniker": "App.xaml",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\App.xaml",
+              "RelativeToolTip": "App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-27T21:20:23.735Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

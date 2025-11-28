@@ -1,0 +1,1624 @@
+﻿# 📚 DOCUMENTACIÓN ARQUITECTURA - CINE_APP
+
+## 🎯 RESUMEN GENERAL
+
+**Cine_app** es una aplicación WPF (.NET 10) para gestionar reservas de entradas de cine. Permite a los usuarios ver películas en cartelera, seleccionar sesiones, elegir butacas y realizar reservas.
+
+---
+
+## 📁 ESTRUCTURA DEL PROYECTO
+
+```
+Cine_app/
+├── Modelos/              # Clases de datos (entidades)
+│   ├── Pelicula.cs
+│   ├── Sesion.cs
+│   ├── Usuario.cs
+│   └── Butaca.cs
+├── Servicios/            # Lógica de negocio y acceso a datos
+│   ├── ServicioBaseDeDatos.cs
+│   └── ServicioSesion.cs
+├── Ventanas/             # Interfaces de usuario (Views)
+│   ├── CarteleraWindow.xaml/cs
+│   ├── LoginWindow.xaml/cs
+│   ├── SeleccionSesionWindow.xaml/cs
+│   └── SeleccionButacasWindow.xaml/cs
+├── App.xaml/cs          # Punto de entrada de la aplicación
+└── MainWindow.xaml/cs   # Ventana antigua (no se usa actualmente)
+```
+
+---
+
+## 🏗️ ARQUITECTURA DE LA APLICACIÓN
+
+### **Patrón de Diseño: 3 Capas**
+
+```
+┌─────────────────────────────────────┐
+│     CAPA DE PRESENTACIÓN (UI)       │
+│  CarteleraWindow, LoginWindow, etc. │
+└──────────────┬──────────────────────┘
+               │
+               ↓
+┌─────────────────────────────────────┐
+│      CAPA DE LÓGICA DE NEGOCIO      │
+│  ServicioBaseDeDatos, ServicioSesion│
+└──────────────┬──────────────────────┘
+               │
+               ↓
+┌─────────────────────────────────────┐
+│        CAPA DE DATOS (MySQL)        │
+│   Peliculas, Sesiones, Reservas...  │
+└─────────────────────────────────────┘
+```
+
+---
+
+## 📦 MODELOS (Entidades de Datos)
+
+### **1. Pelicula.cs**
+Representa una película en el sistema.
+
+**Propiedades principales:**
+- `Id`: Identificador único
+- `Titulo`: Nombre de la película
+- `Descripcion`: Sinopsis
+- `Director`: Director de la película
+- `Duracion`: Duración en minutos
+- `Genero`: Género cinematográfico
+- `ImagenUrl`: URL de la imagen/poster
+- `FechaEstreno`: Fecha de estreno
+- `Activa`: Indica si está disponible en cartelera
+
+---
+
+### **2. Sesion.cs**
+Representa una función/proyección de una película.
+
+**Propiedades principales:**
+- `Id`: Identificador único
+- `PeliculaId`: Referencia a la película
+- `SalaId`: Referencia a la sala
+- `FechaHora`: Fecha y hora de la función
+- `Precio`: Precio de la entrada
+- `Activa`: Si está disponible para reservas
+- `Pelicula`: Objeto de navegación a Película
+- `Sala`: Objeto de navegación a Sala
+- `FechaHoraFormateada`: Propiedad calculada para mostrar la fecha formateada
+
+**Clase interna: Sala**
+- `Nombre`: Nombre de la sala (ej: "Sala 1")
+- `Filas`: Número de filas de butacas
+- `ColumnasPerFila`: Número de butacas por fila
+- `CapacidadTotal`: Propiedad calculada (Filas × Columnas)
+
+---
+
+### **3. Usuario.cs**
+Representa un usuario/cliente del sistema.
+
+**Propiedades principales:**
+- `Id`: Identificador único
+- `Nombre`: Nombre del usuario
+- `Apellidos`: Apellidos
+- `Email`: Correo electrónico (usado para login)
+- `Password`: Contraseña (⚠️ en texto plano - debería usar hash)
+- `Telefono`: Teléfono de contacto
+- `FechaRegistro`: Cuándo se registró
+- `Activo`: Si la cuenta está activa
+- `NombreCompleto`: Propiedad calculada que concatena nombre + apellidos
+
+---
+
+### **4. Butaca.cs**
+Representa un asiento en una sala de cine.
+
+**Propiedades principales:**
+- `Id`: Identificador único
+- `SalaId`: Sala a la que pertenece
+- `Fila`: Número de fila
+- `Columna`: Número de columna
+- `Tipo`: Tipo de butaca ("Normal", "VIP", "Discapacitado")
+- `Activa`: Si está disponible
+- `Identificador`: Propiedad calculada que devuelve "A1", "B3", etc.
+
+**Clases relacionadas:**
+
+**Reserva:**
+- Almacena información de una reserva completa
+- `UsuarioId`: Quién hizo la reserva
+- `SesionId`: Qué sesión reservó
+- `FechaReserva`: Cuándo se hizo
+- `Total`: Precio total
+- `Estado`: "Pendiente", "Confirmada", "Cancelada"
+- `CodigoReserva`: Código único de la reserva
+
+**ReservaButaca:**
+- Relación muchos a muchos entre Reserva y Butaca
+- `ReservaId`: ID de la reserva
+- `ButacaId`: ID de la butaca reservada
+- `SesionId`: ID de la sesión (para verificar ocupación)
+
+---
+
+## 🔧 SERVICIOS (Lógica de Negocio)
+
+### **1. ServicioBaseDeDatos.cs**
+Gestiona TODAS las operaciones de base de datos MySQL.
+
+#### **Constructor**
+```csharp
+public ServicioBaseDeDatos()
+```
+- Carga las variables de entorno desde `.env`
+- Obtiene la cadena de conexión a MySQL
+
+---
+
+#### **Métodos de PELÍCULAS**
+
+**`ObtenerPeliculasActivasAsync()`**
+```csharp
+public async Task<List<Pelicula>> ObtenerPeliculasActivasAsync()
+```
+- **Qué hace:** Obtiene todas las películas que están en cartelera (Activa = 1)
+- **Query SQL:** `SELECT * FROM Peliculas WHERE Activa = 1 ORDER BY FechaEstreno DESC`
+- **Retorna:** Lista de películas ordenadas por fecha de estreno
+- **Usado en:** CarteleraWindow para mostrar la cartelera
+
+---
+
+#### **Métodos de SESIONES**
+
+**`ObtenerSesionesPorPeliculaAsync(peliculaId, fecha?)`**
+```csharp
+public async Task<List<Sesion>> ObtenerSesionesPorPeliculaAsync(int peliculaId, DateTime? fecha = null)
+```
+- **Qué hace:** Obtiene las sesiones/funciones de una película específica
+- **Parámetros:**
+  - `peliculaId`: ID de la película
+  - `fecha` (opcional): Si se especifica, filtra por esa fecha
+- **Query SQL:** JOIN entre Sesiones, Películas y Salas
+- **Filtros aplicados:**
+  - Solo sesiones activas
+  - Solo sesiones futuras (FechaHora >= DateTime.Now)
+  - Opcionalmente por fecha específica
+- **Retorna:** Lista de sesiones con información completa de sala
+- **Usado en:** SeleccionSesionWindow al seleccionar una fecha en el calendario
+
+---
+
+#### **Métodos de BUTACAS**
+
+**`ObtenerButacasPorSalaAsync(salaId)`**
+```csharp
+public async Task<List<Butaca>> ObtenerButacasPorSalaAsync(int salaId)
+```
+- **Qué hace:** Obtiene todas las butacas de una sala
+- **Parámetros:** `salaId` - ID de la sala
+- **Query SQL:** `SELECT * FROM Butacas WHERE SalaId = @SalaId AND Activa = 1 ORDER BY Fila, Columna`
+- **Retorna:** Lista de butacas ordenadas por fila y columna
+- **Usado en:** SeleccionButacasWindow para crear el mapa visual de asientos
+
+---
+
+**`ObtenerButacasReservadasAsync(sesionId)`**
+```csharp
+public async Task<List<int>> ObtenerButacasReservadasAsync(int sesionId)
+```
+- **Qué hace:** Obtiene los IDs de butacas ya reservadas para una sesión
+- **Parámetros:** `sesionId` - ID de la sesión
+- **Query SQL:** JOIN entre ReservasButacas y Reservas
+- **Filtros:** Solo reservas en estado "Pendiente" o "Confirmada"
+- **Retorna:** Lista de IDs de butacas ocupadas
+- **Usado en:** SeleccionButacasWindow para marcar butacas no disponibles
+
+---
+
+#### **Métodos de USUARIOS**
+
+**`ValidarUsuarioAsync(email, password)`**
+```csharp
+public async Task<Usuario?> ValidarUsuarioAsync(string email, string password)
+```
+- **Qué hace:** Valida las credenciales de login
+- **Parámetros:** 
+  - `email`: Email del usuario
+  - `password`: Contraseña (⚠️ en texto plano)
+- **Query SQL:** `SELECT * FROM Usuarios WHERE Email = @Email AND Password = @Password AND Activo = 1`
+- **Retorna:** 
+  - Objeto `Usuario` si las credenciales son correctas
+  - `null` si no encuentra coincidencia
+- **Usado en:** LoginWindow al hacer clic en "Iniciar Sesión"
+- **⚠️ NOTA DE SEGURIDAD:** En producción debería usar hash de contraseñas
+
+---
+
+**`ExisteUsuarioAsync(email)`**
+```csharp
+public async Task<bool> ExisteUsuarioAsync(string email)
+```
+- **Qué hace:** Verifica si ya existe un usuario registrado con ese email
+- **Parámetros:** `email` - Email a verificar
+- **Query SQL:** `SELECT COUNT(*) FROM Usuarios WHERE Email = @Email`
+- **Retorna:** 
+  - `true` si el email ya existe
+  - `false` si está disponible
+- **Usado en:** RegistroWindow antes de crear un nuevo usuario
+- **Por qué es importante:** Evita duplicados de email en el sistema
+
+---
+
+**`RegistrarUsuarioAsync(usuario)`**
+```csharp
+public async Task<bool> RegistrarUsuarioAsync(Usuario usuario)
+```
+- **Qué hace:** Registra un nuevo usuario en el sistema
+- **Parámetros:** Objeto `Usuario` con los datos completos
+- **Query SQL:** 
+```sql
+INSERT INTO Usuarios (Nombre, Apellidos, Email, Password, Telefono, FechaRegistro, Activo)
+VALUES (@Nombre, @Apellidos, @Email, @Password, @Telefono, @FechaRegistro, @Activo)
+```
+- **Campos:**
+  - `Nombre`, `Apellidos`, `Email`: Obligatorios
+  - `Password`: Obligatorio (⚠️ debería estar hasheado)
+  - `Telefono`: Opcional (se guarda como `DBNull.Value` si es null)
+  - `FechaRegistro`: Se establece a `DateTime.Now`
+  - `Activo`: Siempre `true` para nuevos registros
+- **Retorna:** 
+  - `true` si se insertó correctamente
+  - `false` si falló
+- **Usado en:** RegistroWindow al confirmar el registro
+- **⚠️ NOTA DE SEGURIDAD:** En producción debería hashear la contraseña antes de guardar
+
+---
+
+#### **Métodos de RESERVAS**
+
+**`CrearReservaAsync(reserva, butacaIds)`**
+```csharp
+public async Task<int> CrearReservaAsync(Reserva reserva, List<int> butacaIds)
+```
+- **Qué hace:** Crea una reserva completa con sus butacas
+- **Parámetros:**
+  - `reserva`: Objeto Reserva con datos básicos
+  - `butacaIds`: Lista de IDs de butacas a reservar
+- **Proceso:**
+  1. Inicia una transacción MySQL
+  2. Genera un código único: `RES{timestamp}{random}`
+  3. Inserta la reserva en tabla `Reservas`
+  4. Obtiene el ID generado con `LAST_INSERT_ID()`
+  5. Inserta cada butaca en tabla `ReservasButacas`
+  6. Si todo va bien: commit, si hay error: rollback
+- **Retorna:** ID de la reserva creada
+- **Usado en:** SeleccionButacasWindow al confirmar la reserva
+- **Importante:** Usa transacciones para garantizar integridad de datos
+
+---
+
+### **2. ServicioSesion.cs**
+Gestiona el estado de autenticación del usuario (Patrón Singleton).
+
+#### **Patrón Singleton**
+```csharp
+private static ServicioSesion? _instance;
+public static ServicioSesion Instance => _instance ??= new ServicioSesion();
+```
+- Solo existe UNA instancia en toda la aplicación
+- Se accede mediante `ServicioSesion.Instance`
+
+---
+
+#### **Propiedades**
+
+**`UsuarioActual`**
+```csharp
+public Usuario? UsuarioActual { get; private set; }
+```
+- Almacena el usuario que ha iniciado sesión
+- `null` si no hay sesión activa
+
+**`EstaAutenticado`**
+```csharp
+public bool EstaAutenticado => UsuarioActual != null;
+```
+- Propiedad calculada
+- Retorna `true` si hay un usuario logueado
+
+---
+
+#### **Eventos**
+```csharp
+public event EventHandler? SesionIniciada;
+public event EventHandler? SesionCerrada;
+```
+- Permiten a otras partes de la app reaccionar cuando cambia la sesión
+- Patrón Observer
+
+---
+
+#### **Métodos**
+
+**`IniciarSesion(usuario)`**
+```csharp
+public void IniciarSesion(Usuario usuario)
+```
+- **Qué hace:** Establece el usuario actual
+- **Dispara:** Evento `SesionIniciada`
+- **Usado en:** LoginWindow tras validación exitosa
+
+**`CerrarSesion()`**
+```csharp
+public void CerrarSesion()
+```
+- **Qué hace:** Elimina el usuario actual
+- **Dispara:** Evento `SesionCerrada`
+- **Usado en:** CarteleraWindow al hacer clic en "Cerrar Sesión"
+
+---
+
+## 🖼️ VENTANAS (Interfaces de Usuario)
+
+### **1. App.xaml.cs - Punto de Entrada**
+
+#### **`Application_Startup`**
+```csharp
+private void Application_Startup(object sender, StartupEventArgs e)
+{
+    var carteleraWindow = new CarteleraWindow();
+    carteleraWindow.Show();
+}
+```
+- **Qué hace:** Método que se ejecuta al iniciar la aplicación
+- **Acción:** Abre directamente la ventana de cartelera
+- **Nota:** No requiere login para ver películas (modo invitado)
+
+---
+
+### **2. CarteleraWindow.xaml.cs - Pantalla Principal**
+
+#### **Constructor**
+```csharp
+public CarteleraWindow()
+{
+    InitializeComponent();
+    _dbService = new ServicioBaseDeDatos();
+    Loaded += CarteleraWindow_Loaded;
+    ActualizarEstadoUsuario();
+}
+```
+- Inicializa el servicio de BD
+- Registra evento `Loaded` para cargar películas al mostrarse
+- Actualiza el estado de usuario en la UI
+
+---
+
+#### **`CarteleraWindow_Loaded`**
+```csharp
+private async void CarteleraWindow_Loaded(object sender, RoutedEventArgs e)
+{
+    await CargarPeliculas();
+}
+```
+- Se ejecuta cuando la ventana termina de cargarse
+- Llama a `CargarPeliculas()` de forma asíncrona
+
+---
+
+#### **`ActualizarEstadoUsuario`**
+```csharp
+private void ActualizarEstadoUsuario()
+{
+    if (ServicioSesion.Instance.EstaAutenticado)
+    {
+        txtUsuario.Text = $"👤 {usuario?.Nombre}";
+        btnCuentaAccion.Content = "Cerrar Sesión";
+    }
+    else
+    {
+        txtUsuario.Text = "👤 Invitado";
+        btnCuentaAccion.Content = "Iniciar Sesión";
+    }
+}
+```
+- **Qué hace:** Actualiza la interfaz según si hay sesión o no
+- **Si hay sesión:** Muestra el nombre del usuario y botón "Cerrar Sesión"
+- **Si no hay sesión:** Muestra "Invitado" y botón "Iniciar Sesión"
+
+---
+
+#### **`CargarPeliculas`**
+```csharp
+private async Task CargarPeliculas()
+{
+    try
+    {
+        pnlLoading.Visibility = Visibility.Visible;
+        scrollPeliculas.Visibility = Visibility.Collapsed;
+        pnlSinPeliculas.Visibility = Visibility.Collapsed;
+
+        var peliculas = await _dbService.ObtenerPeliculasActivasAsync();
+
+        if (peliculas.Any())
+        {
+            itemsPeliculas.ItemsSource = peliculas;
+            scrollPeliculas.Visibility = Visibility.Visible;
+        }
+        else
+        {
+            pnlSinPeliculas.Visibility = Visibility.Visible;
+        }
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show($"Error al cargar películas: {ex.Message}", ...);
+        pnlSinPeliculas.Visibility = Visibility.Visible;
+    }
+    finally
+    {
+        pnlLoading.Visibility = Visibility.Collapsed;
+    }
+}
+```
+- **Flujo:**
+  1. Muestra indicador de carga
+  2. Llama al servicio para obtener películas
+  3. Si hay películas: las muestra en el control `itemsPeliculas`
+  4. Si no hay: muestra mensaje "No hay películas"
+  5. Si hay error: muestra diálogo de error
+  6. Siempre oculta el indicador de carga
+
+---
+
+#### **`Pelicula_Click` y `BtnVerHorarios_Click`**
+```csharp
+private void Pelicula_Click(object sender, MouseButtonEventArgs e)
+{
+    if (sender is FrameworkElement element && element.Tag is int peliculaId)
+    {
+        AbrirVentanaSeleccionSesion(peliculaId);
+    }
+}
+```
+- **Qué hacen:** Responden al clic en una película o su botón
+- **Cómo funcionan:** Leen el ID de la película desde la propiedad `Tag`
+- **Llaman a:** `AbrirVentanaSeleccionSesion()`
+
+---
+
+#### **`AbrirVentanaSeleccionSesion`**
+```csharp
+private void AbrirVentanaSeleccionSesion(int peliculaId)
+{
+    var pelicula = (itemsPeliculas.ItemsSource as List<Pelicula>)?
+        .FirstOrDefault(p => p.Id == peliculaId);
+
+    if (pelicula != null)
+    {
+        var seleccionSesionWindow = new SeleccionSesionWindow(pelicula);
+        seleccionSesionWindow.ShowDialog();
+    }
+}
+```
+- **Qué hace:** Abre la ventana de selección de sesión
+- **Parámetro:** Objeto `Pelicula` completo (no solo el ID)
+- **ShowDialog():** Abre como ventana modal (bloquea la principal)
+
+---
+
+#### **`BtnCuentaAccion_Click`**
+```csharp
+private void BtnCuentaAccion_Click(object sender, RoutedEventArgs e)
+{
+    if (ServicioSesion.Instance.EstaAutenticado)
+    {
+        // Confirmación antes de cerrar
+        var result = MessageBox.Show("¿Estás seguro...?", ...);
+        if (result == MessageBoxResult.Yes)
+        {
+            ServicioSesion.Instance.CerrarSesion();
+            ActualizarEstadoUsuario();
+        }
+    }
+    else
+    {
+        var loginWindow = new LoginWindow();
+        loginWindow.ShowDialog();
+        ActualizarEstadoUsuario();
+    }
+}
+```
+- **Qué hace:** Botón dinámico que cambia según el estado
+- **Si hay sesión:** Pregunta y cierra sesión
+- **Si no hay sesión:** Abre ventana de login
+- **Siempre:** Actualiza el estado de usuario después
+
+---
+
+### **3. LoginWindow.xaml.cs - Autenticación**
+
+#### **Constructor**
+```csharp
+public LoginWindow()
+{
+    InitializeComponent();
+    _dbService = new ServicioBaseDeDatos();
+}
+```
+- Inicializa servicio de BD para validar credenciales
+
+---
+
+#### **`BtnLogin_Click`**
+```csharp
+private async void BtnLogin_Click(object sender, RoutedEventArgs e)
+{
+    // 1. Ocultar errores previos
+    txtError.Visibility = Visibility.Collapsed;
+
+    // 2. Validar campos vacíos
+    if (string.IsNullOrWhiteSpace(txtEmail.Text))
+    {
+        MostrarError("Por favor, ingrese su email");
+        return;
+    }
+
+    // 3. Deshabilitar botón durante validación
+    btnLogin.IsEnabled = false;
+    btnLogin.Content = "Validando...";
+
+    try
+    {
+        // 4. Validar con la BD
+        UsuarioAutenticado = await _dbService.ValidarUsuarioAsync(
+            txtEmail.Text.Trim(), 
+            txtPassword.Password
+        );
+
+        // 5. Si es válido, guardar en ServicioSesion
+        if (UsuarioAutenticado != null)
+        {
+            ServicioSesion.Instance.IniciarSesion(UsuarioAutenticado);
+            this.DialogResult = true;  // Marca como éxito
+            this.Close();
+        }
+        else
+        {
+            MostrarError("Email o contraseña incorrectos");
+        }
+    }
+    catch (Exception ex)
+    {
+        MostrarError($"Error al conectar: {ex.Message}");
+    }
+    finally
+    {
+        // 6. Rehabilitar botón
+        btnLogin.IsEnabled = true;
+        btnLogin.Content = "Iniciar Sesión";
+    }
+}
+```
+
+**Flujo detallado:**
+1. **Validación local:** Verifica que no estén vacíos los campos
+2. **UI feedback:** Cambia el botón a "Validando..." y lo deshabilita
+3. **Validación en BD:** Llama al servicio para verificar credenciales
+4. **Manejo de resultado:**
+   - ✅ Correcto: Guarda en `ServicioSesion` y cierra con `DialogResult = true`
+   - ❌ Incorrecto: Muestra error y limpia contraseña
+5. **Manejo de errores:** Captura excepciones de conexión
+6. **Cleanup:** Siempre restaura el estado del botón
+
+---
+
+#### **`BtnInvitado_Click`**
+```csharp
+private void BtnInvitado_Click(object sender, RoutedEventArgs e)
+{
+    this.DialogResult = false;
+    this.Close();
+}
+```
+- **Qué hace:** Permite continuar sin autenticarse
+- **DialogResult = false:** Indica que no se completó el login
+
+---
+
+#### **`TxtPassword_KeyDown`**
+```csharp
+private void TxtPassword_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+{
+    if (e.Key == System.Windows.Input.Key.Enter)
+    {
+        BtnLogin_Click(sender, e);
+    }
+}
+```
+- **Qué hace:** Permite hacer login presionando Enter
+- **UX:** Mejora la experiencia de usuario
+
+---
+
+### **4. SeleccionSesionWindow.xaml.cs - Elegir Horario**
+
+#### **Constructor**
+```csharp
+public SeleccionSesionWindow(Pelicula pelicula)
+{
+    InitializeComponent();
+    _dbService = new ServicioBaseDeDatos();
+    _pelicula = pelicula;
+
+    CargarInfoPelicula();
+    calendario.DisplayDateStart = DateTime.Today;
+    calendario.SelectedDate = DateTime.Today;
+}
+```
+- Recibe la película seleccionada
+- Carga información de la película
+- Configura el calendario (no permite fechas pasadas)
+- Selecciona HOY por defecto
+
+---
+
+#### **`CargarInfoPelicula`**
+```csharp
+private void CargarInfoPelicula()
+{
+    txtTitulo.Text = _pelicula.Titulo;
+
+    var info = $"{_pelicula.Genero}";
+    if (_pelicula.Duracion.HasValue)
+        info += $" • {_pelicula.Duracion} min";
+    if (!string.IsNullOrEmpty(_pelicula.Director))
+        info += $" • {_pelicula.Director}";
+
+    txtInfo.Text = info;
+
+    if (!string.IsNullOrEmpty(_pelicula.ImagenUrl))
+    {
+        imgPelicula.Source = new BitmapImage(new Uri(_pelicula.ImagenUrl, ...));
+    }
+}
+```
+- **Qué hace:** Muestra información visual de la película
+- **Formato:** "Acción • 120 min • Christopher Nolan"
+- **Imagen:** Carga el póster desde URL
+
+---
+
+#### **`Calendario_SelectedDatesChanged`**
+```csharp
+private async void Calendario_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+{
+    if (calendario.SelectedDate.HasValue)
+    {
+        await CargarSesiones(calendario.SelectedDate.Value);
+    }
+}
+```
+- **Cuándo se ejecuta:** Cada vez que el usuario selecciona una fecha
+- **Acción:** Carga las sesiones disponibles para esa fecha
+
+---
+
+#### **`CargarSesiones`**
+```csharp
+private async Task CargarSesiones(DateTime fecha)
+{
+    try
+    {
+        pnlLoadingSesiones.Visibility = Visibility.Visible;
+        scrollSesiones.Visibility = Visibility.Collapsed;
+        pnlSinSesiones.Visibility = Visibility.Collapsed;
+
+        var sesiones = await _dbService.ObtenerSesionesPorPeliculaAsync(_pelicula.Id, fecha);
+
+        if (sesiones.Any())
+        {
+            itemsSesiones.ItemsSource = sesiones;
+            scrollSesiones.Visibility = Visibility.Visible;
+        }
+        else
+        {
+            pnlSinSesiones.Visibility = Visibility.Visible;
+        }
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show($"Error al cargar sesiones: {ex.Message}", ...);
+        pnlSinSesiones.Visibility = Visibility.Visible;
+    }
+    finally
+    {
+        pnlLoadingSesiones.Visibility = Visibility.Collapsed;
+    }
+}
+```
+- **Similar a `CargarPeliculas`** pero para sesiones
+- Muestra loading → consulta BD → muestra resultado o error
+
+---
+
+#### **`BtnSeleccionarSesion_Click`**
+```csharp
+private void BtnSeleccionarSesion_Click(object sender, RoutedEventArgs e)
+{
+    if (sender is FrameworkElement element && element.Tag is Sesion sesion)
+    {
+        // VALIDACIÓN: ¿Usuario autenticado?
+        if (!ServicioSesion.Instance.EstaAutenticado)
+        {
+            var result = MessageBox.Show(
+                "Debes iniciar sesión para reservar...",
+                MessageBoxButton.YesNo, ...);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                var loginWindow = new LoginWindow();
+                loginWindow.ShowDialog();
+
+                if (ServicioSesion.Instance.EstaAutenticado)
+                {
+                    AbrirSeleccionButacas(sesion);
+                }
+            }
+            return;
+        }
+
+        AbrirSeleccionButacas(sesion);
+    }
+}
+```
+- **Validación importante:** Requiere login para reservar
+- **UX:** Ofrece hacer login en el momento si no lo está
+- **Flujo:** Si está logueado → abre selección de butacas
+
+---
+
+#### **`AbrirSeleccionButacas`**
+```csharp
+private void AbrirSeleccionButacas(Sesion sesion)
+{
+    var seleccionButacasWindow = new SeleccionButacasWindow(sesion, _pelicula);
+    seleccionButacasWindow.ShowDialog();
+
+    if (seleccionButacasWindow.DialogResult == true)
+    {
+        this.Close();  // Si completó reserva, cerrar esta ventana también
+    }
+}
+```
+- Abre ventana de butacas como modal
+- Si la reserva se completa exitosamente, cierra esta ventana
+
+---
+
+### **5. SeleccionButacasWindow.xaml.cs - Reservar Butacas**
+
+Esta es la ventana más compleja. Gestiona la visualización de butacas y el proceso de reserva.
+
+#### **Constructor**
+```csharp
+public SeleccionButacasWindow(Sesion sesion, Pelicula pelicula)
+{
+    InitializeComponent();
+    _dbService = new ServicioBaseDeDatos();
+    _sesion = sesion;
+    _pelicula = pelicula;
+
+    CargarInformacion();
+    Loaded += async (s, e) => await CargarButacas();
+}
+```
+- Recibe la sesión y película
+- Carga información en la UI
+- Al cargar la ventana, obtiene las butacas
+
+---
+
+#### **`CargarInformacion`**
+```csharp
+private void CargarInformacion()
+{
+    txtTituloPelicula.Text = _pelicula.Titulo;
+    txtInfoSesion.Text = $"{_sesion.FechaHora:dddd, dd MMMM yyyy - HH:mm} • ...";
+    txtPrecioUnitario.Text = $"€{_sesion.Precio:F2}";
+}
+```
+- Muestra título, fecha/hora, sala y precio
+
+---
+
+#### **`CargarButacas`**
+```csharp
+private async Task CargarButacas()
+{
+    try
+    {
+        pnlLoading.Visibility = Visibility.Visible;
+        itemsButacas.Visibility = Visibility.Collapsed;
+
+        // 1. Obtener TODAS las butacas de la sala
+        _todasLasButacas = await _dbService.ObtenerButacasPorSalaAsync(_sesion.SalaId);
+        
+        // 2. Obtener butacas YA RESERVADAS para esta sesión
+        _butacasOcupadas = await _dbService.ObtenerButacasReservadasAsync(_sesion.Id);
+
+        // 3. Crear la visualización
+        CrearVisualizacionButacas();
+
+        itemsButacas.Visibility = Visibility.Visible;
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show($"Error al cargar las butacas: {ex.Message}", ...);
+        this.Close();
+    }
+    finally
+    {
+        pnlLoading.Visibility = Visibility.Collapsed;
+    }
+}
+```
+- **Dos consultas importantes:**
+  1. Todas las butacas de la sala (estructura física)
+  2. Butacas ocupadas en esta sesión específica
+- Luego crea la visualización combinando ambas
+
+---
+
+#### **`CrearVisualizacionButacas`**
+```csharp
+private void CrearVisualizacionButacas()
+{
+    if (_sesion.Sala == null) return;
+
+    var filas = _sesion.Sala.Filas;
+    var columnas = _sesion.Sala.ColumnasPerFila;
+
+    var panelPrincipal = new StackPanel();
+
+    for (int fila = 1; fila <= filas; fila++)
+    {
+        var panelFila = new StackPanel
+        {
+            Orientation = Orientation.Horizontal,
+            HorizontalAlignment = HorizontalAlignment.Center,
+            Margin = new Thickness(0, 2, 0, 2)
+        };
+
+        // Etiqueta de fila (A, B, C...)
+        var lblFila = new TextBlock
+        {
+            Text = $"{(char)('A' + fila - 1)}",
+            Width = 30,
+            FontWeight = FontWeights.Bold,
+            ...
+        };
+        panelFila.Children.Add(lblFila);
+
+        // Botones de butacas
+        for (int columna = 1; columna <= columnas; columna++)
+        {
+            var butaca = _todasLasButacas.FirstOrDefault(
+                b => b.Fila == fila && b.Columna == columna);
+
+            if (butaca != null)
+            {
+                var btnButaca = CrearBotonButaca(butaca);
+                panelFila.Children.Add(btnButaca);
+            }
+        }
+
+        panelPrincipal.Children.Add(panelFila);
+    }
+
+    itemsButacas.ItemsSource = new[] { panelPrincipal };
+}
+```
+
+**Algoritmo:**
+1. **Iteración por filas:** De 1 hasta `Filas`
+   - Crea un `StackPanel` horizontal para cada fila
+   - Agrega etiqueta de fila (A, B, C...) usando ASCII: `(char)('A' + fila - 1)`
+
+2. **Iteración por columnas:** De 1 hasta `ColumnasPerFila`
+   - Busca si existe una butaca en esa posición
+   - Si existe, crea un botón para esa butaca
+
+3. **Asignación:** Coloca todo el panel en el control de items
+
+**Resultado visual:**
+```
+     A  [1] [2] [3] [4] [5]
+     B  [1] [2] [3] [4] [5]
+     C  [1] [2] [3] [4] [5]
+```
+
+---
+
+#### **`CrearBotonButaca`**
+```csharp
+private Button CrearBotonButaca(Butaca butaca)
+{
+    var btn = new Button
+    {
+        Content = butaca.Columna.ToString(),
+        Tag = butaca,  // ⭐ IMPORTANTE: Guarda la butaca en Tag
+        Width = 45,
+        Height = 45,
+        Margin = new Thickness(3),
+        FontWeight = FontWeights.Bold,
+        FontSize = 12
+    };
+
+    bool estaOcupada = _butacasOcupadas.Contains(butaca.Id);
+
+    if (estaOcupada)
+    {
+        btn.Style = (Style)FindResource("ButacaOcupadaStyle");
+        // No se asigna Click event (no clickeable)
+    }
+    else
+    {
+        // Asignar estilo según tipo
+        switch (butaca.Tipo)
+        {
+            case "VIP":
+                btn.Style = (Style)FindResource("ButacaVIPStyle");
+                break;
+            case "Discapacitado":
+                btn.Style = (Style)FindResource("ButacaDiscapacitadoStyle");
+                break;
+            default:
+                btn.Style = (Style)FindResource("ButacaNormalStyle");
+                break;
+        }
+
+        btn.Click += BtnButaca_Click;  // Solo clickeable si está libre
+    }
+
+    return btn;
+}
+```
+
+**Lógica de estados:**
+- **Ocupada:** Estilo gris, no clickeable
+- **Libre:** Estilo según tipo, clickeable
+
+**Tipos de butacas:**
+- **Normal:** Estilo estándar
+- **VIP:** Estilo especial (probablemente dorado o destacado)
+- **Discapacitado:** Estilo accesibilidad
+
+---
+
+#### **`BtnButaca_Click`**
+```csharp
+private void BtnButaca_Click(object sender, RoutedEventArgs e)
+{
+    if (sender is Button btn && btn.Tag is Butaca butaca)
+    {
+        if (_butacasSeleccionadas.Contains(butaca))
+        {
+            // DESELECCIONAR
+            _butacasSeleccionadas.Remove(butaca);
+            
+            // Restaurar estilo original según tipo
+            switch (butaca.Tipo)
+            {
+                case "VIP":
+                    btn.Style = (Style)FindResource("ButacaVIPStyle");
+                    break;
+                case "Discapacitado":
+                    btn.Style = (Style)FindResource("ButacaDiscapacitadoStyle");
+                    break;
+                default:
+                    btn.Style = (Style)FindResource("ButacaNormalStyle");
+                    break;
+            }
+        }
+        else
+        {
+            // SELECCIONAR
+            _butacasSeleccionadas.Add(butaca);
+            btn.Style = (Style)FindResource("ButacaSeleccionadaStyle");
+        }
+
+        ActualizarResumen();
+    }
+}
+```
+
+**Comportamiento toggle:**
+- Si ya está seleccionada → la quita y restaura estilo original
+- Si no está seleccionada → la agrega y aplica estilo de selección
+- Siempre actualiza el resumen
+
+---
+
+#### **`ActualizarResumen`**
+```csharp
+private void ActualizarResumen()
+{
+    if (_butacasSeleccionadas.Count == 0)
+    {
+        txtButacasSeleccionadas.Text = "Ninguna";
+        txtCantidad.Text = "0 butacas";
+        txtTotal.Text = "€0.00";
+        btnConfirmarReserva.IsEnabled = false;
+    }
+    else
+    {
+        // Lista ordenada: "A1, A2, B3"
+        var butacasTexto = string.Join(", ", _butacasSeleccionadas
+            .OrderBy(b => b.Fila)
+            .ThenBy(b => b.Columna)
+            .Select(b => b.Identificador));
+        txtButacasSeleccionadas.Text = butacasTexto;
+
+        txtCantidad.Text = $"{_butacasSeleccionadas.Count} butaca{(...)}";
+
+        decimal total = _butacasSeleccionadas.Count * _sesion.Precio;
+        txtTotal.Text = $"€{total:F2}";
+
+        btnConfirmarReserva.IsEnabled = true;
+    }
+}
+```
+- **Funciones:**
+  1. Muestra lista de butacas seleccionadas (ordenadas)
+  2. Muestra cantidad con plural correcto
+  3. Calcula y muestra total: `cantidad × precio`
+  4. Habilita/deshabilita botón de confirmar
+
+---
+
+#### **`BtnConfirmarReserva_Click`**
+```csharp
+private async void BtnConfirmarReserva_Click(object sender, RoutedEventArgs e)
+{
+    // Validación
+    if (_butacasSeleccionadas.Count == 0)
+    {
+        MessageBox.Show("Por favor, seleccione al menos una butaca.", ...);
+        return;
+    }
+
+    if (!ServicioSesion.Instance.EstaAutenticado)
+    {
+        MessageBox.Show("Debe iniciar sesión...", ...);
+        return;
+    }
+
+    // Confirmación
+    var resultado = MessageBox.Show(
+        $"¿Confirmar reserva de {_butacasSeleccionadas.Count} butaca(s)?\n\n" +
+        $"Butacas: {txtButacasSeleccionadas.Text}\n" +
+        $"Total: {txtTotal.Text}\n\n" +
+        $"Esta acción simulará el pago y guardará la reserva.",
+        "Confirmar Reserva",
+        MessageBoxButton.YesNo,
+        MessageBoxImage.Question);
+
+    if (resultado == MessageBoxResult.Yes)
+    {
+        await ProcesarReserva();
+    }
+}
+```
+
+**Validaciones:**
+1. ¿Hay butacas seleccionadas?
+2. ¿Usuario autenticado?
+3. Confirmación final del usuario
+
+---
+
+#### **`ProcesarReserva`**
+```csharp
+private async Task ProcesarReserva()
+{
+    try
+    {
+        // UI feedback
+        btnConfirmarReserva.IsEnabled = false;
+        btnConfirmarReserva.Content = "Procesando...";
+
+        // Calcular total
+        decimal total = _butacasSeleccionadas.Count * _sesion.Precio;
+
+        // Crear objeto reserva
+        var reserva = new Reserva
+        {
+            UsuarioId = ServicioSesion.Instance.UsuarioActual!.Id,
+            SesionId = _sesion.Id,
+            Total = total,
+            FechaReserva = DateTime.Now,
+            Estado = "Confirmada"
+        };
+
+        // Obtener IDs de butacas
+        var butacaIds = _butacasSeleccionadas.Select(b => b.Id).ToList();
+
+        // 🎯 GUARDAR EN BD (transacción completa)
+        int reservaId = await _dbService.CrearReservaAsync(reserva, butacaIds);
+
+        // Mensaje de éxito con resumen
+        MessageBox.Show(
+            $"¡Reserva confirmada exitosamente!\n\n" +
+            $"Película: {_pelicula.Titulo}\n" +
+            $"Fecha/Hora: {_sesion.FechaHora:dd/MM/yyyy HH:mm}\n" +
+            $"Sala: {_sesion.Sala?.Nombre}\n" +
+            $"Butacas: {txtButacasSeleccionadas.Text}\n" +
+            $"Total: {txtTotal.Text}\n\n" +
+            $"Disfrute de la función!",
+            "Reserva Confirmada",
+            MessageBoxButton.OK,
+            MessageBoxImage.Information);
+
+        // Cerrar con éxito
+        this.DialogResult = true;
+        this.Close();
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show(
+            $"Error al procesar la reserva:\n{ex.Message}\n\n" +
+            $"Por favor, intente nuevamente.",
+            "Error",
+            MessageBoxButton.OK,
+            MessageBoxImage.Error);
+
+        // Restaurar UI
+        btnConfirmarReserva.IsEnabled = true;
+        btnConfirmarReserva.Content = "Confirmar Reserva";
+    }
+}
+```
+
+**Flujo completo:**
+1. **Preparación:** Deshabilita botón, muestra "Procesando..."
+2. **Creación de objetos:** Prepara `Reserva` y lista de IDs
+3. **Persistencia:** Llama a `CrearReservaAsync` (transacción atómica)
+4. **Éxito:** Muestra mensaje con resumen completo y cierra
+5. **Error:** Muestra error y permite reintentar
+
+---
+
+## 🔄 FLUJO COMPLETO DE LA APLICACIÓN
+
+### **Flujo 1: Ver Cartelera (Sin Login)**
+
+```
+┌──────────────────┐
+│  App.xaml.cs     │ Application_Startup()
+│  Punto de inicio │ ────────────────────┐
+└──────────────────┘                     │
+                                         ↓
+┌─────────────────────────────────────────────────────────┐
+│  CarteleraWindow                                        │
+│  ┌────────────────────────────────────────────────┐    │
+│  │ Loaded event                                   │    │
+│  │  ↓                                             │    │
+│  │ CargarPeliculas()                              │    │
+│  │  ↓                                             │    │
+│  │ ServicioBaseDeDatos.ObtenerPeliculasActivasAsync()│
+│  │  ↓                                             │    │
+│  │ MySQL: SELECT * FROM Peliculas WHERE Activa=1  │    │
+│  │  ↓                                             │    │
+│  │ Mostrar películas en UI                        │    │
+│  └────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────┘
+```
+
+---
+
+### **Flujo 2: Seleccionar Película → Sesión**
+
+```
+┌──────────────────────────────────────────────────────┐
+│ CarteleraWindow                                      │
+│  Usuario hace clic en "Ver Horarios"                │
+│   ↓                                                  │
+│  Pelicula_Click() o BtnVerHorarios_Click()           │
+│   ↓                                                  │
+│  AbrirVentanaSeleccionSesion(peliculaId)             │
+└───────────────────────────┬──────────────────────────┘
+                            ↓
+┌─────────────────────────────────────────────────────────┐
+│ SeleccionSesionWindow(pelicula)                         │
+│  ┌────────────────────────────────────────────────┐    │
+│  │ Constructor:                                   │    │
+│  │  - CargarInfoPelicula()                        │    │
+│  │  - calendario.SelectedDate = DateTime.Today     │    │
+│  │                                                 │    │
+│  │ Calendario_SelectedDatesChanged:               │    │
+│  │  ↓                                             │    │
+│  │ CargarSesiones(fecha)                          │    │
+│  │  ↓                                             │    │
+│  │ ServicioBaseDeDatos.ObtenerSesionesPorPeliculaAsync()
+│  │  ↓                                             │    │
+│  │ MySQL: SELECT Sesiones + Salas WHERE ...       │    │
+│  │  ↓                                             │    │
+│  │ Mostrar sesiones disponibles                   │    │
+│  └────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────┘
+```
+
+---
+
+### **Flujo 3: Seleccionar Sesión → Login (si necesario) → Butacas**
+
+```
+┌──────────────────────────────────────────────────────┐
+│ SeleccionSesionWindow                                │
+│  Usuario hace clic en "Seleccionar" de una sesión    │
+│   ↓                                                  │
+│  BtnSeleccionarSesion_Click(sesion)                  │
+│   ↓                                                  │
+│  ¿ServicioSesion.Instance.EstaAutenticado?           │
+└────────────┬────────────────────┬────────────────────┘
+             NO                   YES
+             │                    │
+             ↓                    ↓
+┌────────────────────────┐  ┌────────────────────────┐
+│ Mostrar diálogo:       │  │ AbrirSeleccionButacas()│
+│ "Debes iniciar sesión" │  │                        │
+│  ¿Iniciar sesión?      │  └────────────────────────┘
+└────────┬───────────────┘
+         YES
+         │
+         ↓
+┌──────────────────────────────────────────────────────┐
+│ LoginWindow                                          │
+│  ┌────────────────────────────────────────────┐    │
+│  │ Usuario ingresa email y password            │    │
+│  │  ↓                                         │    │
+│  │ BtnLogin_Click()                           │    │
+│  │  ↓                                         │    │
+│  │ ServicioBaseDeDatos.ValidarUsuarioAsync()  │    │
+│  │  ↓                                         │    │
+│  │ MySQL: SELECT * FROM Usuarios WHERE ...    │    │
+│  │  ↓                                         │    │
+│  │ ¿Usuario válido?                           │    │
+│  │  ↓                                         │    │
+│  │ ServicioSesion.Instance.IniciarSesion(user)│    │
+│  │  ↓                                         │    │
+│  │ DialogResult = true                        │    │
+│  │ Close()                                    │    │
+│  └────────────────────────────────────────────┘    │
+└──────────────────────────────────────────────────────┘
+         │
+         ↓
+┌──────────────────────────────────────────────────────┐
+│ Vuelve a SeleccionSesionWindow                       │
+│  ↓                                                   │
+│ AbrirSeleccionButacas(sesion)                        │
+└──────────────────────────────────────────────────────┘
+```
+
+---
+
+### **Flujo 3.5: Registro de Nuevo Usuario**
+
+```
+┌──────────────────────────────────────────────────────┐
+│ LoginWindow                                          │
+│  Usuario hace clic en "Crear Cuenta"                 │
+│   ↓                                                  │
+│  BtnRegistro_Click()                                 │
+└────────────┬─────────────────────────────────────────┘
+             │
+             ↓
+┌─────────────────────────────────────────────────────────┐
+│ RegistroWindow                                          │
+│  ┌────────────────────────────────────────────────┐    │
+│  │ Usuario completa el formulario:                │    │
+│  │  - Nombre                                      │    │
+│  │  - Apellidos                                   │    │
+│  │  - Email                                       │    │
+│  │  - Teléfono (opcional)                         │    │
+│  │  - Contraseña                                  │    │
+│  │  - Confirmar Contraseña                        │    │
+│  │  ↓                                             │    │
+│  │ BtnRegistrar_Click()                           │    │
+│  │  ↓                                             │    │
+│  │ ValidarCampos()                                │    │
+│  │  ├─ Nombre: mínimo 2 caracteres                │    │
+│  │  ├─ Apellidos: mínimo 2 caracteres             │    │
+│  │  ├─ Email: formato válido (regex)              │    │
+│  │  ├─ Teléfono: opcional, pero válido si existe  │    │
+│  │  ├─ Contraseña: mínimo 6 caracteres            │    │
+│  │  └─ Confirmación: debe coincidir               │    │
+│  │  ↓                                             │    │
+│  │ ServicioBaseDeDatos.ExisteUsuarioAsync(email)  │    │
+│  │  ↓                                             │    │
+│  │ MySQL: SELECT COUNT(*) FROM Usuarios WHERE ... │    │
+│  │  ↓                                             │    │
+│  │ ¿Email ya existe?                              │    │
+│  │  ├─ SÍ → MostrarError("Email ya registrado")   │    │
+│  │  └─ NO → Continuar                             │    │
+│  │      ↓                                         │    │
+│  │     Crear objeto Usuario                       │    │
+│  │      ↓                                         │    │
+│  │     ServicioBaseDeDatos.RegistrarUsuarioAsync()│    │
+│  │      ↓                                         │    │
+│  │     MySQL: INSERT INTO Usuarios (...)          │    │
+│  │      ↓                                         │    │
+│  │     MostrarExito("¡Registro exitoso!")         │    │
+│  │      ↓                                         │    │
+│  │     Task.Delay(1500) // Esperar 1.5 segundos   │    │
+│  │      ↓                                         │    │
+│  │     DialogResult = true                        │    │
+│  │     Close()                                    │    │
+│  └────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────┘
+         │
+         ↓
+┌──────────────────────────────────────────────────────┐
+│ Vuelve a LoginWindow                                 │
+│  ↓                                                   │
+│ Mostrar mensaje: "✓ Registro completado..."         │
+│ Limpiar campos (email y password)                    │
+│ Focus en txtEmail                                    │
+│  ↓                                                   │
+│ Usuario puede iniciar sesión con las nuevas creds   │
+└──────────────────────────────────────────────────────┘
+```
+
+---
+
+### **Flujo 4: Seleccionar Butacas → Confirmar Reserva**
+```
+┌─────────────────────────────────────────────────────────┐
+│ SeleccionButacasWindow(sesion, pelicula)                │
+│  ┌────────────────────────────────────────────────┐    │
+│  │ Loaded event                                   │    │
+│  │  ↓                                             │    │
+│  │ CargarButacas()                                │    │
+│  │  ├─ ObtenerButacasPorSalaAsync(salaId)         │    │
+│  │  │   MySQL: SELECT * FROM Butacas WHERE ...    │    │
+│  │  └─ ObtenerButacasReservadasAsync(sesionId)    │    │
+│  │      MySQL: SELECT ButacaId FROM ReservasButacas│    │
+│  │  ↓                                             │    │
+│  │ CrearVisualizacionButacas()                    │    │
+│  │  ├─ for cada fila:                             │    │
+│  │  │    for cada columna:                        │    │
+│  │  │     CrearBotonButaca(butaca)                │    │
+│  │  │      - Si ocupada: estilo gris, no click    │    │
+│  │  │      - Si libre: estilo según tipo + click  │    │
+│  │  └─ Renderizar en UI                           │    │
+│  └────────────────────────────────────────────────┘    │
+│                                                         │
+│  ┌────────────────────────────────────────────────┐    │
+│  │ Usuario hace clic en butacas:                  │    │
+│  │  ↓                                             │    │
+│  │ BtnButaca_Click()                              │    │
+│  │  ├─ Si ya seleccionada: quitar de lista       │    │
+│  │  └─ Si no seleccionada: agregar a lista       │    │
+│  │  ↓                                             │    │
+│  │ ActualizarResumen()                            │    │
+│  │  - Mostrar butacas: "A1, A2, B3"               │    │
+│  │  - Calcular total: cantidad × precio           │    │
+│  │  - Habilitar botón "Confirmar Reserva"         │    │
+│  └────────────────────────────────────────────────┘    │
+│                                                         │
+│  ┌────────────────────────────────────────────────┐    │
+│  │ Usuario hace clic en "Confirmar Reserva":      │    │
+│  │  ↓                                             │    │
+│  │ BtnConfirmarReserva_Click()                    │    │
+│  │  ├─ Validar butacas seleccionadas              │    │
+│  │  ├─ Validar usuario autenticado                │    │
+│  │  ├─ Mostrar confirmación                       │    │
+│  │  └─ Si confirma: ProcesarReserva()             │    │
+│  │      ↓                                         │    │
+│  │     ServicioBaseDeDatos.CrearReservaAsync()    │    │
+│  │      ↓                                         │    │
+│  │     [TRANSACCIÓN MYSQL]                        │    │
+│  │      ├─ INSERT INTO Reservas (...)             │    │
+│  │      ├─ LAST_INSERT_ID() → reservaId           │    │
+│  │      └─ for cada butaca:                       │    │
+│  │          INSERT INTO ReservasButacas (...)     │    │
+│  │      ↓                                         │    │
+│  │     COMMIT                                     │    │
+│  │      ↓                                         │    │
+│  │     Mostrar mensaje de éxito                   │    │
+│  │      ↓                                         │    │
+│  │     DialogResult = true                        │    │
+│  │     Close()                                    │    │
+│  └────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 🗄️ ESTRUCTURA DE BASE DE DATOS
+
+### **Tablas Principales:**
+
+```sql
+Peliculas
+├─ Id (PK)
+├─ Titulo
+├─ Descripcion
+├─ Director
+├─ Duracion
+├─ Genero
+├─ ImagenUrl
+├─ FechaEstreno
+└─ Activa
+
+Salas
+├─ Id (PK)
+├─ Nombre
+├─ Filas
+└─ ColumnasPerFila
+
+Sesiones
+├─ Id (PK)
+├─ PeliculaId (FK → Peliculas)
+├─ SalaId (FK → Salas)
+├─ FechaHora
+├─ Precio
+└─ Activa
+
+Butacas
+├─ Id (PK)
+├─ SalaId (FK → Salas)
+├─ Fila
+├─ Columna
+├─ Tipo
+└─ Activa
+
+Usuarios
+├─ Id (PK)
+├─ Nombre
+├─ Apellidos
+├─ Email
+├─ Password
+├─ Telefono
+├─ FechaRegistro
+└─ Activo
+
+Reservas
+├─ Id (PK)
+├─ UsuarioId (FK → Usuarios)
+├─ SesionId (FK → Sesiones)
+├─ FechaReserva
+├─ Total
+├─ Estado
+└─ CodigoReserva
+
+ReservasButacas (Tabla intermedia)
+├─ Id (PK)
+├─ ReservaId (FK → Reservas)
+├─ ButacaId (FK → Butacas)
+└─ SesionId (FK → Sesiones)
+```
+
+---
+
+## 🎨 PATRONES Y CONCEPTOS CLAVE
+
+### **1. Patrón Singleton**
+- **Clase:** `ServicioSesion`
+- **Por qué:** Solo debe existir UNA sesión de usuario en toda la app
+- **Implementación:**
+```csharp
+private static ServicioSesion? _instance;
+public static ServicioSesion Instance => _instance ??= new ServicioSesion();
+```
+
+### **2. Patrón Repository**
+- **Clase:** `ServicioBaseDeDatos`
+- **Por qué:** Encapsula toda la lógica de acceso a datos
+- **Beneficios:** Cambiar de BD solo requiere modificar esta clase
+
+### **3. Async/Await**
+- **Uso extensivo** en operaciones de BD y UI
+- **Por qué:** Evita bloquear la interfaz durante operaciones lentas
+- **Ejemplo:**
+```csharp
+private async void BtnLogin_Click(object sender, RoutedEventArgs e)
+{
+    var usuario = await _dbService.ValidarUsuarioAsync(...);
+    // UI sigue respondiendo mientras espera
+}
+```
+
+### **4. Transacciones de BD**
+- **Método:** `CrearReservaAsync`
+- **Por qué:** Garantiza que TODAS las operaciones se completen o NINGUNA
+- **Protege contra:** Reservas incompletas si falla en medio del proceso
+
+### **5. UI Feedback**
+- **Indicadores de carga:** `pnlLoading.Visibility = Visible`
+- **Botones deshabilitados:** `btnLogin.IsEnabled = false`
+- **Texto dinámico:** `btnLogin.Content = "Procesando..."`
+
+### **6. Validación en capas**
+- **Cliente (UI):** Campos vacíos, formato
+- **Servicio:** Usuario autenticado, butacas disponibles
+- **BD:** Constraints, foreign keys
+
+---
+
+## ⚠️ CONSIDERACIONES DE SEGURIDAD
+
+### **Problemas actuales:**
+
+1. **Contraseñas en texto plano**
+   - ❌ Se almacenan y comparan sin hash
+   - ✅ Debería usar `BCrypt` o `Argon2`
+
+2. **SQL Injection parcialmente protegido**
+   - ✅ Usa parámetros: `@Email`, `@Password`
+   - ✅ Pero debería validar inputs adicional
+
+3. **Validación solo en cliente**
+   - ⚠️ Se puede bypassear modificando el código
+   - ✅ Debería validar también en stored procedures
+
+---
+
+## 🚀 POSIBLES MEJORAS
+
+1. **Paginación:** Cartelera con muchas películas
+2. **Búsqueda/Filtros:** Por género, fecha, etc.
+3. **Historial de reservas:** Ver mis reservas anteriores
+4. **Cancelación:** Poder cancelar reservas
+5. **Pago real:** Integración con pasarela de pago
+6. **Notificaciones:** Email de confirmación
+7. **Admin panel:** Gestionar películas, sesiones, salas
+8. **Estadísticas:** Películas más vistas, ocupación de salas
+
+---
+
+## 📝 RESUMEN PARA DESARROLLADORES
+
+### **Para agregar una nueva película:**
+1. INSERT en tabla `Peliculas`
+2. Aparecerá automáticamente en cartelera si `Activa = 1`
+
+### **Para crear una nueva sesión:**
+1. INSERT en tabla `Sesiones` con `PeliculaId` y `SalaId`
+2. Aparecerá automáticamente en horarios disponibles
+
+### **Para crear una nueva sala:**
+1. INSERT en tabla `Salas` con `Filas` y `ColumnasPerFila`
+2. Ejecutar script para crear butacas:
+```sql
+INSERT INTO Butacas (SalaId, Fila, Columna, Tipo, Activa)
+VALUES ...
+```
+
+---
+
+## 🧪 FLUJO DE TESTING RECOMENDADO
+
+1. **Cargar cartelera** → Verificar que se muestran películas
+2. **Seleccionar película** → Verificar sesiones disponibles
+3. **Intentar reservar sin login** → Debe pedir autenticación
+4. **Hacer login** → Verificar que actualiza UI
+5. **Seleccionar butacas** → Verificar que se marcan correctamente
+6. **Confirmar reserva** → Verificar transacción en BD
+7. **Intentar reservar misma butaca** → Debe aparecer ocupada
+8. **Cerrar sesión** → Verificar que limpia estado
+
+---
+
+## 📞 CONTACTO Y AYUDA
+
+Este documento describe la arquitectura al **[fecha actual]**.
+
+**Mantenedores:** [Tu equipo]
+**Repositorio:** https://github.com/nbch0203/DAM
+**Rama:** main
+
+---
+
+_Fin de la documentación técnica_

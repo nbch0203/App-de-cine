@@ -1,0 +1,423 @@
+﻿-- ============================================
+-- Script de Base de Datos para Cine_app
+-- Base de Datos: CineDB
+-- ============================================
+
+-- Crear la base de datos si no existe
+IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'CineDB')
+BEGIN
+    CREATE DATABASE CineDB;
+END
+GO
+
+USE CineDB;
+GO
+
+-- ============================================
+-- Eliminar tablas si existen (para recrear)
+-- ============================================
+IF OBJECT_ID('dbo.ReservaButacas', 'U') IS NOT NULL DROP TABLE dbo.ReservaButacas;
+IF OBJECT_ID('dbo.Reservas', 'U') IS NOT NULL DROP TABLE dbo.Reservas;
+IF OBJECT_ID('dbo.Butacas', 'U') IS NOT NULL DROP TABLE dbo.Butacas;
+IF OBJECT_ID('dbo.Sesiones', 'U') IS NOT NULL DROP TABLE dbo.Sesiones;
+IF OBJECT_ID('dbo.Salas', 'U') IS NOT NULL DROP TABLE dbo.Salas;
+IF OBJECT_ID('dbo.Peliculas', 'U') IS NOT NULL DROP TABLE dbo.Peliculas;
+IF OBJECT_ID('dbo.Usuarios', 'U') IS NOT NULL DROP TABLE dbo.Usuarios;
+GO
+
+-- ============================================
+-- Crear Tabla: Usuarios
+-- ============================================
+CREATE TABLE Usuarios (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Nombre NVARCHAR(100) NOT NULL,
+    Apellidos NVARCHAR(100) NOT NULL,
+    Email NVARCHAR(255) NOT NULL UNIQUE,
+    Password NVARCHAR(255) NOT NULL,
+    Telefono NVARCHAR(20),
+    FechaRegistro DATETIME NOT NULL DEFAULT GETDATE(),
+    Activo BIT NOT NULL DEFAULT 1
+);
+GO
+
+-- ============================================
+-- Crear Tabla: Peliculas
+-- ============================================
+CREATE TABLE Peliculas (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Titulo NVARCHAR(200) NOT NULL,
+    Descripcion NVARCHAR(MAX),
+    Director NVARCHAR(100),
+    Duracion INT, -- En minutos
+    Genero NVARCHAR(50),
+    FechaEstreno DATE,
+    ImagenUrl NVARCHAR(500),
+    Calificacion DECIMAL(3,1),
+    Activa BIT NOT NULL DEFAULT 1
+);
+GO
+
+-- ============================================
+-- Crear Tabla: Salas
+-- ============================================
+CREATE TABLE Salas (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Nombre NVARCHAR(100) NOT NULL,
+    Filas INT NOT NULL,
+    ColumnasPerFila INT NOT NULL
+);
+GO
+
+-- ============================================
+-- Crear Tabla: Sesiones
+-- ============================================
+CREATE TABLE Sesiones (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    PeliculaId INT NOT NULL,
+    SalaId INT NOT NULL,
+    FechaHora DATETIME NOT NULL,
+    Precio DECIMAL(10,2) NOT NULL,
+    Activa BIT NOT NULL DEFAULT 1,
+    FOREIGN KEY (PeliculaId) REFERENCES Peliculas(Id),
+    FOREIGN KEY (SalaId) REFERENCES Salas(Id)
+);
+GO
+
+-- ============================================
+-- Crear Tabla: Butacas
+-- ============================================
+CREATE TABLE Butacas (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    SalaId INT NOT NULL,
+    Fila INT NOT NULL,
+    Columna INT NOT NULL,
+    Tipo NVARCHAR(20) NOT NULL DEFAULT 'Normal', -- Normal, VIP, Discapacitado
+    Activa BIT NOT NULL DEFAULT 1,
+    FOREIGN KEY (SalaId) REFERENCES Salas(Id),
+    UNIQUE (SalaId, Fila, Columna)
+);
+GO
+
+-- ============================================
+-- Crear Tabla: Reservas
+-- ============================================
+CREATE TABLE Reservas (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    UsuarioId INT NOT NULL,
+    SesionId INT NOT NULL,
+    FechaReserva DATETIME NOT NULL DEFAULT GETDATE(),
+    Total DECIMAL(10,2) NOT NULL,
+    Estado NVARCHAR(20) NOT NULL DEFAULT 'Pendiente', -- Pendiente, Confirmada, Cancelada
+    CodigoReserva NVARCHAR(50),
+    FOREIGN KEY (UsuarioId) REFERENCES Usuarios(Id),
+    FOREIGN KEY (SesionId) REFERENCES Sesiones(Id)
+);
+GO
+
+-- ============================================
+-- Crear Tabla: ReservaButacas
+-- ============================================
+CREATE TABLE ReservaButacas (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    ReservaId INT NOT NULL,
+    ButacaId INT NOT NULL,
+    SesionId INT NOT NULL,
+    FOREIGN KEY (ReservaId) REFERENCES Reservas(Id),
+    FOREIGN KEY (ButacaId) REFERENCES Butacas(Id),
+    FOREIGN KEY (SesionId) REFERENCES Sesiones(Id),
+    UNIQUE (ButacaId, SesionId)
+);
+GO
+
+-- ============================================
+-- INSERTAR DATOS DE PRUEBA
+-- ============================================
+
+-- ============================================
+-- Insertar Usuarios de prueba
+-- ============================================
+INSERT INTO Usuarios (Nombre, Apellidos, Email, Password, Telefono, FechaRegistro) VALUES
+('Juan', 'Pérez García', 'juan.perez@email.com', 'password123', '612345678', GETDATE()),
+('María', 'López Martínez', 'maria.lopez@email.com', 'password123', '623456789', GETDATE()),
+('Carlos', 'González Ruiz', 'carlos.gonzalez@email.com', 'password123', '634567890', GETDATE()),
+('Ana', 'Rodríguez Sánchez', 'ana.rodriguez@email.com', 'password123', '645678901', GETDATE());
+GO
+
+-- ============================================
+-- Insertar Películas de prueba
+-- ============================================
+INSERT INTO Peliculas (Titulo, Descripcion, Director, Duracion, Genero, FechaEstreno, ImagenUrl, Calificacion, Activa) VALUES
+('Oppenheimer', 'La historia del científico J. Robert Oppenheimer y su papel en el desarrollo de la bomba atómica.', 'Christopher Nolan', 180, 'Drama/Histórico', '2023-07-21', 'https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg', 8.5, 1),
+('Barbie', 'Barbie y Ken están teniendo el mejor momento de sus vidas en el colorido y aparentemente perfecto mundo de Barbie Land.', 'Greta Gerwig', 114, 'Comedia/Fantasía', '2023-07-21', 'https://image.tmdb.org/t/p/w500/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg', 7.8, 1),
+('Dune: Parte Dos', 'Paul Atreides se une a Chani y los Fremen mientras busca venganza contra los conspiradores que destruyeron a su familia.', 'Denis Villeneuve', 166, 'Ciencia Ficción', '2024-03-01', 'https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg', 8.9, 1),
+('Guardianes de la Galaxia Vol. 3', 'Peter Quill debe reunir a su equipo para defender el universo y proteger a uno de los suyos.', 'James Gunn', 150, 'Acción/Aventura', '2023-05-05', 'https://image.tmdb.org/t/p/w500/r2J02Z2OpNTctfOSN1Ydgii51I3.jpg', 8.1, 1),
+('Spider-Man: Across the Spider-Verse', 'Miles Morales regresa para la próxima aventura del Spider-Verse.', 'Joaquim Dos Santos', 140, 'Animación/Acción', '2023-06-02', 'https://image.tmdb.org/t/p/w500/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg', 8.7, 1),
+('The Super Mario Bros. Movie', 'Un fontanero llamado Mario viaja a través de un laberinto subterráneo con su hermano Luigi.', 'Aaron Horvath', 92, 'Animación/Aventura', '2023-04-05', 'https://image.tmdb.org/t/p/w500/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg', 7.5, 1),
+('Inception', 'Un ladrón que roba secretos corporativos a través del uso de la tecnología de compartir sueños.', 'Christopher Nolan', 148, 'Ciencia Ficción/Thriller', '2010-07-16', 'https://image.tmdb.org/t/p/w500/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg', 8.8, 1),
+('The Dark Knight', 'Cuando la amenaza conocida como el Joker emerge, Batman debe aceptar una de las mayores pruebas psicológicas y físicas.', 'Christopher Nolan', 152, 'Acción/Crimen', '2008-07-18', 'https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg', 9.0, 1),
+('Interstellar', 'Un equipo de exploradores viaja a través de un agujero de gusano en el espacio para asegurar la supervivencia de la humanidad.', 'Christopher Nolan', 169, 'Ciencia Ficción/Drama', '2014-11-07', 'https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg', 8.7, 1),
+('Avatar: The Way of Water', 'Jake Sully vive con su nueva familia formada en el planeta de Pandora.', 'James Cameron', 192, 'Ciencia Ficción/Aventura', '2022-12-16', 'https://image.tmdb.org/t/p/w500/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg', 7.9, 1);
+GO
+
+-- ============================================
+-- Insertar Salas
+-- ============================================
+INSERT INTO Salas (Nombre, Filas, ColumnasPerFila) VALUES
+('Sala 1 - Premium', 8, 10),
+('Sala 2 - Estándar', 10, 12),
+('Sala 3 - VIP', 6, 8),
+('Sala 4 - IMAX', 12, 15);
+GO
+
+-- ============================================
+-- Insertar Butacas para cada sala
+-- ============================================
+
+-- Butacas para Sala 1 (8 filas x 10 columnas = 80 butacas)
+DECLARE @SalaId INT = 1;
+DECLARE @Fila INT = 1;
+DECLARE @Columna INT;
+
+WHILE @Fila <= 8
+BEGIN
+    SET @Columna = 1;
+    WHILE @Columna <= 10
+    BEGIN
+        INSERT INTO Butacas (SalaId, Fila, Columna, Tipo, Activa) 
+        VALUES (@SalaId, @Fila, @Columna, 
+                CASE 
+                    WHEN @Fila >= 6 THEN 'VIP'
+                    ELSE 'Normal'
+                END, 1);
+        SET @Columna = @Columna + 1;
+    END
+    SET @Fila = @Fila + 1;
+END
+GO
+
+-- Butacas para Sala 2 (10 filas x 12 columnas = 120 butacas)
+DECLARE @SalaId INT = 2;
+DECLARE @Fila INT = 1;
+DECLARE @Columna INT;
+
+WHILE @Fila <= 10
+BEGIN
+    SET @Columna = 1;
+    WHILE @Columna <= 12
+    BEGIN
+        INSERT INTO Butacas (SalaId, Fila, Columna, Tipo, Activa) 
+        VALUES (@SalaId, @Fila, @Columna, 'Normal', 1);
+        SET @Columna = @Columna + 1;
+    END
+    SET @Fila = @Fila + 1;
+END
+GO
+
+-- Butacas para Sala 3 (6 filas x 8 columnas = 48 butacas VIP)
+DECLARE @SalaId INT = 3;
+DECLARE @Fila INT = 1;
+DECLARE @Columna INT;
+
+WHILE @Fila <= 6
+BEGIN
+    SET @Columna = 1;
+    WHILE @Columna <= 8
+    BEGIN
+        INSERT INTO Butacas (SalaId, Fila, Columna, Tipo, Activa) 
+        VALUES (@SalaId, @Fila, @Columna, 'VIP', 1);
+        SET @Columna = @Columna + 1;
+    END
+    SET @Fila = @Fila + 1;
+END
+GO
+
+-- Butacas para Sala 4 (12 filas x 15 columnas = 180 butacas)
+DECLARE @SalaId INT = 4;
+DECLARE @Fila INT = 1;
+DECLARE @Columna INT;
+
+WHILE @Fila <= 12
+BEGIN
+    SET @Columna = 1;
+    WHILE @Columna <= 15
+    BEGIN
+        INSERT INTO Butacas (SalaId, Fila, Columna, Tipo, Activa) 
+        VALUES (@SalaId, @Fila, @Columna, 
+                CASE 
+                    WHEN @Fila = 1 AND @Columna IN (1, 2, 14, 15) THEN 'Discapacitado'
+                    WHEN @Fila >= 10 THEN 'VIP'
+                    ELSE 'Normal'
+                END, 1);
+        SET @Columna = @Columna + 1;
+    END
+    SET @Fila = @Fila + 1;
+END
+GO
+
+-- ============================================
+-- Insertar Sesiones para hoy y próximos días
+-- ============================================
+
+-- Sesiones para HOY
+INSERT INTO Sesiones (PeliculaId, SalaId, FechaHora, Precio, Activa) VALUES
+-- Oppenheimer
+(1, 4, DATEADD(HOUR, 16, CAST(CAST(GETDATE() AS DATE) AS DATETIME)), 12.50, 1),
+(1, 4, DATEADD(HOUR, 20, CAST(CAST(GETDATE() AS DATE) AS DATETIME)), 14.00, 1),
+-- Barbie
+(2, 2, DATEADD(HOUR, 17, CAST(CAST(GETDATE() AS DATE) AS DATETIME)), 9.50, 1),
+(2, 2, DATEADD(HOUR, 19, CAST(CAST(GETDATE() AS DATE) AS DATETIME)), 9.50, 1),
+(2, 2, DATEADD(HOUR, 21, CAST(CAST(GETDATE() AS DATE) AS DATETIME)), 11.00, 1),
+-- Dune: Parte Dos
+(3, 4, DATEADD(HOUR, 18, CAST(CAST(GETDATE() AS DATE) AS DATETIME)), 13.00, 1),
+(3, 1, DATEADD(HOUR, 22, CAST(CAST(GETDATE() AS DATE) AS DATETIME)), 12.00, 1),
+-- Guardianes de la Galaxia Vol. 3
+(4, 2, DATEADD(HOUR, 16, CAST(CAST(GETDATE() AS DATE) AS DATETIME)), 10.00, 1),
+(4, 3, DATEADD(HOUR, 20, CAST(CAST(GETDATE() AS DATE) AS DATETIME)), 15.00, 1),
+-- Spider-Man
+(5, 1, DATEADD(HOUR, 17, CAST(CAST(GETDATE() AS DATE) AS DATETIME)), 10.50, 1),
+(5, 1, DATEADD(HOUR, 21, CAST(CAST(GETDATE() AS DATE) AS DATETIME)), 11.50, 1);
+GO
+
+-- Sesiones para MAÑANA
+INSERT INTO Sesiones (PeliculaId, SalaId, FechaHora, Precio, Activa) VALUES
+-- Oppenheimer
+(1, 4, DATEADD(DAY, 1, DATEADD(HOUR, 15, CAST(CAST(GETDATE() AS DATE) AS DATETIME))), 12.50, 1),
+(1, 4, DATEADD(DAY, 1, DATEADD(HOUR, 19, CAST(CAST(GETDATE() AS DATE) AS DATETIME))), 14.00, 1),
+(1, 4, DATEADD(DAY, 1, DATEADD(HOUR, 22, CAST(CAST(GETDATE() AS DATE) AS DATETIME))), 14.00, 1),
+-- Barbie
+(2, 2, DATEADD(DAY, 1, DATEADD(HOUR, 16, CAST(CAST(GETDATE() AS DATE) AS DATETIME))), 9.50, 1),
+(2, 2, DATEADD(DAY, 1, DATEADD(HOUR, 18, CAST(CAST(GETDATE() AS DATE) AS DATETIME))), 9.50, 1),
+(2, 2, DATEADD(DAY, 1, DATEADD(HOUR, 20, CAST(CAST(GETDATE() AS DATE) AS DATETIME))), 11.00, 1),
+(2, 2, DATEADD(DAY, 1, DATEADD(HOUR, 22, CAST(CAST(GETDATE() AS DATE) AS DATETIME))), 11.00, 1),
+-- Dune: Parte Dos
+(3, 4, DATEADD(DAY, 1, DATEADD(HOUR, 17, CAST(CAST(GETDATE() AS DATE) AS DATETIME))), 13.00, 1),
+(3, 1, DATEADD(DAY, 1, DATEADD(HOUR, 21, CAST(CAST(GETDATE() AS DATE) AS DATETIME))), 12.00, 1),
+-- The Super Mario Bros
+(6, 2, DATEADD(DAY, 1, DATEADD(HOUR, 15, CAST(CAST(GETDATE() AS DATE) AS DATETIME))), 8.50, 1),
+(6, 2, DATEADD(DAY, 1, DATEADD(HOUR, 17, CAST(CAST(GETDATE() AS DATE) AS DATETIME))), 8.50, 1),
+-- Inception
+(7, 3, DATEADD(DAY, 1, DATEADD(HOUR, 20, CAST(CAST(GETDATE() AS DATE) AS DATETIME))), 14.00, 1),
+-- The Dark Knight
+(8, 3, DATEADD(DAY, 1, DATEADD(HOUR, 18, CAST(CAST(GETDATE() AS DATE) AS DATETIME))), 14.00, 1);
+GO
+
+-- Sesiones para PASADO MAÑANA
+INSERT INTO Sesiones (PeliculaId, SalaId, FechaHora, Precio, Activa) VALUES
+-- Spider-Man
+(5, 1, DATEADD(DAY, 2, DATEADD(HOUR, 16, CAST(CAST(GETDATE() AS DATE) AS DATETIME))), 10.50, 1),
+(5, 1, DATEADD(DAY, 2, DATEADD(HOUR, 19, CAST(CAST(GETDATE() AS DATE) AS DATETIME))), 11.50, 1),
+(5, 4, DATEADD(DAY, 2, DATEADD(HOUR, 21, CAST(CAST(GETDATE() AS DATE) AS DATETIME))), 13.00, 1),
+-- Interstellar
+(9, 4, DATEADD(DAY, 2, DATEADD(HOUR, 17, CAST(CAST(GETDATE() AS DATE) AS DATETIME))), 12.50, 1),
+(9, 3, DATEADD(DAY, 2, DATEADD(HOUR, 21, CAST(CAST(GETDATE() AS DATE) AS DATETIME))), 15.00, 1),
+-- Avatar
+(10, 4, DATEADD(DAY, 2, DATEADD(HOUR, 15, CAST(CAST(GETDATE() AS DATE) AS DATETIME))), 13.50, 1),
+(10, 4, DATEADD(DAY, 2, DATEADD(HOUR, 19, CAST(CAST(GETDATE() AS DATE) AS DATETIME))), 14.50, 1),
+-- Barbie
+(2, 2, DATEADD(DAY, 2, DATEADD(HOUR, 18, CAST(CAST(GETDATE() AS DATE) AS DATETIME))), 9.50, 1),
+(2, 2, DATEADD(DAY, 2, DATEADD(HOUR, 20, CAST(CAST(GETDATE() AS DATE) AS DATETIME))), 11.00, 1);
+GO
+
+-- Sesiones para dentro de 3 días
+INSERT INTO Sesiones (PeliculaId, SalaId, FechaHora, Precio, Activa) VALUES
+-- Dune: Parte Dos
+(3, 4, DATEADD(DAY, 3, DATEADD(HOUR, 16, CAST(CAST(GETDATE() AS DATE) AS DATETIME))), 13.00, 1),
+(3, 4, DATEADD(DAY, 3, DATEADD(HOUR, 20, CAST(CAST(GETDATE() AS DATE) AS DATETIME))), 14.00, 1),
+-- The Dark Knight
+(8, 3, DATEADD(DAY, 3, DATEADD(HOUR, 19, CAST(CAST(GETDATE() AS DATE) AS DATETIME))), 14.00, 1),
+-- Guardianes de la Galaxia
+(4, 2, DATEADD(DAY, 3, DATEADD(HOUR, 17, CAST(CAST(GETDATE() AS DATE) AS DATETIME))), 10.00, 1),
+(4, 2, DATEADD(DAY, 3, DATEADD(HOUR, 21, CAST(CAST(GETDATE() AS DATE) AS DATETIME))), 11.00, 1);
+GO
+
+-- ============================================
+-- Insertar algunas Reservas de ejemplo
+-- ============================================
+INSERT INTO Reservas (UsuarioId, SesionId, FechaReserva, Total, Estado, CodigoReserva) VALUES
+(1, 1, GETDATE(), 25.00, 'Confirmada', 'RES-2024-00001'),
+(2, 3, GETDATE(), 19.00, 'Confirmada', 'RES-2024-00002'),
+(3, 5, GETDATE(), 23.00, 'Pendiente', 'RES-2024-00003');
+GO
+
+-- ============================================
+-- Insertar ReservaButacas de ejemplo
+-- ============================================
+-- Reserva 1: Usuario 1, Sesión 1 (Oppenheimer Sala 4 hoy 16:00), 2 butacas
+INSERT INTO ReservaButacas (ReservaId, ButacaId, SesionId) VALUES
+(1, (SELECT TOP 1 Id FROM Butacas WHERE SalaId = 4 AND Fila = 6 AND Columna = 7), 1),
+(1, (SELECT TOP 1 Id FROM Butacas WHERE SalaId = 4 AND Fila = 6 AND Columna = 8), 1);
+GO
+
+-- Reserva 2: Usuario 2, Sesión 3 (Barbie Sala 2 hoy 17:00), 2 butacas
+INSERT INTO ReservaButacas (ReservaId, ButacaId, SesionId) VALUES
+(2, (SELECT TOP 1 Id FROM Butacas WHERE SalaId = 2 AND Fila = 5 AND Columna = 5), 3),
+(2, (SELECT TOP 1 Id FROM Butacas WHERE SalaId = 2 AND Fila = 5 AND Columna = 6), 3);
+GO
+
+-- Reserva 3: Usuario 3, Sesión 5 (Barbie Sala 2 hoy 21:00), 2 butacas
+INSERT INTO ReservaButacas (ReservaId, ButacaId, SesionId) VALUES
+(3, (SELECT TOP 1 Id FROM Butacas WHERE SalaId = 2 AND Fila = 7 AND Columna = 6), 5),
+(3, (SELECT TOP 1 Id FROM Butacas WHERE SalaId = 2 AND Fila = 7 AND Columna = 7), 5);
+GO
+
+-- ============================================
+-- CONSULTAS DE VERIFICACIÓN
+-- ============================================
+
+-- Ver todas las películas activas
+SELECT * FROM Peliculas WHERE Activa = 1;
+GO
+
+-- Ver todas las salas
+SELECT s.*, 
+       (SELECT COUNT(*) FROM Butacas WHERE SalaId = s.Id) as TotalButacas
+FROM Salas s;
+GO
+
+-- Ver sesiones de hoy
+SELECT 
+    s.Id,
+    p.Titulo as Pelicula,
+    sa.Nombre as Sala,
+    s.FechaHora,
+    s.Precio,
+    sa.Filas * sa.ColumnasPerFila as CapacidadTotal,
+    (SELECT COUNT(*) FROM ReservaButacas rb 
+     WHERE rb.SesionId = s.Id) as ButacasReservadas
+FROM Sesiones s
+INNER JOIN Peliculas p ON s.PeliculaId = p.Id
+INNER JOIN Salas sa ON s.SalaId = sa.Id
+WHERE CAST(s.FechaHora AS DATE) = CAST(GETDATE() AS DATE)
+ORDER BY s.FechaHora;
+GO
+
+-- Ver todas las reservas
+SELECT 
+    r.Id,
+    r.CodigoReserva,
+    u.Nombre + ' ' + u.Apellidos as Usuario,
+    p.Titulo as Pelicula,
+    s.FechaHora,
+    sa.Nombre as Sala,
+    r.Total,
+    r.Estado,
+    (SELECT COUNT(*) FROM ReservaButacas WHERE ReservaId = r.Id) as NumButacas
+FROM Reservas r
+INNER JOIN Usuarios u ON r.UsuarioId = u.Id
+INNER JOIN Sesiones s ON r.SesionId = s.Id
+INNER JOIN Peliculas p ON s.PeliculaId = p.Id
+INNER JOIN Salas sa ON s.SalaId = sa.Id
+ORDER BY r.FechaReserva DESC;
+GO
+
+PRINT '============================================';
+PRINT 'Base de datos CineDB creada exitosamente';
+PRINT '============================================';
+PRINT 'Usuarios insertados: 4';
+PRINT 'Películas insertadas: 10';
+PRINT 'Salas insertadas: 4';
+PRINT 'Butacas insertadas: 428 (total en todas las salas)';
+PRINT 'Sesiones insertadas: 40+ (para varios días)';
+PRINT 'Reservas de ejemplo: 3';
+PRINT '============================================';
+GO

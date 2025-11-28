@@ -1,0 +1,1254 @@
+# ?? GUÍA PASO A PASO: Creando una Aplicación de Cine con WPF y MySQL
+
+## ?? ¿Qué vamos a aprender?
+
+En esta guía aprenderás a crear una aplicación completa de reserva de butacas de cine desde cero. Es perfecta para estudiantes que ya conocen un poco de C# y quieren hacer algo real y funcional.
+
+### ?? ¿Qué hace esta aplicación?
+
+- Muestra las películas que están en cartelera
+- Permite ver los horarios de las películas
+- Los usuarios pueden registrarse e iniciar sesión
+- Puedes seleccionar tus asientos favoritos
+- Genera un código de reserva
+- Muestra tu historial de reservas
+
+---
+
+## ?? Requisitos Previos
+
+Antes de empezar, necesitas tener instalado:
+
+1. **Visual Studio 2022** (o superior)
+   - Durante la instalación, marca la opción "Desarrollo de escritorio de .NET"
+   
+2. **MySQL Server** (versión 8.0 o superior)
+   - [Descargar MySQL](https://dev.mysql.com/downloads/mysql/)
+   
+3. **MySQL Workbench** (opcional pero recomendado)
+   - [Descargar MySQL Workbench](https://dev.mysql.com/downloads/workbench/)
+
+4. **Conocimientos básicos de:**
+   - C# (variables, clases, métodos)
+   - XAML (lo básico de interfaz)
+   - SQL (consultas simples)
+
+---
+
+## ??? FASE 1: Preparando el Terreno
+
+### Paso 1.1: Crear el proyecto en Visual Studio
+
+1. Abre **Visual Studio**
+2. Click en **"Crear un proyecto"**
+3. Busca **"Aplicación WPF"** (Windows Presentation Foundation)
+4. Click en **Siguiente**
+5. Configura tu proyecto:
+   - **Nombre del proyecto**: `Cine_app`
+   - **Ubicación**: Elige donde guardar tu proyecto
+   - Click en **Siguiente**
+6. Selecciona **.NET 8.0** (o la versión más reciente)
+7. Click en **Crear**
+
+**¿Qué acabamos de hacer?**
+Hemos creado un proyecto WPF, que es una tecnología para crear aplicaciones de Windows con interfaces bonitas.
+
+---
+
+### Paso 1.2: Instalar las bibliotecas necesarias
+
+Las bibliotecas (o "paquetes NuGet") son código que otras personas ya escribieron y que podemos usar.
+
+**¿Cómo instalarlas?**
+
+1. En Visual Studio, click derecho en el proyecto (en el Explorador de Soluciones)
+2. Selecciona **"Administrar paquetes NuGet"**
+3. Click en la pestaña **"Examinar"**
+4. Busca e instala estos dos paquetes:
+
+#### Paquete 1: MySql.Data
+- **Busca**: `MySql.Data`
+- **¿Para qué sirve?** Para conectarnos a la base de datos MySQL
+- **Versión**: 9.5.0 (o la más reciente)
+- Click en **Instalar**
+
+#### Paquete 2: DotNetEnv
+- **Busca**: `DotNetEnv`
+- **¿Para qué sirve?** Para guardar contraseñas de forma segura
+- **Versión**: 3.1.1 (o la más reciente)
+- Click en **Instalar**
+
+**¿Qué acabamos de hacer?**
+Hemos añadido herramientas que nos permiten conectarnos a MySQL y manejar configuraciones de forma segura.
+
+---
+
+### Paso 1.3: Crear la estructura de carpetas
+
+Vamos a organizar nuestro proyecto en carpetas para que sea fácil de entender.
+
+**En el Explorador de Soluciones:**
+
+1. Click derecho en el proyecto `Cine_app`
+2. Selecciona **Agregar > Nueva carpeta**
+3. Crea estas carpetas:
+   - ?? **Modelos** (aquí van las clases que representan datos)
+   - ?? **Servicios** (aquí va la lógica de negocio)
+   - ?? **Ventanas** (aquí van todas las ventanas de la aplicación)
+   - ?? **Database** (aquí guardaremos el script de la base de datos)
+
+**Tu estructura debe verse así:**
+```
+Cine_app/
+??? Modelos/
+??? Servicios/
+??? Ventanas/
+??? Database/
+??? App.xaml
+??? App.xaml.cs
+```
+
+**¿Por qué organizamos así?**
+Es como organizar tu habitación: cada cosa en su lugar. Así es más fácil encontrar lo que necesitas.
+
+---
+
+## ??? FASE 2: Creando la Base de Datos
+
+### Paso 2.1: Crear la base de datos en MySQL
+
+**Opción A: Usando MySQL Workbench (recomendado)**
+
+1. Abre **MySQL Workbench**
+2. Conéctate a tu servidor MySQL
+3. Click en **"Create a new SQL tab"** (el icono de documento)
+4. Copia el siguiente script:
+
+```sql
+-- Crear la base de datos
+CREATE DATABASE IF NOT EXISTS cinema_db;
+USE cinema_db;
+
+-- Tabla de Usuarios
+CREATE TABLE Usuarios (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Nombre VARCHAR(100) NOT NULL,
+    Apellidos VARCHAR(100) NOT NULL,
+    Email VARCHAR(150) UNIQUE NOT NULL,
+    Password VARCHAR(255) NOT NULL,
+    Telefono VARCHAR(20),
+    FechaRegistro DATETIME DEFAULT CURRENT_TIMESTAMP,
+    Activo BOOLEAN DEFAULT TRUE
+);
+
+-- Tabla de Películas
+CREATE TABLE Peliculas (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Titulo VARCHAR(200) NOT NULL,
+    Descripcion TEXT,
+    Director VARCHAR(100),
+    Duracion INT,
+    Genero VARCHAR(50),
+    FechaEstreno DATE,
+    ImagenUrl VARCHAR(500),
+    Calificacion DECIMAL(3,1),
+    Activa BOOLEAN DEFAULT TRUE
+);
+
+-- Tabla de Salas
+CREATE TABLE Salas (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Nombre VARCHAR(50) NOT NULL,
+    Filas INT NOT NULL,
+    ColumnasPerFila INT NOT NULL
+);
+
+-- Tabla de Sesiones (horarios de películas)
+CREATE TABLE Sesiones (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    PeliculaId INT NOT NULL,
+    SalaId INT NOT NULL,
+    FechaHora DATETIME NOT NULL,
+    Precio DECIMAL(10,2) NOT NULL,
+    Activa BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY (PeliculaId) REFERENCES Peliculas(Id),
+    FOREIGN KEY (SalaId) REFERENCES Salas(Id)
+);
+
+-- Tabla de Butacas
+CREATE TABLE Butacas (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    SalaId INT NOT NULL,
+    Fila INT NOT NULL,
+    Columna INT NOT NULL,
+    Tipo VARCHAR(20) DEFAULT 'Normal',
+    Activa BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY (SalaId) REFERENCES Salas(Id)
+);
+
+-- Tabla de Reservas
+CREATE TABLE Reservas (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    UsuarioId INT NOT NULL,
+    SesionId INT NOT NULL,
+    FechaReserva DATETIME DEFAULT CURRENT_TIMESTAMP,
+    Total DECIMAL(10,2) NOT NULL,
+    Estado VARCHAR(20) DEFAULT 'Pendiente',
+    CodigoReserva VARCHAR(50) UNIQUE,
+    FOREIGN KEY (UsuarioId) REFERENCES Usuarios(Id),
+    FOREIGN KEY (SesionId) REFERENCES Sesiones(Id)
+);
+
+-- Tabla intermedia: Reservas-Butacas
+CREATE TABLE ReservasButacas (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    ReservaId INT NOT NULL,
+    ButacaId INT NOT NULL,
+    SesionId INT NOT NULL,
+    FOREIGN KEY (ReservaId) REFERENCES Reservas(Id),
+    FOREIGN KEY (ButacaId) REFERENCES Butacas(Id),
+    FOREIGN KEY (SesionId) REFERENCES Sesiones(Id)
+);
+```
+
+5. Click en el icono de **rayo** (?) para ejecutar el script
+6. Deberías ver el mensaje "Action completed successfully"
+
+**¿Qué acabamos de hacer?**
+Hemos creado 7 tablas que van a guardar toda la información de nuestra aplicación: usuarios, películas, salas, sesiones, butacas y reservas.
+
+---
+
+### Paso 2.2: Insertar datos de prueba
+
+Ahora vamos a poner datos de ejemplo para poder probar la aplicación.
+
+**Ejecuta este script en MySQL:**
+
+```sql
+USE cinema_db;
+
+-- Insertar una sala de prueba
+INSERT INTO Salas (Nombre, Filas, ColumnasPerFila) VALUES 
+('Sala 1', 8, 10);
+
+-- Insertar películas de ejemplo
+INSERT INTO Peliculas (Titulo, Descripcion, Director, Duracion, Genero, FechaEstreno, ImagenUrl, Calificacion, Activa) VALUES
+('Oppenheimer', 'La historia del físico J. Robert Oppenheimer y el desarrollo de la bomba atómica.', 'Christopher Nolan', 180, 'Drama', '2023-07-21', 'https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg', 8.5, TRUE),
+('Barbie', 'Una muñeca Barbie que vive en Barbieland es expulsada por no ser lo suficientemente perfecta.', 'Greta Gerwig', 114, 'Comedia', '2023-07-21', 'https://image.tmdb.org/t/p/w500/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg', 7.2, TRUE),
+('Los Vengadores', 'Los héroes más poderosos de la Tierra deben unirse para detener a Loki.', 'Joss Whedon', 143, 'Acción', '2012-04-27', 'https://image.tmdb.org/t/p/w500/cezWGskPY5x7GaglTTRN4Fugfb8.jpg', 8.0, TRUE);
+
+-- Insertar sesiones (horarios)
+INSERT INTO Sesiones (PeliculaId, SalaId, FechaHora, Precio, Activa) VALUES
+(1, 1, DATE_ADD(NOW(), INTERVAL 1 DAY), 10.00, TRUE),
+(1, 1, DATE_ADD(NOW(), INTERVAL 1 DAY), 10.00, TRUE),
+(2, 1, DATE_ADD(NOW(), INTERVAL 2 DAY), 9.50, TRUE),
+(3, 1, DATE_ADD(NOW(), INTERVAL 3 DAY), 9.00, TRUE);
+
+-- Crear butacas para la Sala 1 (8 filas x 10 columnas = 80 butacas)
+INSERT INTO Butacas (SalaId, Fila, Columna, Tipo, Activa)
+SELECT 
+    1 as SalaId,
+    fila.n as Fila,
+    columna.n as Columna,
+    CASE 
+        WHEN fila.n = 1 THEN 'VIP'
+        WHEN columna.n = 5 OR columna.n = 6 THEN 'Discapacitado'
+        ELSE 'Normal'
+    END as Tipo,
+    TRUE as Activa
+FROM 
+    (SELECT 1 as n UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8) as fila,
+    (SELECT 1 as n UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10) as columna
+ORDER BY fila.n, columna.n;
+
+-- Insertar un usuario de prueba (para hacer pruebas)
+INSERT INTO Usuarios (Nombre, Apellidos, Email, Password, Telefono, Activo) VALUES
+('Juan', 'Pérez García', 'juan@test.com', '123456', '666555444', TRUE);
+```
+
+**¿Qué acabamos de hacer?**
+Hemos llenado nuestra base de datos con películas, salas, horarios y butacas de ejemplo para poder probar la aplicación.
+
+---
+
+### Paso 2.3: Guardar el script en el proyecto
+
+1. Copia todo el código SQL (del paso 2.1 y 2.2)
+2. En Visual Studio, click derecho en la carpeta **Database**
+3. Selecciona **Agregar > Nuevo elemento**
+4. Elige **Archivo de texto**
+5. Nómbralo: `cinema_database_mysql.sql`
+6. Pega el código SQL completo
+7. Guarda el archivo
+
+**¿Para qué guardamos esto?**
+Para tener una copia del script por si necesitamos recrear la base de datos o compartir el proyecto.
+
+---
+
+### Paso 2.4: Configurar la conexión a la base de datos
+
+Vamos a crear un archivo `.env` que guarda la información de conexión de forma segura.
+
+1. Click derecho en el proyecto `Cine_app`
+2. Selecciona **Agregar > Nuevo elemento**
+3. Elige **Archivo de texto**
+4. Nómbralo: `.env` (sí, solo el punto y env)
+5. Escribe esto dentro:
+
+```env
+DATABASE=server=localhost;port=3306;database=cinema_db;user=root;password=tu_password_aqui
+```
+
+**?? IMPORTANTE:** Cambia `tu_password_aqui` por tu contraseña real de MySQL.
+
+6. Guarda el archivo
+
+**Ahora configura el archivo .env en el proyecto:**
+
+1. Click derecho en el archivo `.env` en el Explorador de Soluciones
+2. Selecciona **Propiedades**
+3. En **"Copiar en el directorio de salida"** selecciona: **"Copiar siempre"**
+
+**¿Qué acabamos de hacer?**
+Hemos creado un archivo que guarda la conexión a la base de datos de forma segura. Nunca debemos subir este archivo a internet (por eso se llama "environment" o entorno).
+
+---
+
+## ?? FASE 3: Creando los Modelos (Las clases de datos)
+
+Los modelos son clases que representan las cosas de nuestra aplicación: usuarios, películas, butacas, etc.
+
+### Paso 3.1: Crear el modelo Usuario
+
+1. Click derecho en la carpeta **Modelos**
+2. Selecciona **Agregar > Clase**
+3. Nómbrala: `Usuario.cs`
+4. Escribe este código:
+
+```csharp
+namespace Cine_app.Modelos
+{
+    public class Usuario
+    {
+        // Propiedades: son como las columnas de la tabla en la base de datos
+        public int Id { get; set; }
+        public string Nombre { get; set; } = string.Empty;
+        public string Apellidos { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+        public string? Telefono { get; set; }  // El ? significa que puede ser null (opcional)
+        public DateTime FechaRegistro { get; set; }
+        public bool Activo { get; set; }
+
+        // Propiedad computada: se calcula automáticamente
+        public string NombreCompleto => $"{Nombre} {Apellidos}";
+    }
+}
+```
+
+**?? Explicación simple:**
+- `public class Usuario`: Estamos creando una clase llamada Usuario
+- `public int Id { get; set; }`: Cada usuario tiene un ID (número único)
+- `get; set;`: Significa que podemos leer y modificar este valor
+- `string.Empty`: Valor por defecto (texto vacío)
+- `NombreCompleto =>`: Esto calcula automáticamente el nombre completo juntando nombre y apellidos
+
+---
+
+### Paso 3.2: Crear el modelo Pelicula
+
+1. Click derecho en la carpeta **Modelos**
+2. **Agregar > Clase**
+3. Nombre: `Pelicula.cs`
+
+```csharp
+namespace Cine_app.Modelos
+{
+    public class Pelicula
+    {
+        public int Id { get; set; }
+        public string Titulo { get; set; } = string.Empty;
+        public string? Descripcion { get; set; }
+        public string? Director { get; set; }
+        public int? Duracion { get; set; }  // en minutos
+        public string? Genero { get; set; }
+        public DateTime? FechaEstreno { get; set; }
+        public string? ImagenUrl { get; set; }
+        public decimal? Calificacion { get; set; }  // de 0 a 10
+        public bool Activa { get; set; }
+    }
+}
+```
+
+**?? Explicación:**
+- `int?` o `string?`: El signo de interrogación significa "opcional", puede ser null
+- `decimal`: Tipo de dato para números con decimales (perfecto para calificaciones como 8.5)
+- `ImagenUrl`: Guardamos la URL de internet donde está la imagen de la película
+
+---
+
+### Paso 3.3: Crear el modelo Sesion (y Sala)
+
+1. Click derecho en **Modelos**
+2. **Agregar > Clase**
+3. Nombre: `Sesion.cs`
+
+```csharp
+namespace Cine_app.Modelos
+{
+    // Clase Sesion: representa un horario de película
+    public class Sesion
+    {
+        public int Id { get; set; }
+        public int PeliculaId { get; set; }
+        public int SalaId { get; set; }
+        public DateTime FechaHora { get; set; }
+        public decimal Precio { get; set; }
+        public bool Activa { get; set; }
+
+        // Propiedades de navegación (relaciones con otras tablas)
+        public Pelicula? Pelicula { get; set; }
+        public Sala? Sala { get; set; }
+
+        // Formato bonito de la fecha: "25/12/2024 20:30"
+        public string FechaHoraFormateada => FechaHora.ToString("dd/MM/yyyy HH:mm");
+    }
+
+    // Clase Sala: representa una sala del cine
+    public class Sala
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; } = string.Empty;
+        public int Filas { get; set; }
+        public int ColumnasPerFila { get; set; }
+
+        // Calcula automáticamente cuántas butacas tiene la sala
+        public int CapacidadTotal => Filas * ColumnasPerFila;
+    }
+}
+```
+
+**?? Explicación:**
+- `Pelicula? Pelicula`: Esta propiedad guarda el objeto Pelicula completo (no solo el ID)
+- `FechaHoraFormateada`: Convierte "2024-12-25 20:30:00" en "25/12/2024 20:30"
+- `CapacidadTotal =>`: Multiplica filas por columnas automáticamente
+
+---
+
+### Paso 3.4: Crear el modelo Butaca (y Reserva)
+
+1. Click derecho en **Modelos**
+2. **Agregar > Clase**
+3. Nombre: `Butaca.cs`
+
+```csharp
+using System.Collections.Generic;
+
+namespace Cine_app.Modelos
+{
+    // Clase Butaca: representa un asiento en la sala
+    public class Butaca
+    {
+        public int Id { get; set; }
+        public int SalaId { get; set; }
+        public int Fila { get; set; }
+        public int Columna { get; set; }
+        public string Tipo { get; set; } = "Normal";  // Normal, VIP, Discapacitado
+        public bool Activa { get; set; }
+
+        // Convierte la fila y columna en un identificador bonito: "A1", "B5", etc.
+        public string Identificador
+        {
+            get
+            {
+                // Fila 1 = 'A', Fila 2 = 'B', etc.
+                char letra = (char)('A' + Fila - 1);
+                return $"{letra}{Columna}";
+            }
+        }
+    }
+
+    // Clase Reserva: representa una reserva de un usuario
+    public class Reserva
+    {
+        public int Id { get; set; }
+        public int UsuarioId { get; set; }
+        public int SesionId { get; set; }
+        public DateTime FechaReserva { get; set; }
+        public decimal Total { get; set; }
+        public string Estado { get; set; } = "Pendiente";  // Pendiente, Confirmada, Cancelada
+        public string? CodigoReserva { get; set; }
+
+        // Relaciones con otras tablas
+        public Usuario? Usuario { get; set; }
+        public Sesion? Sesion { get; set; }
+        public List<ReservaButaca> Butacas { get; set; } = new();
+    }
+
+    // Clase intermedia: conecta Reservas con Butacas
+    public class ReservaButaca
+    {
+        public int Id { get; set; }
+        public int ReservaId { get; set; }
+        public int ButacaId { get; set; }
+        public int SesionId { get; set; }
+
+        public Butaca? Butaca { get; set; }
+    }
+
+    // Clase para mostrar reservas en la interfaz
+    public class ReservaViewModel
+    {
+        public Sesion Sesion { get; set; } = new();
+        public decimal Total { get; set; }
+        public string CodigoReserva { get; set; } = string.Empty;
+        public string Butacas { get; set; } = string.Empty;  // Ej: "A1, A2, B3"
+    }
+}
+```
+
+**?? Explicación:**
+- `Identificador`: Convierte números en letras para que sea más fácil: Fila 1 = A, Fila 2 = B
+- `List<ReservaButaca>`: Una reserva puede tener varias butacas
+- `ReservaButaca`: Tabla intermedia, conecta una reserva con sus butacas
+- `ReservaViewModel`: Versión simplificada para mostrar en la pantalla
+
+---
+
+## ?? FASE 4: Creando los Servicios (La lógica)
+
+Los servicios contienen el código que hace el trabajo: conectarse a la base de datos, validar usuarios, crear reservas, etc.
+
+### Paso 4.1: Crear el Servicio de Base de Datos
+
+Este es el servicio más importante: se conecta a MySQL y hace todas las consultas.
+
+1. Click derecho en la carpeta **Servicios**
+2. **Agregar > Clase**
+3. Nombre: `ServicioBaseDeDatos.cs`
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
+using Cine_app.Modelos;
+
+namespace Cine_app.Servicios
+{
+    public class ServicioBaseDeDatos
+    {
+        // Cadena de conexión a la base de datos
+        private readonly string connectionString;
+
+        // Constructor: se ejecuta al crear el servicio
+        public ServicioBaseDeDatos()
+        {
+            // Carga el archivo .env
+            DotNetEnv.Env.Load();
+            // Obtiene la cadena de conexión
+            connectionString = Environment.GetEnvironmentVariable("DATABASE") ?? string.Empty;
+        }
+
+        // ???????????????????????????????????????????????????????????
+        // MÉTODOS PARA PELÍCULAS
+        // ???????????????????????????????????????????????????????????
+
+        /// <summary>
+        /// Obtiene todas las películas activas de la base de datos
+        /// </summary>
+        public async Task<List<Pelicula>> ObtenerPeliculasActivasAsync()
+        {
+            var peliculas = new List<Pelicula>();
+
+            try
+            {
+                // Conectar a la base de datos
+                using var conexion = new MySqlConnection(connectionString);
+                await conexion.OpenAsync();
+
+                // Preparar la consulta SQL
+                string query = "SELECT * FROM Peliculas WHERE Activa = 1 ORDER BY FechaEstreno DESC";
+                using var comando = new MySqlCommand(query, conexion);
+                
+                // Ejecutar la consulta y leer los resultados
+                using var reader = await comando.ExecuteReaderAsync();
+                while (await reader.ReadAsync())
+                {
+                    peliculas.Add(new Pelicula
+                    {
+                        Id = reader.GetInt32("Id"),
+                        Titulo = reader.GetString("Titulo"),
+                        Descripcion = reader.IsDBNull(reader.GetOrdinal("Descripcion")) ? null : reader.GetString("Descripcion"),
+                        Director = reader.IsDBNull(reader.GetOrdinal("Director")) ? null : reader.GetString("Director"),
+                        Duracion = reader.IsDBNull(reader.GetOrdinal("Duracion")) ? null : reader.GetInt32("Duracion"),
+                        Genero = reader.IsDBNull(reader.GetOrdinal("Genero")) ? null : reader.GetString("Genero"),
+                        FechaEstreno = reader.IsDBNull(reader.GetOrdinal("FechaEstreno")) ? null : reader.GetDateTime("FechaEstreno"),
+                        ImagenUrl = reader.IsDBNull(reader.GetOrdinal("ImagenUrl")) ? null : reader.GetString("ImagenUrl"),
+                        Calificacion = reader.IsDBNull(reader.GetOrdinal("Calificacion")) ? null : reader.GetDecimal("Calificacion"),
+                        Activa = reader.GetBoolean("Activa")
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener películas: {ex.Message}");
+            }
+
+            return peliculas;
+        }
+
+        // ???????????????????????????????????????????????????????????
+        // MÉTODOS PARA SESIONES
+        // ???????????????????????????????????????????????????????????
+
+        /// <summary>
+        /// Obtiene las sesiones de una película, opcionalmente filtradas por fecha
+        /// </summary>
+        public async Task<List<Sesion>> ObtenerSesionesPorPeliculaAsync(int peliculaId, DateTime? fecha = null)
+        {
+            var sesiones = new List<Sesion>();
+
+            try
+            {
+                using var conexion = new MySqlConnection(connectionString);
+                await conexion.OpenAsync();
+
+                // Consulta con JOIN para obtener datos de película y sala
+                string query = @"
+                    SELECT s.*, p.*, sa.* 
+                    FROM Sesiones s
+                    INNER JOIN Peliculas p ON s.PeliculaId = p.Id
+                    INNER JOIN Salas sa ON s.SalaId = sa.Id
+                    WHERE s.PeliculaId = @PeliculaId 
+                    AND s.Activa = 1 
+                    AND s.FechaHora > NOW()";
+
+                // Si se especifica una fecha, filtrar por ella
+                if (fecha.HasValue)
+                {
+                    query += " AND DATE(s.FechaHora) = @Fecha";
+                }
+
+                query += " ORDER BY s.FechaHora ASC";
+
+                using var comando = new MySqlCommand(query, conexion);
+                comando.Parameters.AddWithValue("@PeliculaId", peliculaId);
+                if (fecha.HasValue)
+                {
+                    comando.Parameters.AddWithValue("@Fecha", fecha.Value.Date);
+                }
+
+                using var reader = await comando.ExecuteReaderAsync();
+                while (await reader.ReadAsync())
+                {
+                    var sesion = new Sesion
+                    {
+                        Id = reader.GetInt32("Id"),
+                        PeliculaId = reader.GetInt32("PeliculaId"),
+                        SalaId = reader.GetInt32("SalaId"),
+                        FechaHora = reader.GetDateTime("FechaHora"),
+                        Precio = reader.GetDecimal("Precio"),
+                        Activa = reader.GetBoolean("Activa"),
+                        Pelicula = new Pelicula
+                        {
+                            Id = reader.GetInt32("PeliculaId"),
+                            Titulo = reader.GetString("Titulo")
+                        },
+                        Sala = new Sala
+                        {
+                            Id = reader.GetInt32("SalaId"),
+                            Nombre = reader.GetString("Nombre"),
+                            Filas = reader.GetInt32("Filas"),
+                            ColumnasPerFila = reader.GetInt32("ColumnasPerFila")
+                        }
+                    };
+                    sesiones.Add(sesion);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener sesiones: {ex.Message}");
+            }
+
+            return sesiones;
+        }
+
+        // ???????????????????????????????????????????????????????????
+        // MÉTODOS PARA BUTACAS
+        // ???????????????????????????????????????????????????????????
+
+        /// <summary>
+        /// Obtiene todas las butacas de una sala
+        /// </summary>
+        public async Task<List<Butaca>> ObtenerButacasPorSalaAsync(int salaId)
+        {
+            var butacas = new List<Butaca>();
+
+            try
+            {
+                using var conexion = new MySqlConnection(connectionString);
+                await conexion.OpenAsync();
+
+                string query = @"
+                    SELECT * FROM Butacas 
+                    WHERE SalaId = @SalaId AND Activa = 1
+                    ORDER BY Fila, Columna";
+
+                using var comando = new MySqlCommand(query, conexion);
+                comando.Parameters.AddWithValue("@SalaId", salaId);
+
+                using var reader = await comando.ExecuteReaderAsync();
+                while (await reader.ReadAsync())
+                {
+                    butacas.Add(new Butaca
+                    {
+                        Id = reader.GetInt32("Id"),
+                        SalaId = reader.GetInt32("SalaId"),
+                        Fila = reader.GetInt32("Fila"),
+                        Columna = reader.GetInt32("Columna"),
+                        Tipo = reader.GetString("Tipo"),
+                        Activa = reader.GetBoolean("Activa")
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener butacas: {ex.Message}");
+            }
+
+            return butacas;
+        }
+
+        /// <summary>
+        /// Obtiene los IDs de las butacas ya reservadas para una sesión
+        /// </summary>
+        public async Task<List<int>> ObtenerButacasReservadasAsync(int sesionId)
+        {
+            var butacasReservadas = new List<int>();
+
+            try
+            {
+                using var conexion = new MySqlConnection(connectionString);
+                await conexion.OpenAsync();
+
+                string query = @"
+                    SELECT rb.ButacaId 
+                    FROM ReservasButacas rb
+                    INNER JOIN Reservas r ON rb.ReservaId = r.Id
+                    WHERE rb.SesionId = @SesionId 
+                    AND r.Estado IN ('Pendiente', 'Confirmada')";
+
+                using var comando = new MySqlCommand(query, conexion);
+                comando.Parameters.AddWithValue("@SesionId", sesionId);
+
+                using var reader = await comando.ExecuteReaderAsync();
+                while (await reader.ReadAsync())
+                {
+                    butacasReservadas.Add(reader.GetInt32("ButacaId"));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener butacas reservadas: {ex.Message}");
+            }
+
+            return butacasReservadas;
+        }
+
+        // ???????????????????????????????????????????????????????????
+        // MÉTODOS PARA USUARIOS
+        // ???????????????????????????????????????????????????????????
+
+        /// <summary>
+        /// Valida las credenciales de un usuario
+        /// </summary>
+        public async Task<Usuario?> ValidarUsuarioAsync(string email, string password)
+        {
+            try
+            {
+                using var conexion = new MySqlConnection(connectionString);
+                await conexion.OpenAsync();
+
+                string query = @"
+                    SELECT * FROM Usuarios 
+                    WHERE Email = @Email AND Password = @Password AND Activo = 1";
+
+                using var comando = new MySqlCommand(query, conexion);
+                comando.Parameters.AddWithValue("@Email", email);
+                comando.Parameters.AddWithValue("@Password", password);
+
+                using var reader = await comando.ExecuteReaderAsync();
+                if (await reader.ReadAsync())
+                {
+                    return new Usuario
+                    {
+                        Id = reader.GetInt32("Id"),
+                        Nombre = reader.GetString("Nombre"),
+                        Apellidos = reader.GetString("Apellidos"),
+                        Email = reader.GetString("Email"),
+                        Password = reader.GetString("Password"),
+                        Telefono = reader.IsDBNull(reader.GetOrdinal("Telefono")) ? null : reader.GetString("Telefono"),
+                        FechaRegistro = reader.GetDateTime("FechaRegistro"),
+                        Activo = reader.GetBoolean("Activo")
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al validar usuario: {ex.Message}");
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Verifica si ya existe un usuario con ese email
+        /// </summary>
+        public async Task<bool> ExisteUsuarioAsync(string email)
+        {
+            try
+            {
+                using var conexion = new MySqlConnection(connectionString);
+                await conexion.OpenAsync();
+
+                string query = "SELECT COUNT(*) FROM Usuarios WHERE Email = @Email";
+                using var comando = new MySqlCommand(query, conexion);
+                comando.Parameters.AddWithValue("@Email", email);
+
+                var resultado = await comando.ExecuteScalarAsync();
+                return Convert.ToInt32(resultado) > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al verificar usuario: {ex.Message}");
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Registra un nuevo usuario en la base de datos
+        /// </summary>
+        public async Task<bool> RegistrarUsuarioAsync(Usuario usuario)
+        {
+            try
+            {
+                using var conexion = new MySqlConnection(connectionString);
+                await conexion.OpenAsync();
+
+                string query = @"
+                    INSERT INTO Usuarios (Nombre, Apellidos, Email, Password, Telefono, FechaRegistro, Activo)
+                    VALUES (@Nombre, @Apellidos, @Email, @Password, @Telefono, @FechaRegistro, @Activo)";
+
+                using var comando = new MySqlCommand(query, conexion);
+                comando.Parameters.AddWithValue("@Nombre", usuario.Nombre);
+                comando.Parameters.AddWithValue("@Apellidos", usuario.Apellidos);
+                comando.Parameters.AddWithValue("@Email", usuario.Email);
+                comando.Parameters.AddWithValue("@Password", usuario.Password);
+                comando.Parameters.AddWithValue("@Telefono", usuario.Telefono ?? (object)DBNull.Value);
+                comando.Parameters.AddWithValue("@FechaRegistro", DateTime.Now);
+                comando.Parameters.AddWithValue("@Activo", true);
+
+                int filasAfectadas = await comando.ExecuteNonQueryAsync();
+                return filasAfectadas > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al registrar usuario: {ex.Message}");
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Actualiza la contraseña de un usuario
+        /// </summary>
+        public async Task<bool> ActualizarPasswordAsync(int usuarioId, string nuevaPassword)
+        {
+            try
+            {
+                using var conexion = new MySqlConnection(connectionString);
+                await conexion.OpenAsync();
+
+                string query = "UPDATE Usuarios SET Password = @Password WHERE Id = @Id";
+                using var comando = new MySqlCommand(query, conexion);
+                comando.Parameters.AddWithValue("@Password", nuevaPassword);
+                comando.Parameters.AddWithValue("@Id", usuarioId);
+
+                int filasAfectadas = await comando.ExecuteNonQueryAsync();
+                return filasAfectadas > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al actualizar contraseña: {ex.Message}");
+                return false;
+            }
+        }
+
+        // ???????????????????????????????????????????????????????????
+        // MÉTODOS PARA RESERVAS
+        // ???????????????????????????????????????????????????????????
+
+        /// <summary>
+        /// Obtiene todas las reservas activas de un usuario
+        /// </summary>
+        public async Task<List<Reserva>> ObtenerReservasPorUsuarioAsync(int usuarioId)
+        {
+            var reservas = new List<Reserva>();
+
+            try
+            {
+                using var conexion = new MySqlConnection(connectionString);
+                await conexion.OpenAsync();
+
+                string query = @"
+                    SELECT r.*, s.*, p.*, sa.*
+                    FROM Reservas r
+                    INNER JOIN Sesiones s ON r.SesionId = s.Id
+                    INNER JOIN Peliculas p ON s.PeliculaId = p.Id
+                    INNER JOIN Salas sa ON s.SalaId = sa.Id
+                    WHERE r.UsuarioId = @UsuarioId 
+                    AND r.Estado IN ('Pendiente', 'Confirmada')
+                    ORDER BY r.FechaReserva DESC";
+
+                using var comando = new MySqlCommand(query, conexion);
+                comando.Parameters.AddWithValue("@UsuarioId", usuarioId);
+
+                using var reader = await comando.ExecuteReaderAsync();
+                while (await reader.ReadAsync())
+                {
+                    var reserva = new Reserva
+                    {
+                        Id = reader.GetInt32("Id"),
+                        UsuarioId = reader.GetInt32("UsuarioId"),
+                        SesionId = reader.GetInt32("SesionId"),
+                        FechaReserva = reader.GetDateTime("FechaReserva"),
+                        Total = reader.GetDecimal("Total"),
+                        Estado = reader.GetString("Estado"),
+                        CodigoReserva = reader.IsDBNull(reader.GetOrdinal("CodigoReserva")) ? null : reader.GetString("CodigoReserva"),
+                        Sesion = new Sesion
+                        {
+                            Id = reader.GetInt32("SesionId"),
+                            FechaHora = reader.GetDateTime("FechaHora"),
+                            Precio = reader.GetDecimal("Precio"),
+                            Pelicula = new Pelicula
+                            {
+                                Titulo = reader.GetString("Titulo")
+                            },
+                            Sala = new Sala
+                            {
+                                Nombre = reader.GetString("Nombre")
+                            }
+                        }
+                    };
+
+                    // Cargar butacas de la reserva
+                    try
+                    {
+                        reserva.Butacas = await ObtenerButacasDeReservaAsync(reserva.Id);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error al cargar butacas de reserva {reserva.Id}: {ex.Message}");
+                    }
+
+                    reservas.Add(reserva);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener reservas: {ex.Message}");
+            }
+
+            return reservas;
+        }
+
+        /// <summary>
+        /// Obtiene las butacas de una reserva específica
+        /// </summary>
+        private async Task<List<ReservaButaca>> ObtenerButacasDeReservaAsync(int reservaId)
+        {
+            var butacas = new List<ReservaButaca>();
+
+            using var conexion = new MySqlConnection(connectionString);
+            await conexion.OpenAsync();
+
+            string query = @"
+                SELECT rb.*, b.*
+                FROM ReservasButacas rb
+                INNER JOIN Butacas b ON rb.ButacaId = b.Id
+                WHERE rb.ReservaId = @ReservaId";
+
+            using var comando = new MySqlCommand(query, conexion);
+            comando.Parameters.AddWithValue("@ReservaId", reservaId);
+
+            using var reader = await comando.ExecuteReaderAsync();
+            while (await reader.ReadAsync())
+            {
+                butacas.Add(new ReservaButaca
+                {
+                    Id = reader.GetInt32("Id"),
+                    ReservaId = reader.GetInt32("ReservaId"),
+                    ButacaId = reader.GetInt32("ButacaId"),
+                    SesionId = reader.GetInt32("SesionId"),
+                    Butaca = new Butaca
+                    {
+                        Id = reader.GetInt32("ButacaId"),
+                        Fila = reader.GetInt32("Fila"),
+                        Columna = reader.GetInt32("Columna"),
+                        Tipo = reader.GetString("Tipo")
+                    }
+                });
+            }
+
+            return butacas;
+        }
+
+        /// <summary>
+        /// Crea una nueva reserva (usa transacción para garantizar integridad)
+        /// </summary>
+        public async Task<int> CrearReservaAsync(Reserva reserva, List<int> butacaIds)
+        {
+            using var conexion = new MySqlConnection(connectionString);
+            await conexion.OpenAsync();
+
+            // Iniciar transacción (todo o nada)
+            using var transaccion = await conexion.BeginTransactionAsync();
+
+            try
+            {
+                // 1. Generar código de reserva único
+                string codigoReserva = $"RES{DateTime.Now:yyyyMMddHHmmss}{new Random().Next(1000, 9999)}";
+
+                // 2. Insertar reserva principal
+                string queryReserva = @"
+                    INSERT INTO Reservas (UsuarioId, SesionId, FechaReserva, Total, Estado, CodigoReserva)
+                    VALUES (@UsuarioId, @SesionId, @FechaReserva, @Total, @Estado, @CodigoReserva);
+                    SELECT LAST_INSERT_ID();";
+
+                int reservaId;
+                using (var comando = new MySqlCommand(queryReserva, conexion, transaccion as MySqlTransaction))
+                {
+                    comando.Parameters.AddWithValue("@UsuarioId", reserva.UsuarioId);
+                    comando.Parameters.AddWithValue("@SesionId", reserva.SesionId);
+                    comando.Parameters.AddWithValue("@FechaReserva", DateTime.Now);
+                    comando.Parameters.AddWithValue("@Total", reserva.Total);
+                    comando.Parameters.AddWithValue("@Estado", "Confirmada");
+                    comando.Parameters.AddWithValue("@CodigoReserva", codigoReserva);
+
+                    var resultado = await comando.ExecuteScalarAsync();
+                    reservaId = Convert.ToInt32(resultado);
+                }
+
+                // 3. Insertar las butacas reservadas
+                string queryButacas = @"
+                    INSERT INTO ReservasButacas (ReservaId, ButacaId, SesionId)
+                    VALUES (@ReservaId, @ButacaId, @SesionId)";
+
+                foreach (var butacaId in butacaIds)
+                {
+                    using var comando = new MySqlCommand(queryButacas, conexion, transaccion as MySqlTransaction);
+                    comando.Parameters.AddWithValue("@ReservaId", reservaId);
+                    comando.Parameters.AddWithValue("@ButacaId", butacaId);
+                    comando.Parameters.AddWithValue("@SesionId", reserva.SesionId);
+                    await comando.ExecuteNonQueryAsync();
+                }
+
+                // 4. Confirmar transacción
+                await transaccion.CommitAsync();
+                return reservaId;
+            }
+            catch (Exception ex)
+            {
+                // Si algo falla, deshacer todo
+                await transaccion.RollbackAsync();
+                Console.WriteLine($"Error al crear reserva: {ex.Message}");
+                return 0;
+            }
+        }
+    }
+}
+```
+
+**?? Explicación de conceptos importantes:**
+
+1. **`async/await`**: Permite que la aplicación no se congele mientras espera la base de datos
+2. **`using var`**: Libera automáticamente los recursos cuando terminamos de usarlos
+3. **`try/catch`**: Captura errores para que la aplicación no se cierre
+4. **Transacciones**: Garantiza que todo se guarde o nada (importante para reservas)
+5. **Parámetros `@Email`**: Protege contra inyección SQL (seguridad)
+
+---
+
+### Paso 4.2: Crear el Servicio de Sesión
+
+Este servicio guarda el usuario que está logueado (patrón Singleton).
+
+1. Click derecho en **Servicios**
+2. **Agregar > Clase**
+3. Nombre: `ServicioSesion.cs`
+
+```csharp
+using System;
+using Cine_app.Modelos;
+
+namespace Cine_app.Servicios
+{
+    /// <summary>
+    /// Servicio Singleton que gestiona la sesión del usuario actual
+    /// Singleton = solo puede haber UNA instancia en toda la aplicación
+    /// </summary>
+    public class ServicioSesion
+    {
+        // La única instancia del servicio
+        private static ServicioSesion? _instance;
+        
+        // Objeto para sincronización (evita problemas con multithreading)
+        private static readonly object _lock = new object();
+
+        // Propiedad para acceder a la instancia única
+        public static ServicioSesion Instance
+        {
+            get
+            {
+                // Si no existe instancia, crearla
+                if (_instance == null)
+                {
+                    lock (_lock)
+                    {
+                        if (_instance == null)
+                        {
+                            _instance = new ServicioSesion();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
+
+        // Constructor privado: nadie puede crear instancias desde fuera
+        private ServicioSesion() { }
+
+        // Usuario actualmente logueado
+        public Usuario? UsuarioActual { get; private set; }
+
+        // ¿Hay alguien logueado?
+        public bool EstaAutenticado => UsuarioActual != null;
+
+        // Eventos: se disparan cuando hay cambios en la sesión
+        public event EventHandler? SesionIniciada;
+        public event EventHandler? SesionCerrada;
+
+        /// <summary>
+        /// Inicia sesión con un usuario
+        /// </summary>
+        public void IniciarSesion(Usuario usuario)
+        {
+            UsuarioActual = usuario;
+            SesionIniciada?.Invoke(this, EventArgs.Empty);
+        }
+
+        /// <summary>
+        /// Cierra la sesión actual
+        /// </summary>
+        public void CerrarSesion()
+        {
+            UsuarioActual = null;
+            SesionCerrada?.Invoke(this, EventArgs.Empty);
+        }
+    }
+}
+```
+
+**?? Explicación del patrón Singleton:**
+- **¿Por qué?**: Solo queremos un lugar en toda la app que guarde el usuario logueado
+- **`Instance`**: La única forma de acceder al servicio
+- **`lock`**: Evita problemas si dos partes del código intentan acceder al mismo tiempo
+- **Eventos**: Avisan a otras partes de la app cuando alguien inicia/cierra sesión
+
+---
+
+## ?? FASE 5: Creando las Ventanas (Interfaz de Usuario)
+
+Ahora viene la parte visual: las ventanas que el usuario verá y con las que interactuará.
+
+### Configuración inicial: App.xaml y App.xaml.cs
+
+Primero, vamos a configurar el punto de entrada de la aplicación.
+
+#### Paso 5.0.1: Modificar App.xaml.cs
+
+Abre el archivo `App.xaml.cs` y reemplaza su contenido por:
+
+```csharp
+using System;
+using System.Globalization;
+using System.Windows;
+using System.Windows.Threading;
+
+namespace Cine_app
+{
+    public partial class App : Application
+    {
+        /// <summary>
+        /// Se ejecuta al iniciar la aplicación
+        /// </summary>
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            // Configurar cultura a español (para fechas, números, etc.)
+            var cultura = new CultureInfo("es-ES");
+            CultureInfo.DefaultThreadCurrentCulture = cultura;
+            CultureInfo.DefaultThreadCurrentUICulture = cultura;
+
+            // Manejadores de errores globales
+            Application.Current.DispatcherUnhandledException += App_DispatcherUnhandledException;
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+        }
+
+        /// <summary>
+        /// Maneja errores en el hilo de la interfaz
+        /// </summary>
+        private void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            MessageBox.Show(
+                $"Ha ocurrido un error inesperado:\n\n{e.Exception.Message}",
+                "Error",
+                MessageBoxButton.OK,
+                MessageBoxImage.Error);
+
+            e.Handled = true;
+        }
+
+        /// <summary>
+        /// Maneja errores en otros hilos
+        /// </summary>
+        private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            var exception = e.ExceptionObject as Exception;
+            MessageBox.Show(
+                $"Ha ocurrido un error crítico:\n\n{exception?.Message}",
+                "Error Crítico",
+                MessageBoxButton.OK,
+                MessageBoxImage.Error);
+        }
+    }
+}
+```
+
+**?? ¿Qué hace este código?**
+- Configura el idioma a español
+- Captura errores para que la app no se cierre inesperadamente
+- Muestra mensajes de error amigables al usuario
+
+---
+
+*(Continúa en el siguiente mensaje debido a limitaciones de longitud)*
+
+**Esta es la primera parte de la guía. ¿Quieres que continúe con:**
+- La creación de las ventanas (CarteleraWindow, LoginWindow, etc.)?
+- Los estilos XAML?
+- La configuración final y pruebas?
+

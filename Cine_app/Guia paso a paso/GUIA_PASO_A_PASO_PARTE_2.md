@@ -1,0 +1,1111 @@
+﻿# 🎓 GUÍA PASO A PASO PARTE 2: Ventanas e Interfaz de Usuario
+
+> 📌 Esta es la continuación de `GUIA_PASO_A_PASO_PARA_ESTUDIANTES.md`
+
+---
+
+## 🎨 FASE 5 (Continuación): Creando las Ventanas
+
+### Paso 5.1: Ventana Principal - CarteleraWindow
+
+Esta será la primera ventana que verán los usuarios con todas las películas disponibles.
+
+#### Paso 5.1.1: Crear la ventana
+
+1. Click derecho en la carpeta **Ventanas**
+2. **Agregar > Ventana (WPF)**
+3. Nombre: `CarteleraWindow.xaml`
+
+#### Paso 5.1.2: Diseño XAML (CarteleraWindow.xaml)
+
+```xml
+<Window x:Class="Cine_app.Ventanas.CarteleraWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CINEMAX - Cartelera" 
+        Height="700" Width="1200"
+        WindowStartupLocation="CenterScreen"
+        Background="#1a1a1a"
+        Loaded="CarteleraWindow_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <!-- Barra superior -->
+            <RowDefinition Height="80"/>
+            <!-- Contenido principal -->
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- BARRA SUPERIOR -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <Border Grid.Row="0" Background="#2d2d2d" BorderBrush="#ff6b35" BorderThickness="0,0,0,3">
+            <Grid Margin="20,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Logo -->
+                <StackPanel Grid.Column="0" VerticalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock Text="🎬" FontSize="32" Margin="0,0,10,0"/>
+                    <TextBlock Text="CINEMAX" 
+                               FontSize="28" 
+                               FontWeight="Bold" 
+                               Foreground="#ff6b35"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Información de usuario -->
+                <TextBlock x:Name="TxtBienvenida" 
+                           Grid.Column="1"
+                           Text="Bienvenido"
+                           FontSize="16"
+                           Foreground="White"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"/>
+
+                <!-- Botones de usuario -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button x:Name="BtnPerfilUsuario"
+                            Content="👤 Mi Perfil"
+                            Visibility="Collapsed"
+                            Click="BtnPerfilUsuario_Click"
+                            Margin="0,0,10,0"
+                            Padding="15,8"
+                            Background="#4a4a4a"
+                            Foreground="White"
+                            BorderBrush="#666"
+                            FontSize="14"
+                            Cursor="Hand">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}" 
+                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                    BorderThickness="1" 
+                                                    CornerRadius="5">
+                                                <ContentPresenter HorizontalAlignment="Center" 
+                                                                  VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#5a5a5a"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+                    <Button x:Name="BtnCuentaAccion"
+                            Content="🔐 Iniciar Sesión"
+                            Click="BtnCuentaAccion_Click"
+                            Padding="15,8"
+                            Background="#ff6b35"
+                            Foreground="White"
+                            BorderThickness="0"
+                            FontSize="14"
+                            FontWeight="Bold"
+                            Cursor="Hand">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}" 
+                                                    CornerRadius="5">
+                                                <ContentPresenter HorizontalAlignment="Center" 
+                                                                  VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#ff8555"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- CONTENIDO PRINCIPAL: GRID DE PELÍCULAS -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="30,20">
+                <!-- Título -->
+                <TextBlock Text="🎬 Películas en Cartelera" 
+                           FontSize="32" 
+                           FontWeight="Bold" 
+                           Foreground="White"
+                           Margin="0,0,0,20"/>
+
+                <!-- Contenedor de películas -->
+                <WrapPanel x:Name="PanelPeliculas" 
+                           Orientation="Horizontal"
+                           HorizontalAlignment="Left">
+                    <!-- Las películas se cargan dinámicamente desde el código -->
+                </WrapPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
+```
+
+**📝 Explicación del XAML:**
+- `Grid.RowDefinitions`: Divide la ventana en filas (barra superior y contenido)
+- `WrapPanel`: Organiza las películas automáticamente en filas
+- `ScrollViewer`: Permite hacer scroll si hay muchas películas
+- `x:Name`: Nombre para acceder al elemento desde C#
+- `Click="..."`: Método que se ejecuta al hacer clic
+
+#### Paso 5.1.3: Código C# (CarteleraWindow.xaml.cs)
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using Cine_app.Modelos;
+using Cine_app.Servicios;
+
+namespace Cine_app.Ventanas
+{
+    public partial class CarteleraWindow : Window
+    {
+        private readonly ServicioBaseDeDatos servicioBD;
+
+        public CarteleraWindow()
+        {
+            InitializeComponent();
+            servicioBD = new ServicioBaseDeDatos();
+        }
+
+        /// <summary>
+        /// Se ejecuta cuando la ventana termina de cargar
+        /// </summary>
+        private void CarteleraWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Suscribirse a eventos de sesión
+            ServicioSesion.Instance.SesionIniciada += (s, ev) => ActualizarEstadoUsuario();
+            ServicioSesion.Instance.SesionCerrada += (s, ev) => ActualizarEstadoUsuario();
+
+            // Actualizar UI según estado de sesión
+            ActualizarEstadoUsuario();
+
+            // Cargar películas
+            CargarPeliculas();
+        }
+
+        /// <summary>
+        /// Actualiza la interfaz según si hay usuario logueado o no
+        /// </summary>
+        private void ActualizarEstadoUsuario()
+        {
+            if (ServicioSesion.Instance.EstaAutenticado)
+            {
+                // Usuario logueado
+                var usuario = ServicioSesion.Instance.UsuarioActual!;
+                TxtBienvenida.Text = $"Bienvenido, {usuario.Nombre}";
+                BtnCuentaAccion.Content = "🚪 Cerrar Sesión";
+                BtnPerfilUsuario.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                // Sin usuario
+                TxtBienvenida.Text = "Bienvenido a CINEMAX";
+                BtnCuentaAccion.Content = "🔐 Iniciar Sesión";
+                BtnPerfilUsuario.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        /// <summary>
+        /// Carga todas las películas activas de la base de datos
+        /// </summary>
+        private async void CargarPeliculas()
+        {
+            try
+            {
+                // Obtener películas de la BD
+                var peliculas = await servicioBD.ObtenerPeliculasActivasAsync();
+
+                // Limpiar panel
+                PanelPeliculas.Children.Clear();
+
+                // Crear una tarjeta por cada película
+                foreach (var pelicula in peliculas)
+                {
+                    var card = CrearTarjetaPelicula(pelicula);
+                    PanelPeliculas.Children.Add(card);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar películas: {ex.Message}", 
+                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        /// <summary>
+        /// Crea visualmente una tarjeta de película
+        /// </summary>
+        private Border CrearTarjetaPelicula(Pelicula pelicula)
+        {
+            // Contenedor principal de la tarjeta
+            var border = new Border
+            {
+                Width = 250,
+                Height = 450,
+                Margin = new Thickness(10),
+                Background = new SolidColorBrush(Color.FromRgb(45, 45, 45)),
+                CornerRadius = new CornerRadius(10),
+                BorderBrush = new SolidColorBrush(Color.FromRgb(255, 107, 53)),
+                BorderThickness = new Thickness(2),
+                Cursor = System.Windows.Input.Cursors.Hand
+            };
+
+            // Stack vertical con todo el contenido
+            var stackPanel = new StackPanel();
+
+            // IMAGEN DE LA PELÍCULA
+            var imagen = new Image
+            {
+                Height = 300,
+                Stretch = Stretch.UniformToFill
+            };
+
+            try
+            {
+                if (!string.IsNullOrEmpty(pelicula.ImagenUrl))
+                {
+                    imagen.Source = new BitmapImage(new Uri(pelicula.ImagenUrl));
+                }
+            }
+            catch
+            {
+                // Si falla la imagen, mostrar un placeholder
+                imagen.Source = null;
+            }
+
+            stackPanel.Children.Add(imagen);
+
+            // INFORMACIÓN DE LA PELÍCULA
+            var infoBorder = new Border
+            {
+                Padding = new Thickness(15),
+                Background = new SolidColorBrush(Color.FromRgb(35, 35, 35))
+            };
+
+            var infoStack = new StackPanel();
+
+            // Título
+            var titulo = new TextBlock
+            {
+                Text = pelicula.Titulo,
+                FontSize = 18,
+                FontWeight = FontWeights.Bold,
+                Foreground = Brushes.White,
+                TextWrapping = TextWrapping.Wrap,
+                Margin = new Thickness(0, 0, 0, 5)
+            };
+            infoStack.Children.Add(titulo);
+
+            // Género y duración
+            if (!string.IsNullOrEmpty(pelicula.Genero) || pelicula.Duracion.HasValue)
+            {
+                var info = new TextBlock
+                {
+                    Text = $"{pelicula.Genero ?? "N/A"} • {pelicula.Duracion ?? 0} min",
+                    FontSize = 12,
+                    Foreground = new SolidColorBrush(Color.FromRgb(180, 180, 180)),
+                    Margin = new Thickness(0, 0, 0, 5)
+                };
+                infoStack.Children.Add(info);
+            }
+
+            // Calificación
+            if (pelicula.Calificacion.HasValue)
+            {
+                var calificacion = new TextBlock
+                {
+                    Text = $"⭐ {pelicula.Calificacion:0.0}/10",
+                    FontSize = 14,
+                    Foreground = new SolidColorBrush(Color.FromRgb(255, 215, 0)),
+                    Margin = new Thickness(0, 0, 0, 10)
+                };
+                infoStack.Children.Add(calificacion);
+            }
+
+            // BOTÓN "VER HORARIOS"
+            var boton = new Button
+            {
+                Content = "Ver Horarios",
+                Padding = new Thickness(0, 8, 0, 8),
+                Background = new SolidColorBrush(Color.FromRgb(255, 107, 53)),
+                Foreground = Brushes.White,
+                BorderThickness = new Thickness(0),
+                FontWeight = FontWeights.Bold,
+                Cursor = System.Windows.Input.Cursors.Hand,
+                Tag = pelicula  // Guardamos la película en el Tag
+            };
+            boton.Click += BtnVerHorarios_Click;
+            infoStack.Children.Add(boton);
+
+            infoBorder.Child = infoStack;
+            stackPanel.Children.Add(infoBorder);
+
+            border.Child = stackPanel;
+            return border;
+        }
+
+        /// <summary>
+        /// Abre la ventana de selección de sesión
+        /// </summary>
+        private void BtnVerHorarios_Click(object sender, RoutedEventArgs e)
+        {
+            var boton = (Button)sender;
+            var pelicula = (Pelicula)boton.Tag;
+
+            var ventana = new SeleccionSesionWindow(pelicula);
+            ventana.ShowDialog();
+        }
+
+        /// <summary>
+        /// Iniciar sesión o cerrar sesión
+        /// </summary>
+        private void BtnCuentaAccion_Click(object sender, RoutedEventArgs e)
+        {
+            if (ServicioSesion.Instance.EstaAutenticado)
+            {
+                // Cerrar sesión
+                var resultado = MessageBox.Show(
+                    "¿Deseas cerrar sesión?",
+                    "Cerrar Sesión",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question);
+
+                if (resultado == MessageBoxResult.Yes)
+                {
+                    ServicioSesion.Instance.CerrarSesion();
+                }
+            }
+            else
+            {
+                // Abrir ventana de login
+                var loginWindow = new LoginWindow();
+                loginWindow.ShowDialog();
+            }
+        }
+
+        /// <summary>
+        /// Abre la ventana de perfil de usuario
+        /// </summary>
+        private void BtnPerfilUsuario_Click(object sender, RoutedEventArgs e)
+        {
+            if (!ServicioSesion.Instance.EstaAutenticado)
+            {
+                MessageBox.Show("Debes iniciar sesión primero.", 
+                    "Aviso", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var perfilWindow = new PerfilUsuarioWindow();
+            perfilWindow.ShowDialog();
+        }
+    }
+}
+```
+
+**📝 Conceptos importantes:**
+- **`async/await`**: Para no congelar la ventana mientras carga las películas
+- **`Tag`**: Propiedad donde guardamos datos extra (la película completa)
+- **`ShowDialog()`**: Muestra una ventana modal (bloquea la ventana anterior)
+- **Eventos**: `Click`, `Loaded` se ejecutan cuando pasa algo
+
+---
+
+### Paso 5.2: Ventana de Login
+
+#### Paso 5.2.1: Crear LoginWindow.xaml
+
+1. Click derecho en **Ventanas**
+2. **Agregar > Ventana (WPF)**
+3. Nombre: `LoginWindow.xaml`
+
+```xml
+<Window x:Class="Cine_app.Ventanas.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Iniciar Sesión" 
+        Height="500" Width="400"
+        WindowStartupLocation="CenterScreen"
+        Background="#1a1a1a"
+        ResizeMode="NoResize">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Cabecera -->
+        <Border Grid.Row="0" Background="#2d2d2d" Padding="20">
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock Text="🎬" FontSize="48" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                <TextBlock Text="CINEMAX" 
+                           FontSize="24" 
+                           FontWeight="Bold" 
+                           Foreground="#ff6b35"
+                           HorizontalAlignment="Center"/>
+                <TextBlock Text="Iniciar Sesión" 
+                           FontSize="16" 
+                           Foreground="White"
+                           HorizontalAlignment="Center"
+                           Margin="0,5,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Formulario -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="40,30">
+                
+                <!-- Email -->
+                <TextBlock Text="Email" Foreground="White" FontSize="14" Margin="0,0,0,5"/>
+                <TextBox x:Name="TxtEmail"
+                         Height="35"
+                         Padding="10,0"
+                         FontSize="14"
+                         Margin="0,0,0,15"
+                         Background="#2d2d2d"
+                         Foreground="White"
+                         BorderBrush="#555"/>
+
+                <!-- Contraseña -->
+                <TextBlock Text="Contraseña" Foreground="White" FontSize="14" Margin="0,0,0,5"/>
+                <PasswordBox x:Name="TxtPassword"
+                            Height="35"
+                            Padding="10,0"
+                            FontSize="14"
+                            Margin="0,0,0,20"
+                            Background="#2d2d2d"
+                            Foreground="White"
+                            BorderBrush="#555"
+                            KeyDown="TxtPassword_KeyDown"/>
+
+                <!-- Panel de error -->
+                <Border x:Name="PanelError" 
+                        Background="#ff4444" 
+                        Padding="10" 
+                        Margin="0,0,0,15"
+                        CornerRadius="5"
+                        Visibility="Collapsed">
+                    <TextBlock x:Name="TxtError" 
+                               Text="Error" 
+                               Foreground="White" 
+                               TextWrapping="Wrap"/>
+                </Border>
+
+                <!-- Botón Iniciar Sesión -->
+                <Button x:Name="BtnLogin"
+                        Content="Iniciar Sesión"
+                        Height="40"
+                        Background="#ff6b35"
+                        Foreground="White"
+                        FontSize="16"
+                        FontWeight="Bold"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        Click="BtnLogin_Click"
+                        Margin="0,0,0,15">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}" 
+                                                CornerRadius="5">
+                                            <ContentPresenter HorizontalAlignment="Center" 
+                                                              VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#ff8555"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <!-- Link a registro -->
+                <TextBlock HorizontalAlignment="Center" Margin="0,0,0,15">
+                    <Run Text="¿No tienes cuenta? " Foreground="White"/>
+                    <Hyperlink x:Name="LinkRegistro" 
+                               Click="BtnRegistro_Click"
+                               Foreground="#ff6b35">
+                        Regístrate aquí
+                    </Hyperlink>
+                </TextBlock>
+
+                <!-- Botón invitado -->
+                <Button Content="Continuar como Invitado"
+                        Height="35"
+                        Background="Transparent"
+                        Foreground="#aaa"
+                        FontSize="14"
+                        BorderBrush="#555"
+                        Cursor="Hand"
+                        Click="BtnInvitado_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="White"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
+```
+
+#### Paso 5.2.2: Código C# (LoginWindow.xaml.cs)
+
+```csharp
+using System;
+using System.Windows;
+using System.Windows.Input;
+using Cine_app.Servicios;
+
+namespace Cine_app.Ventanas
+{
+    public partial class LoginWindow : Window
+    {
+        private readonly ServicioBaseDeDatos servicioBD;
+
+        public LoginWindow()
+        {
+            InitializeComponent();
+            servicioBD = new ServicioBaseDeDatos();
+        }
+
+        /// <summary>
+        /// Intenta iniciar sesión
+        /// </summary>
+        private async void BtnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            // Validar que los campos no estén vacíos
+            if (string.IsNullOrWhiteSpace(TxtEmail.Text))
+            {
+                MostrarError("Por favor, ingresa tu email.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(TxtPassword.Password))
+            {
+                MostrarError("Por favor, ingresa tu contraseña.");
+                return;
+            }
+
+            try
+            {
+                // Deshabilitar botón mientras se procesa
+                BtnLogin.IsEnabled = false;
+                BtnLogin.Content = "Validando...";
+
+                // Validar credenciales en la base de datos
+                var usuario = await servicioBD.ValidarUsuarioAsync(
+                    TxtEmail.Text.Trim(),
+                    TxtPassword.Password);
+
+                if (usuario != null)
+                {
+                    // Login exitoso
+                    ServicioSesion.Instance.IniciarSesion(usuario);
+                    DialogResult = true;  // Cierra la ventana con resultado positivo
+                    Close();
+                }
+                else
+                {
+                    // Credenciales incorrectas
+                    MostrarError("Email o contraseña incorrectos.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MostrarError($"Error al iniciar sesión: {ex.Message}");
+            }
+            finally
+            {
+                // Restaurar botón
+                BtnLogin.IsEnabled = true;
+                BtnLogin.Content = "Iniciar Sesión";
+            }
+        }
+
+        /// <summary>
+        /// Abre la ventana de registro
+        /// </summary>
+        private void BtnRegistro_Click(object sender, RoutedEventArgs e)
+        {
+            var registroWindow = new RegistroWindow();
+            if (registroWindow.ShowDialog() == true)
+            {
+                // Si el registro fue exitoso, cerrar también el login
+                DialogResult = true;
+                Close();
+            }
+        }
+
+        /// <summary>
+        /// Cierra la ventana sin iniciar sesión
+        /// </summary>
+        private void BtnInvitado_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+            Close();
+        }
+
+        /// <summary>
+        /// Permite hacer login con la tecla Enter
+        /// </summary>
+        private void TxtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                BtnLogin_Click(sender, e);
+            }
+        }
+
+        /// <summary>
+        /// Muestra un mensaje de error
+        /// </summary>
+        private void MostrarError(string mensaje)
+        {
+            TxtError.Text = mensaje;
+            PanelError.Visibility = Visibility.Visible;
+        }
+    }
+}
+```
+
+**📝 Conceptos clave:**
+- **`DialogResult`**: Indica si la ventana se cerró con éxito o no
+- **`KeyDown`**: Detecta cuando se presiona una tecla
+- **`IsEnabled`**: Habilita/deshabilita un control
+- **Validación**: Siempre verificar que los campos tengan datos
+
+---
+
+### Paso 5.3: Ventana de Registro
+
+#### Paso 5.3.1: Crear RegistroWindow.xaml
+
+```xml
+<Window x:Class="Cine_app.Ventanas.RegistroWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Registro de Usuario" 
+        Height="650" Width="450"
+        WindowStartupLocation="CenterScreen"
+        Background="#1a1a1a"
+        ResizeMode="NoResize">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Cabecera -->
+        <Border Grid.Row="0" Background="#2d2d2d" Padding="20">
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock Text="📝" FontSize="48" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                <TextBlock Text="Crear Cuenta" 
+                           FontSize="24" 
+                           FontWeight="Bold" 
+                           Foreground="#ff6b35"
+                           HorizontalAlignment="Center"/>
+                <TextBlock Text="Completa todos los campos" 
+                           FontSize="14" 
+                           Foreground="White"
+                           HorizontalAlignment="Center"
+                           Margin="0,5,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Formulario -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="40,20">
+                
+                <!-- Nombre -->
+                <TextBlock Text="Nombre *" Foreground="White" FontSize="14" Margin="0,0,0,5"/>
+                <TextBox x:Name="TxtNombre"
+                         Height="35"
+                         Padding="10,0"
+                         FontSize="14"
+                         Margin="0,0,0,15"
+                         Background="#2d2d2d"
+                         Foreground="White"
+                         BorderBrush="#555"/>
+
+                <!-- Apellidos -->
+                <TextBlock Text="Apellidos *" Foreground="White" FontSize="14" Margin="0,0,0,5"/>
+                <TextBox x:Name="TxtApellidos"
+                         Height="35"
+                         Padding="10,0"
+                         FontSize="14"
+                         Margin="0,0,0,15"
+                         Background="#2d2d2d"
+                         Foreground="White"
+                         BorderBrush="#555"/>
+
+                <!-- Email -->
+                <TextBlock Text="Email *" Foreground="White" FontSize="14" Margin="0,0,0,5"/>
+                <TextBox x:Name="TxtEmail"
+                         Height="35"
+                         Padding="10,0"
+                         FontSize="14"
+                         Margin="0,0,0,15"
+                         Background="#2d2d2d"
+                         Foreground="White"
+                         BorderBrush="#555"/>
+
+                <!-- Teléfono -->
+                <TextBlock Text="Teléfono (opcional)" Foreground="White" FontSize="14" Margin="0,0,0,5"/>
+                <TextBox x:Name="TxtTelefono"
+                         Height="35"
+                         Padding="10,0"
+                         FontSize="14"
+                         Margin="0,0,0,15"
+                         Background="#2d2d2d"
+                         Foreground="White"
+                         BorderBrush="#555"/>
+
+                <!-- Contraseña -->
+                <TextBlock Text="Contraseña *" Foreground="White" FontSize="14" Margin="0,0,0,5"/>
+                <PasswordBox x:Name="TxtPassword"
+                            Height="35"
+                            Padding="10,0"
+                            FontSize="14"
+                            Margin="0,0,0,15"
+                            Background="#2d2d2d"
+                            Foreground="White"
+                            BorderBrush="#555"/>
+
+                <!-- Confirmar Contraseña -->
+                <TextBlock Text="Confirmar Contraseña *" Foreground="White" FontSize="14" Margin="0,0,0,5"/>
+                <PasswordBox x:Name="TxtConfirmarPassword"
+                            Height="35"
+                            Padding="10,0"
+                            FontSize="14"
+                            Margin="0,0,0,20"
+                            Background="#2d2d2d"
+                            Foreground="White"
+                            BorderBrush="#555"/>
+
+                <!-- Panel de mensajes -->
+                <Border x:Name="PanelMensaje" 
+                        Padding="10" 
+                        Margin="0,0,0,15"
+                        CornerRadius="5"
+                        Visibility="Collapsed">
+                    <TextBlock x:Name="TxtMensaje" 
+                               Text="" 
+                               Foreground="White" 
+                               TextWrapping="Wrap"/>
+                </Border>
+
+                <!-- Botones -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Botón Registrar -->
+                    <Button x:Name="BtnRegistrar"
+                            Grid.Column="0"
+                            Content="Registrarse"
+                            Height="40"
+                            Background="#ff6b35"
+                            Foreground="White"
+                            FontSize="16"
+                            FontWeight="Bold"
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            Click="BtnRegistrar_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}" 
+                                                    CornerRadius="5">
+                                                <ContentPresenter HorizontalAlignment="Center" 
+                                                                  VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#ff8555"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+                    <!-- Botón Cancelar -->
+                    <Button Grid.Column="2"
+                            Content="Cancelar"
+                            Height="40"
+                            Background="#4a4a4a"
+                            Foreground="White"
+                            FontSize="16"
+                            BorderBrush="#666"
+                            Cursor="Hand"
+                            Click="BtnCancelar_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}" 
+                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                    BorderThickness="1"
+                                                    CornerRadius="5">
+                                                <ContentPresenter HorizontalAlignment="Center" 
+                                                                  VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#5a5a5a"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Grid>
+
+                <TextBlock Text="* Campos obligatorios" 
+                           Foreground="#aaa" 
+                           FontSize="12" 
+                           HorizontalAlignment="Center"
+                           Margin="0,15,0,0"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
+```
+
+#### Paso 5.3.2: Código C# (RegistroWindow.xaml.cs)
+
+```csharp
+using System;
+using System.Text.RegularExpressions;
+using System.Windows;
+using System.Windows.Media;
+using Cine_app.Modelos;
+using Cine_app.Servicios;
+
+namespace Cine_app.Ventanas
+{
+    public partial class RegistroWindow : Window
+    {
+        private readonly ServicioBaseDeDatos servicioBD;
+
+        public RegistroWindow()
+        {
+            InitializeComponent();
+            servicioBD = new ServicioBaseDeDatos();
+        }
+
+        /// <summary>
+        /// Intenta registrar un nuevo usuario
+        /// </summary>
+        private async void BtnRegistrar_Click(object sender, RoutedEventArgs e)
+        {
+            // Validar campos
+            if (!ValidarCampos())
+                return;
+
+            try
+            {
+                // Deshabilitar botón
+                BtnRegistrar.IsEnabled = false;
+                BtnRegistrar.Content = "Registrando...";
+
+                // Verificar que el email no exista
+                bool existe = await servicioBD.ExisteUsuarioAsync(TxtEmail.Text.Trim());
+                if (existe)
+                {
+                    MostrarError("Este email ya está registrado.");
+                    return;
+                }
+
+                // Crear objeto usuario
+                var usuario = new Usuario
+                {
+                    Nombre = TxtNombre.Text.Trim(),
+                    Apellidos = TxtApellidos.Text.Trim(),
+                    Email = TxtEmail.Text.Trim(),
+                    Password = TxtPassword.Password,
+                    Telefono = string.IsNullOrWhiteSpace(TxtTelefono.Text) ? null : TxtTelefono.Text.Trim(),
+                    FechaRegistro = DateTime.Now,
+                    Activo = true
+                };
+
+                // Registrar en la base de datos
+                bool exito = await servicioBD.RegistrarUsuarioAsync(usuario);
+
+                if (exito)
+                {
+                    MostrarExito("¡Registro exitoso! Ya puedes iniciar sesión.");
+                    await System.Threading.Tasks.Task.Delay(1500);  // Esperar 1.5 segundos
+                    DialogResult = true;
+                    Close();
+                }
+                else
+                {
+                    MostrarError("Error al registrar usuario. Intenta nuevamente.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MostrarError($"Error: {ex.Message}");
+            }
+            finally
+            {
+                BtnRegistrar.IsEnabled = true;
+                BtnRegistrar.Content = "Registrarse";
+            }
+        }
+
+        /// <summary>
+        /// Valida todos los campos del formulario
+        /// </summary>
+        private bool ValidarCampos()
+        {
+            // Nombre
+            if (string.IsNullOrWhiteSpace(TxtNombre.Text) || TxtNombre.Text.Length < 2)
+            {
+                MostrarError("El nombre debe tener al menos 2 caracteres.");
+                return false;
+            }
+
+            // Apellidos
+            if (string.IsNullOrWhiteSpace(TxtApellidos.Text) || TxtApellidos.Text.Length < 2)
+            {
+                MostrarError("Los apellidos deben tener al menos 2 caracteres.");
+                return false;
+            }
+
+            // Email
+            if (string.IsNullOrWhiteSpace(TxtEmail.Text) || !EsEmailValido(TxtEmail.Text))
+            {
+                MostrarError("Por favor, ingresa un email válido.");
+                return false;
+            }
+
+            // Teléfono (opcional, pero si se ingresa debe ser válido)
+            if (!string.IsNullOrWhiteSpace(TxtTelefono.Text) && TxtTelefono.Text.Length < 9)
+            {
+                MostrarError("El teléfono debe tener al menos 9 dígitos.");
+                return false;
+            }
+
+            // Contraseña
+            if (string.IsNullOrWhiteSpace(TxtPassword.Password) || TxtPassword.Password.Length < 6)
+            {
+                MostrarError("La contraseña debe tener al menos 6 caracteres.");
+                return false;
+            }
+
+            // Confirmar contraseña
+            if (TxtPassword.Password != TxtConfirmarPassword.Password)
+            {
+                MostrarError("Las contraseñas no coinciden.");
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Valida si un email tiene formato correcto
+        /// </summary>
+        private bool EsEmailValido(string email)
+        {
+            try
+            {
+                var regex = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+                return regex.IsMatch(email);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Muestra un mensaje de error
+        /// </summary>
+        private void MostrarError(string mensaje)
+        {
+            TxtMensaje.Text = mensaje;
+            PanelMensaje.Background = new SolidColorBrush(Color.FromRgb(255, 68, 68));
+            PanelMensaje.Visibility = Visibility.Visible;
+        }
+
+        /// <summary>
+        /// Muestra un mensaje de éxito
+        /// </summary>
+        private void MostrarExito(string mensaje)
+        {
+            TxtMensaje.Text = mensaje;
+            PanelMensaje.Background = new SolidColorBrush(Color.FromRgb(76, 175, 80));
+            PanelMensaje.Visibility = Visibility.Visible;
+        }
+
+        /// <summary>
+        /// Cancela el registro
+        /// </summary>
+        private void BtnCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+            Close();
+        }
+    }
+}
+```
+
+**📝 Validaciones importantes:**
+- **Regex**: Expresión regular para validar email
+- **`Task.Delay`**: Espera un tiempo antes de continuar
+- **Validación en capas**: Primero en el cliente, luego en la BD
+
+---
