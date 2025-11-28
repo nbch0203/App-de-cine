@@ -936,12 +936,12 @@ namespace Cine_app.Ventanas
 {
     public partial class RegistroWindow : Window
     {
-        private readonly ServicioBaseDe Datos servicioBD;
+        private readonly ServicioBaseDeDatos servicioBD;
 
         public RegistroWindow()
         {
             InitializeComponent();
-            servicioBD = new ServicioBaseDe Datos();
+            servicioBD = new ServicioBaseDeDatos();
         }
 
         /// <summary>

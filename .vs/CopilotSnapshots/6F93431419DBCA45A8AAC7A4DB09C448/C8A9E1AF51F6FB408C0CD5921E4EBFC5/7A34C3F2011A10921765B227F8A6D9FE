@@ -1,16 +1,16 @@
-# ?? GUÕA PASO A PASO: Creando una AplicaciÛn de Cine con WPF y MySQL
+Ôªø# ?? GU√çA PASO A PASO: Creando una Aplicaci√≥n de Cine con WPF y MySQL
 
-## ?? øQuÈ vamos a aprender?
+## ?? ¬øQu√© vamos a aprender?
 
-En esta guÌa aprender·s a crear una aplicaciÛn completa de reserva de butacas de cine desde cero. Es perfecta para estudiantes que ya conocen un poco de C# y quieren hacer algo real y funcional.
+En esta gu√≠a aprender√°s a crear una aplicaci√≥n completa de reserva de butacas de cine desde cero. Es perfecta para estudiantes que ya conocen un poco de C# y quieren hacer algo real y funcional.
 
-### ?? øQuÈ hace esta aplicaciÛn?
+### ?? ¬øQu√© hace esta aplicaci√≥n?
 
-- Muestra las pelÌculas que est·n en cartelera
-- Permite ver los horarios de las pelÌculas
-- Los usuarios pueden registrarse e iniciar sesiÛn
+- Muestra las pel√≠culas que est√°n en cartelera
+- Permite ver los horarios de las pel√≠culas
+- Los usuarios pueden registrarse e iniciar sesi√≥n
 - Puedes seleccionar tus asientos favoritos
-- Genera un cÛdigo de reserva
+- Genera un c√≥digo de reserva
 - Muestra tu historial de reservas
 
 ---
@@ -20,17 +20,17 @@ En esta guÌa aprender·s a crear una aplicaciÛn completa de reserva de butacas de
 Antes de empezar, necesitas tener instalado:
 
 1. **Visual Studio 2022** (o superior)
-   - Durante la instalaciÛn, marca la opciÛn "Desarrollo de escritorio de .NET"
+   - Durante la instalaci√≥n, marca la opci√≥n "Desarrollo de escritorio de .NET"
    
-2. **MySQL Server** (versiÛn 8.0 o superior)
+2. **MySQL Server** (versi√≥n 8.0 o superior)
    - [Descargar MySQL](https://dev.mysql.com/downloads/mysql/)
    
 3. **MySQL Workbench** (opcional pero recomendado)
    - [Descargar MySQL Workbench](https://dev.mysql.com/downloads/workbench/)
 
-4. **Conocimientos b·sicos de:**
-   - C# (variables, clases, mÈtodos)
-   - XAML (lo b·sico de interfaz)
+4. **Conocimientos b√°sicos de:**
+   - C# (variables, clases, m√©todos)
+   - XAML (lo b√°sico de interfaz)
    - SQL (consultas simples)
 
 ---
@@ -41,63 +41,63 @@ Antes de empezar, necesitas tener instalado:
 
 1. Abre **Visual Studio**
 2. Click en **"Crear un proyecto"**
-3. Busca **"AplicaciÛn WPF"** (Windows Presentation Foundation)
+3. Busca **"Aplicaci√≥n WPF"** (Windows Presentation Foundation)
 4. Click en **Siguiente**
 5. Configura tu proyecto:
    - **Nombre del proyecto**: `Cine_app`
-   - **UbicaciÛn**: Elige donde guardar tu proyecto
+   - **Ubicaci√≥n**: Elige donde guardar tu proyecto
    - Click en **Siguiente**
-6. Selecciona **.NET 8.0** (o la versiÛn m·s reciente)
+6. Selecciona **.NET 8.0** (o la versi√≥n m√°s reciente)
 7. Click en **Crear**
 
-**øQuÈ acabamos de hacer?**
-Hemos creado un proyecto WPF, que es una tecnologÌa para crear aplicaciones de Windows con interfaces bonitas.
+**¬øQu√© acabamos de hacer?**
+Hemos creado un proyecto WPF, que es una tecnolog√≠a para crear aplicaciones de Windows con interfaces bonitas.
 
 ---
 
 ### Paso 1.2: Instalar las bibliotecas necesarias
 
-Las bibliotecas (o "paquetes NuGet") son cÛdigo que otras personas ya escribieron y que podemos usar.
+Las bibliotecas (o "paquetes NuGet") son c√≥digo que otras personas ya escribieron y que podemos usar.
 
-**øCÛmo instalarlas?**
+**¬øC√≥mo instalarlas?**
 
 1. En Visual Studio, click derecho en el proyecto (en el Explorador de Soluciones)
 2. Selecciona **"Administrar paquetes NuGet"**
-3. Click en la pestaÒa **"Examinar"**
+3. Click en la pesta√±a **"Examinar"**
 4. Busca e instala estos dos paquetes:
 
 #### Paquete 1: MySql.Data
 - **Busca**: `MySql.Data`
-- **øPara quÈ sirve?** Para conectarnos a la base de datos MySQL
-- **VersiÛn**: 9.5.0 (o la m·s reciente)
+- **¬øPara qu√© sirve?** Para conectarnos a la base de datos MySQL
+- **Versi√≥n**: 9.5.0 (o la m√°s reciente)
 - Click en **Instalar**
 
 #### Paquete 2: DotNetEnv
 - **Busca**: `DotNetEnv`
-- **øPara quÈ sirve?** Para guardar contraseÒas de forma segura
-- **VersiÛn**: 3.1.1 (o la m·s reciente)
+- **¬øPara qu√© sirve?** Para guardar contrase√±as de forma segura
+- **Versi√≥n**: 3.1.1 (o la m√°s reciente)
 - Click en **Instalar**
 
-**øQuÈ acabamos de hacer?**
-Hemos aÒadido herramientas que nos permiten conectarnos a MySQL y manejar configuraciones de forma segura.
+**¬øQu√© acabamos de hacer?**
+Hemos a√±adido herramientas que nos permiten conectarnos a MySQL y manejar configuraciones de forma segura.
 
 ---
 
 ### Paso 1.3: Crear la estructura de carpetas
 
-Vamos a organizar nuestro proyecto en carpetas para que sea f·cil de entender.
+Vamos a organizar nuestro proyecto en carpetas para que sea f√°cil de entender.
 
 **En el Explorador de Soluciones:**
 
 1. Click derecho en el proyecto `Cine_app`
 2. Selecciona **Agregar > Nueva carpeta**
 3. Crea estas carpetas:
-   - ?? **Modelos** (aquÌ van las clases que representan datos)
-   - ?? **Servicios** (aquÌ va la lÛgica de negocio)
-   - ?? **Ventanas** (aquÌ van todas las ventanas de la aplicaciÛn)
-   - ?? **Database** (aquÌ guardaremos el script de la base de datos)
+   - ?? **Modelos** (aqu√≠ van las clases que representan datos)
+   - ?? **Servicios** (aqu√≠ va la l√≥gica de negocio)
+   - ??? **Ventanas** (aqu√≠ van todas las ventanas de la aplicaci√≥n)
+   - ?? **Database** (aqu√≠ guardaremos el script de la base de datos)
 
-**Tu estructura debe verse asÌ:**
+**Tu estructura debe verse as√≠:**
 ```
 Cine_app/
 ?? Modelos/
@@ -108,8 +108,8 @@ Cine_app/
 ?? App.xaml.cs
 ```
 
-**øPor quÈ organizamos asÌ?**
-Es como organizar tu habitaciÛn: cada cosa en su lugar. AsÌ es m·s f·cil encontrar lo que necesitas.
+**¬øPor qu√© organizamos as√≠?**
+Es como organizar tu habitaci√≥n: cada cosa en su lugar. As√≠ es m√°s f√°cil encontrar lo que necesitas.
 
 ---
 
@@ -117,10 +117,10 @@ Es como organizar tu habitaciÛn: cada cosa en su lugar. AsÌ es m·s f·cil encontr
 
 ### Paso 2.1: Crear la base de datos en MySQL
 
-**OpciÛn A: Usando MySQL Workbench (recomendado)**
+**Opci√≥n A: Usando MySQL Workbench (recomendado)**
 
 1. Abre **MySQL Workbench**
-2. ConÈctate a tu servidor MySQL
+2. Con√©ctate a tu servidor MySQL
 3. Click en **"Create a new SQL tab"** (el icono de documento)
 4. Copia el siguiente script:
 
@@ -141,7 +141,7 @@ CREATE TABLE Usuarios (
     Activo BOOLEAN DEFAULT TRUE
 );
 
--- Tabla de PelÌculas
+-- Tabla de Pel√≠culas
 CREATE TABLE Peliculas (
     Id INT AUTO_INCREMENT PRIMARY KEY,
     Titulo VARCHAR(200) NOT NULL,
@@ -163,7 +163,7 @@ CREATE TABLE Salas (
     ColumnasPerFila INT NOT NULL
 );
 
--- Tabla de Sesiones (horarios de pelÌculas)
+-- Tabla de Sesiones (horarios de pel√≠culas)
 CREATE TABLE Sesiones (
     Id INT AUTO_INCREMENT PRIMARY KEY,
     PeliculaId INT NOT NULL,
@@ -211,17 +211,17 @@ CREATE TABLE ReservasButacas (
 );
 ```
 
-5. Click en el icono de **rayo** ? para ejecutar el script
-6. DeberÌas ver el mensaje "Action completed successfully"
+5. Click en el icono de **rayo** (?) para ejecutar el script
+6. Deber√≠as ver el mensaje "Action completed successfully"
 
-**øQuÈ acabamos de hacer?**
-Hemos creado 7 tablas que van a guardar toda la informaciÛn de nuestra aplicaciÛn: usuarios, pelÌculas, salas, sesiones, butacas y reservas.
+**¬øQu√© acabamos de hacer?**
+Hemos creado 7 tablas que van a guardar toda la informaci√≥n de nuestra aplicaci√≥n: usuarios, pel√≠culas, salas, sesiones, butacas y reservas.
 
 ---
 
 ### Paso 2.2: Insertar datos de prueba
 
-Ahora vamos a poner datos de ejemplo para poder probar la aplicaciÛn.
+Ahora vamos a poner datos de ejemplo para poder probar la aplicaci√≥n.
 
 **Ejecuta este script en MySQL:**
 
@@ -232,11 +232,11 @@ USE cinema_db;
 INSERT INTO Salas (Nombre, Filas, ColumnasPerFila) VALUES 
 ('Sala 1', 8, 10);
 
--- Insertar pelÌculas de ejemplo
+-- Insertar pel√≠culas de ejemplo
 INSERT INTO Peliculas (Titulo, Descripcion, Director, Duracion, Genero, FechaEstreno, ImagenUrl, Calificacion, Activa) VALUES
-('Oppenheimer', 'La historia del fÌsico J. Robert Oppenheimer y el desarrollo de la bomba atÛmica.', 'Christopher Nolan', 180, 'Drama', '2023-07-21', 'https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg', 8.5, TRUE),
-('Barbie', 'Una muÒeca Barbie que vive en Barbieland es expulsada por no ser lo suficientemente perfecta.', 'Greta Gerwig', 114, 'Comedia', '2023-07-21', 'https://image.tmdb.org/t/p/w500/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg', 7.2, TRUE),
-('Los Vengadores', 'Los hÈroes m·s poderosos de la Tierra deben unirse para detener a Loki.', 'Joss Whedon', 143, 'AcciÛn', '2012-04-27', 'https://image.tmdb.org/t/p/w500/cezWGskPY5x7GaglTTRN4Fugfb8.jpg', 8.0, TRUE);
+('Oppenheimer', 'La historia del f√≠sico J. Robert Oppenheimer y el desarrollo de la bomba at√≥mica.', 'Christopher Nolan', 180, 'Drama', '2023-07-21', 'https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg', 8.5, TRUE),
+('Barbie', 'Una mu√±eca Barbie que vive en Barbieland es expulsada por no ser lo suficientemente perfecta.', 'Greta Gerwig', 114, 'Comedia', '2023-07-21', 'https://image.tmdb.org/t/p/w500/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg', 7.2, TRUE),
+('Los Vengadores', 'Los h√©roes m√°s poderosos de la Tierra deben unirse para detener a Loki.', 'Joss Whedon', 143, 'Acci√≥n', '2012-04-27', 'https://image.tmdb.org/t/p/w500/cezWGskPY5x7GaglTTRN4Fugfb8.jpg', 8.0, TRUE);
 
 -- Insertar sesiones (horarios)
 INSERT INTO Sesiones (PeliculaId, SalaId, FechaHora, Precio, Activa) VALUES
@@ -264,44 +264,44 @@ ORDER BY fila.n, columna.n;
 
 -- Insertar un usuario de prueba (para hacer pruebas)
 INSERT INTO Usuarios (Nombre, Apellidos, Email, Password, Telefono, Activo) VALUES
-('Juan', 'PÈrez GarcÌa', 'juan@test.com', '123456', '666555444', TRUE);
+('Juan', 'P√©rez Garc√≠a', 'juan@test.com', '123456', '666555444', TRUE);
 ```
 
-**øQuÈ acabamos de hacer?**
-Hemos llenado nuestra base de datos con pelÌculas, salas, horarios y butacas de ejemplo para poder probar la aplicaciÛn.
+**¬øQu√© acabamos de hacer?**
+Hemos llenado nuestra base de datos con pel√≠culas, salas, horarios y butacas de ejemplo para poder probar la aplicaci√≥n.
 
 ---
 
 ### Paso 2.3: Guardar el script en el proyecto
 
-1. Copia todo el cÛdigo SQL (del paso 2.1 y 2.2)
+1. Copia todo el c√≥digo SQL (del paso 2.1 y 2.2)
 2. En Visual Studio, click derecho en la carpeta **Database**
 3. Selecciona **Agregar > Nuevo elemento**
 4. Elige **Archivo de texto**
-5. NÛmbralo: `cinema_database_mysql.sql`
-6. Pega el cÛdigo SQL completo
+5. N√≥mbralo: `cinema_database_mysql.sql`
+6. Pega el c√≥digo SQL completo
 7. Guarda el archivo
 
-**øPara quÈ guardamos esto?**
+**¬øPara qu√© guardamos esto?**
 Para tener una copia del script por si necesitamos recrear la base de datos o compartir el proyecto.
 
 ---
 
-### Paso 2.4: Configurar la conexiÛn a la base de datos
+### Paso 2.4: Configurar la conexi√≥n a la base de datos
 
-Vamos a crear un archivo `.env` que guarda la informaciÛn de conexiÛn de forma segura.
+Vamos a crear un archivo `.env` que guarda la informaci√≥n de conexi√≥n de forma segura.
 
 1. Click derecho en el proyecto `Cine_app`
 2. Selecciona **Agregar > Nuevo elemento**
 3. Elige **Archivo de texto**
-4. NÛmbralo: `.env` (sÌ, solo el punto y env)
+4. N√≥mbralo: `.env` (s√≠, solo el punto y env)
 5. Escribe esto dentro:
 
 ```env
 DATABASE=server=localhost;port=3306;database=cinema_db;user=root;password=tu_password_aqui
 ```
 
-**?? IMPORTANTE:** Cambia `tu_password_aqui` por tu contraseÒa real de MySQL.
+**?? IMPORTANTE:** Cambia `tu_password_aqui` por tu contrase√±a real de MySQL.
 
 6. Guarda el archivo
 
@@ -311,21 +311,21 @@ DATABASE=server=localhost;port=3306;database=cinema_db;user=root;password=tu_pas
 2. Selecciona **Propiedades**
 3. En **"Copiar en el directorio de salida"** selecciona: **"Copiar siempre"**
 
-**øQuÈ acabamos de hacer?**
-Hemos creado un archivo que guarda la conexiÛn a la base de datos de forma segura. Nunca debemos subir este archivo a internet (por eso se llama "environment" o entorno).
+**¬øQu√© acabamos de hacer?**
+Hemos creado un archivo que guarda la conexi√≥n a la base de datos de forma segura. Nunca debemos subir este archivo a internet (por eso se llama "environment" o entorno).
 
 ---
 
 ## ?? FASE 3: Creando los Modelos (Las clases de datos)
 
-Los modelos son clases que representan las cosas de nuestra aplicaciÛn: usuarios, pelÌculas, butacas, etc.
+Los modelos son clases que representan las cosas de nuestra aplicaci√≥n: usuarios, pel√≠culas, butacas, etc.
 
 ### Paso 3.1: Crear el modelo Usuario
 
 1. Click derecho en la carpeta **Modelos**
 2. Selecciona **Agregar > Clase**
-3. NÛmbrala: `Usuario.cs`
-4. Escribe este cÛdigo:
+3. N√≥mbrala: `Usuario.cs`
+4. Escribe este c√≥digo:
 
 ```csharp
 namespace Cine_app.Modelos
@@ -342,18 +342,18 @@ namespace Cine_app.Modelos
         public DateTime FechaRegistro { get; set; }
         public bool Activo { get; set; }
 
-        // Propiedad computada: se calcula autom·ticamente
+        // Propiedad computada: se calcula autom√°ticamente
         public string NombreCompleto => $"{Nombre} {Apellidos}";
     }
 }
 ```
 
-**?? ExplicaciÛn simple:**
+**?? Explicaci√≥n simple:**
 - `public class Usuario`: Estamos creando una clase llamada Usuario
-- `public int Id { get; set; }`: Cada usuario tiene un ID (n˙mero ˙nico)
+- `public int Id { get; set; }`: Cada usuario tiene un ID (n√∫mero √∫nico)
 - `get; set;`: Significa que podemos leer y modificar este valor
-- `string.Empty`: Valor por defecto (texto vacÌo)
-- `NombreCompleto =>`: Esto calcula autom·ticamente el nombre completo juntando nombre y apellidos
+- `string.Empty`: Valor por defecto (texto vac√≠o)
+- `NombreCompleto =>`: Esto calcula autom√°ticamente el nombre completo juntando nombre y apellidos
 
 ---
 
@@ -382,10 +382,10 @@ namespace Cine_app.Modelos
 }
 ```
 
-**?? ExplicaciÛn:**
-- `int?` o `string?`: El signo de interrogaciÛn significa "opcional", puede ser null
-- `decimal`: Tipo de dato para n˙meros con decimales (perfecto para calificaciones como 8.5)
-- `ImagenUrl`: Guardamos la URL de internet donde est· la imagen de la pelÌcula
+**?? Explicaci√≥n:**
+- `int?` o `string?`: El signo de interrogaci√≥n significa "opcional", puede ser null
+- `decimal`: Tipo de dato para n√∫meros con decimales (perfecto para calificaciones como 8.5)
+- `ImagenUrl`: Guardamos la URL de internet donde est√° la imagen de la pel√≠cula
 
 ---
 
@@ -398,7 +398,7 @@ namespace Cine_app.Modelos
 ```csharp
 namespace Cine_app.Modelos
 {
-    // Clase Sesion: representa un horario de pelÌcula
+    // Clase Sesion: representa un horario de pel√≠cula
     public class Sesion
     {
         public int Id { get; set; }
@@ -408,7 +408,7 @@ namespace Cine_app.Modelos
         public decimal Precio { get; set; }
         public bool Activa { get; set; }
 
-        // Propiedades de navegaciÛn (relaciones con otras tablas)
+        // Propiedades de navegaci√≥n (relaciones con otras tablas)
         public Pelicula? Pelicula { get; set; }
         public Sala? Sala { get; set; }
 
@@ -424,16 +424,16 @@ namespace Cine_app.Modelos
         public int Filas { get; set; }
         public int ColumnasPerFila { get; set; }
 
-        // Calcula autom·ticamente cu·ntas butacas tiene la sala
+        // Calcula autom√°ticamente cu√°ntas butacas tiene la sala
         public int CapacidadTotal => Filas * ColumnasPerFila;
     }
 }
 ```
 
-**?? ExplicaciÛn:**
+**?? Explicaci√≥n:**
 - `Pelicula? Pelicula`: Esta propiedad guarda el objeto Pelicula completo (no solo el ID)
 - `FechaHoraFormateada`: Convierte "2024-12-25 20:30:00" en "25/12/2024 20:30"
-- `CapacidadTotal =>`: Multiplica filas por columnas autom·ticamente
+- `CapacidadTotal =>`: Multiplica filas por columnas autom√°ticamente
 
 ---
 
@@ -509,21 +509,21 @@ namespace Cine_app.Modelos
 }
 ```
 
-**?? ExplicaciÛn:**
-- `Identificador`: Convierte n˙meros en letras para que sea m·s f·cil: Fila 1 = A, Fila 2 = B
+**?? Explicaci√≥n:**
+- `Identificador`: Convierte n√∫meros en letras para que sea m√°s f√°cil: Fila 1 = A, Fila 2 = B
 - `List<ReservaButaca>`: Una reserva puede tener varias butacas
 - `ReservaButaca`: Tabla intermedia, conecta una reserva con sus butacas
-- `ReservaViewModel`: VersiÛn simplificada para mostrar en la pantalla
+- `ReservaViewModel`: Versi√≥n simplificada para mostrar en la pantalla
 
 ---
 
-## ?? FASE 4: Creando los Servicios (La lÛgica)
+## ?? FASE 4: Creando los Servicios (La l√≥gica)
 
-Los servicios contienen el cÛdigo que hace el trabajo: conectarse a la base de datos, validar usuarios, crear reservas, etc.
+Los servicios contienen el c√≥digo que hace el trabajo: conectarse a la base de datos, validar usuarios, crear reservas, etc.
 
 ### Paso 4.1: Crear el Servicio de Base de Datos
 
-Este es el servicio m·s importante: se conecta a MySQL y hace todas las consultas.
+Este es el servicio m√°s importante: se conecta a MySQL y hace todas las consultas.
 
 1. Click derecho en la carpeta **Servicios**
 2. **Agregar > Clase**
@@ -540,7 +540,7 @@ namespace Cine_app.Servicios
 {
     public class ServicioBaseDeDatos
     {
-        // Cadena de conexiÛn a la base de datos
+        // Cadena de conexi√≥n a la base de datos
         private readonly string connectionString;
 
         // Constructor: se ejecuta al crear el servicio
@@ -548,16 +548,16 @@ namespace Cine_app.Servicios
         {
             // Carga el archivo .env
             DotNetEnv.Env.Load();
-            // Obtiene la cadena de conexiÛn
+            // Obtiene la cadena de conexi√≥n
             connectionString = Environment.GetEnvironmentVariable("DATABASE") ?? string.Empty;
         }
 
         // ???????????????????????????????????????????????????????????
-        // M…TODOS PARA PELÕCULAS
+        // M√âTODOS PARA PEL√çCULAS
         // ???????????????????????????????????????????????????????????
 
         /// <summary>
-        /// Obtiene todas las pelÌculas activas de la base de datos
+        /// Obtiene todas las pel√≠culas activas de la base de datos
         /// </summary>
         public async Task<List<Pelicula>> ObtenerPeliculasActivasAsync()
         {
@@ -594,60 +594,18 @@ namespace Cine_app.Servicios
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al obtener pelÌculas: {ex.Message}");
+                Console.WriteLine($"Error al obtener pel√≠culas: {ex.Message}");
             }
 
             return peliculas;
         }
 
-        /// <summary>
-        /// Obtiene una pelÌcula por su ID
-        /// </summary>
-        public async Task<Pelicula?> ObtenerPeliculaPorIdAsync(int peliculaId)
-        {
-            Pelicula? pelicula = null;
-
-            try
-            {
-                using var conexion = new MySqlConnection(connectionString);
-                await conexion.OpenAsync();
-
-                string query = "SELECT * FROM Peliculas WHERE Id = @Id AND Activa = 1";
-                using var comando = new MySqlCommand(query, conexion);
-                comando.Parameters.AddWithValue("@Id", peliculaId);
-
-                using var reader = await comando.ExecuteReaderAsync();
-                if (await reader.ReadAsync())
-                {
-                    pelicula = new Pelicula
-                    {
-                        Id = reader.GetInt32("Id"),
-                        Titulo = reader.GetString("Titulo"),
-                        Descripcion = reader.IsDBNull(reader.GetOrdinal("Descripcion")) ? null : reader.GetString("Descripcion"),
-                        Director = reader.IsDBNull(reader.GetOrdinal("Director")) ? null : reader.GetString("Director"),
-                        Duracion = reader.IsDBNull(reader.GetOrdinal("Duracion")) ? null : reader.GetInt32("Duracion"),
-                        Genero = reader.IsDBNull(reader.GetOrdinal("Genero")) ? null : reader.GetString("Genero"),
-                        FechaEstreno = reader.IsDBNull(reader.GetOrdinal("FechaEstreno")) ? null : reader.GetDateTime("FechaEstreno"),
-                        ImagenUrl = reader.IsDBNull(reader.GetOrdinal("ImagenUrl")) ? null : reader.GetString("ImagenUrl"),
-                        Calificacion = reader.IsDBNull(reader.GetOrdinal("Calificacion")) ? null : reader.GetDecimal("Calificacion"),
-                        Activa = reader.GetBoolean("Activa")
-                    };
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al obtener pelÌcula por ID: {ex.Message}");
-            }
-
-            return pelicula;
-        }
-
         // ???????????????????????????????????????????????????????????
-        // M…TODOS PARA SESIONES
+        // M√âTODOS PARA SESIONES
         // ???????????????????????????????????????????????????????????
 
         /// <summary>
-        /// Obtiene las sesiones de una pelÌcula, opcionalmente filtradas por fecha
+        /// Obtiene las sesiones de una pel√≠cula, opcionalmente filtradas por fecha
         /// </summary>
         public async Task<List<Sesion>> ObtenerSesionesPorPeliculaAsync(int peliculaId, DateTime? fecha = null)
         {
@@ -658,7 +616,7 @@ namespace Cine_app.Servicios
                 using var conexion = new MySqlConnection(connectionString);
                 await conexion.OpenAsync();
 
-                // Consulta con JOIN para obtener datos de pelÌcula y sala
+                // Consulta con JOIN para obtener datos de pel√≠cula y sala
                 string query = @"
                     SELECT s.*, p.*, sa.* 
                     FROM Sesiones s
@@ -718,64 +676,8 @@ namespace Cine_app.Servicios
             return sesiones;
         }
 
-        /// <summary>
-        /// Obtiene una sesiÛn por su ID
-        /// </summary>
-        public async Task<Sesion?> ObtenerSesionPorIdAsync(int sesionId)
-        {
-            Sesion? sesion = null;
-
-            try
-            {
-                using var conexion = new MySqlConnection(connectionString);
-                await conexion.OpenAsync();
-
-                string query = @"
-                    SELECT s.*, p.*, sa.* 
-                    FROM Sesiones s
-                    INNER JOIN Peliculas p ON s.PeliculaId = p.Id
-                    INNER JOIN Salas sa ON s.SalaId = sa.Id
-                    WHERE s.Id = @Id";
-
-                using var comando = new MySqlCommand(query, conexion);
-                comando.Parameters.AddWithValue("@Id", sesionId);
-
-                using var reader = await comando.ExecuteReaderAsync();
-                if (await reader.ReadAsync())
-                {
-                    sesion = new Sesion
-                    {
-                        Id = reader.GetInt32("Id"),
-                        PeliculaId = reader.GetInt32("PeliculaId"),
-                        SalaId = reader.GetInt32("SalaId"),
-                        FechaHora = reader.GetDateTime("FechaHora"),
-                        Precio = reader.GetDecimal("Precio"),
-                        Activa = reader.GetBoolean("Activa"),
-                        Pelicula = new Pelicula
-                        {
-                            Id = reader.GetInt32("PeliculaId"),
-                            Titulo = reader.GetString("Titulo")
-                        },
-                        Sala = new Sala
-                        {
-                            Id = reader.GetInt32("SalaId"),
-                            Nombre = reader.GetString("Nombre"),
-                            Filas = reader.GetInt32("Filas"),
-                            ColumnasPerFila = reader.GetInt32("ColumnasPerFila")
-                        }
-                    };
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al obtener sesiÛn por ID: {ex.Message}");
-            }
-
-            return sesion;
-        }
-
         // ???????????????????????????????????????????????????????????
-        // M…TODOS PARA BUTACAS
+        // M√âTODOS PARA BUTACAS
         // ???????????????????????????????????????????????????????????
 
         /// <summary>
@@ -821,7 +723,7 @@ namespace Cine_app.Servicios
         }
 
         /// <summary>
-        /// Obtiene los IDs de las butacas ya reservadas para una sesiÛn
+        /// Obtiene los IDs de las butacas ya reservadas para una sesi√≥n
         /// </summary>
         public async Task<List<int>> ObtenerButacasReservadasAsync(int sesionId)
         {
@@ -857,7 +759,7 @@ namespace Cine_app.Servicios
         }
 
         // ???????????????????????????????????????????????????????????
-        // M…TODOS PARA USUARIOS
+        // M√âTODOS PARA USUARIOS
         // ???????????????????????????????????????????????????????????
 
         /// <summary>
@@ -960,7 +862,7 @@ namespace Cine_app.Servicios
         }
 
         /// <summary>
-        /// Actualiza la contraseÒa de un usuario
+        /// Actualiza la contrase√±a de un usuario
         /// </summary>
         public async Task<bool> ActualizarPasswordAsync(int usuarioId, string nuevaPassword)
         {
@@ -979,13 +881,13 @@ namespace Cine_app.Servicios
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al actualizar contraseÒa: {ex.Message}");
+                Console.WriteLine($"Error al actualizar contrase√±a: {ex.Message}");
                 return false;
             }
         }
 
         // ???????????????????????????????????????????????????????????
-        // M…TODOS PARA RESERVAS
+        // M√âTODOS PARA RESERVAS
         // ???????????????????????????????????????????????????????????
 
         /// <summary>
@@ -1063,7 +965,7 @@ namespace Cine_app.Servicios
         }
 
         /// <summary>
-        /// Obtiene las butacas de una reserva especÌfica
+        /// Obtiene las butacas de una reserva espec√≠fica
         /// </summary>
         private async Task<List<ReservaButaca>> ObtenerButacasDeReservaAsync(int reservaId)
         {
@@ -1104,19 +1006,19 @@ namespace Cine_app.Servicios
         }
 
         /// <summary>
-        /// Crea una nueva reserva (usa transacciÛn para garantizar integridad)
+        /// Crea una nueva reserva (usa transacci√≥n para garantizar integridad)
         /// </summary>
         public async Task<int> CrearReservaAsync(Reserva reserva, List<int> butacaIds)
         {
             using var conexion = new MySqlConnection(connectionString);
             await conexion.OpenAsync();
 
-            // Iniciar transacciÛn (todo o nada)
+            // Iniciar transacci√≥n (todo o nada)
             using var transaccion = await conexion.BeginTransactionAsync();
 
             try
             {
-                // 1. Generar cÛdigo de reserva ˙nico
+                // 1. Generar c√≥digo de reserva √∫nico
                 string codigoReserva = $"RES{DateTime.Now:yyyyMMddHHmmss}{new Random().Next(1000, 9999)}";
 
                 // 2. Insertar reserva principal
@@ -1153,7 +1055,7 @@ namespace Cine_app.Servicios
                     await comando.ExecuteNonQueryAsync();
                 }
 
-                // 4. Confirmar transacciÛn
+                // 4. Confirmar transacci√≥n
                 await transaccion.CommitAsync();
                 return reservaId;
             }
@@ -1169,17 +1071,17 @@ namespace Cine_app.Servicios
 }
 ```
 
-**?? øQuÈ hace este cÛdigo?**
-- Configura el idioma a espaÒol
+**?? ¬øQu√© hace este c√≥digo?**
+- Configura el idioma a espa√±ol
 - Captura errores para que la app no se cierre inesperadamente
 - Muestra mensajes de error amigables al usuario
 
 ---
 
-*(Contin˙a en el siguiente mensaje debido a limitaciones de longitud)*
+*(Contin√∫a en el siguiente mensaje debido a limitaciones de longitud)*
 
-**Esta es la primera parte de la guÌa. øQuieres que contin˙e con:**
-- La creaciÛn de las ventanas (CarteleraWindow, LoginWindow, etc.)?
+**Esta es la primera parte de la gu√≠a. ¬øQuieres que contin√∫e con:**
+- La creaci√≥n de las ventanas (CarteleraWindow, LoginWindow, etc.)?
 - Los estilos XAML?
-- La configuraciÛn final y pruebas?
+- La configuraci√≥n final y pruebas?
 
