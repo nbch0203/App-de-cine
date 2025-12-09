@@ -4,11 +4,9 @@
     "\\Cine_app",
     "\\Cine_app\\Database",
     "\\Cine_app\\Documentacion",
-    "\\Cine_app\\Modelos",
-    "\\Cine_app\\Servicios",
-    "\\Cine_app\\Ventanas",
+    "\\Cine_app\\Vistas",
     "\\Guia paso a paso"
   ],
-  "SelectedNode": "\\Cine_app\\Servicios\\ServicioSesion.cs",
+  "SelectedNode": "\\Cine_app\\Documentacion\\CARACTERISTICAS_AVANZADAS.md",
   "PreviewInSolutionExplorer": false
 }

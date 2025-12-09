@@ -1,90 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\",
+  "WorkspaceRootPath": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\ventanas\\seleccionbutacaswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\seleccionbutacaswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\ventanas\\registrowindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\registrowindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\ventanas\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\ventanas\\pagowindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\pagowindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\ventanas\\pagowindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\pagowindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\ventanas\\seleccionbutacaswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\seleccionbutacaswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\database\\cinema_database_mysql.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
-      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:database\\cinema_database_mysql.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\ventanas\\perfilusuariowindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\perfilusuariowindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\ventanas\\perfilusuariowindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\perfilusuariowindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\modelos\\butaca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:modelos\\butaca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\servicios\\serviciobasededatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:servicios\\serviciobasededatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\ventanas\\cartelerawindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\cartelerawindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\ventanas\\seleccionsesionwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\seleccionsesionwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\verificar_caracteres.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:verificar_caracteres.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\documentacion\\documentacion_completa_proyecto.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}",
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\documentacion\\documentacion_completa_proyecto.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}",
       "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:documentacion\\documentacion_completa_proyecto.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\servicios\\serviciosesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:servicios\\serviciosesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\database\\cinema_database_mysql.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:database\\cinema_database_mysql.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:.env||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\ventanas\\seleccionbutacaswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\seleccionbutacaswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\ventanas\\registrowindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\registrowindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\ventanas\\cartelerawindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\cartelerawindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\verificar_caracteres.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Guia paso a paso\\README_GUIA_ESTUDIANTES.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
@@ -102,104 +33,174 @@
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Guia paso a paso\\GUIA_PASO_A_PASO.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\modelos\\pelicula.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:modelos\\pelicula.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\SOLUCION_FINAL_CARACTERES.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\modelos\\sesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:modelos\\sesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\limpiar_caracteres.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\ventanas\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\CORRECCION_FINAL_COMPLETA.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\ventanas\\seleccionsesionwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\seleccionsesionwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\SOLUCION_DEFINITIVA_EMOJIS.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\SOLUCION_FINAL_CARACTERES.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SOLUCION_FINAL_CARACTERES.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\corregir_encoding_completo.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\limpiar_caracteres.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:limpiar_caracteres.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\fix_encoding.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\CORRECCION_FINAL_COMPLETA.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CORRECCION_FINAL_COMPLETA.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\SOLUCION_ENCODING.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\SOLUCION_DEFINITIVA_EMOJIS.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SOLUCION_DEFINITIVA_EMOJIS.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\verificar_proyecto.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\corregir_encoding_completo.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:corregir_encoding_completo.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\corregir_namespaces.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\fix_encoding.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:fix_encoding.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\RESUMEN_FINAL_Y_SOLUCION.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\SOLUCION_ENCODING.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SOLUCION_ENCODING.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\corregir_euro.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\verificar_proyecto.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:verificar_proyecto.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\corregir_encoding.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\corregir_namespaces.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:corregir_namespaces.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\GUIA_CORRECCION_FINAL.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\RESUMEN_FINAL_Y_SOLUCION.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:RESUMEN_FINAL_Y_SOLUCION.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\CORRECCIONES_PROYECTO.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\corregir_euro.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:corregir_euro.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\ventanas\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\corregir_encoding.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:corregir_encoding.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\GUIA_CORRECCION_FINAL.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:GUIA_CORRECCION_FINAL.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\CORRECCIONES_PROYECTO.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CORRECCIONES_PROYECTO.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\vistas\\carteleraview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\vistas\\carteleraview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:vistas\\carteleraview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\vistas\\carteleraview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:vistas\\carteleraview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\vistas\\seleccionsesionview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:vistas\\seleccionsesionview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\vistas\\seleccionsesionview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:vistas\\seleccionsesionview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\vistas\\seleccionsesionview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:vistas\\seleccionsesionview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\vistas\\seleccionsesionview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:vistas\\seleccionsesionview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\vistas\\carteleraview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:vistas\\carteleraview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app cine\\cine_app\\ventanas\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\ventanas\\registrowindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\registrowindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\ventanas\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\ventanas\\pagowindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\pagowindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\ventanas\\seleccionbutacaswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\seleccionbutacaswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\ventanas\\pagowindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\pagowindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\modelos\\butaca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:modelos\\butaca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\ventanas\\perfilusuariowindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\perfilusuariowindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\ventanas\\perfilusuariowindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\perfilusuariowindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\servicios\\serviciobasededatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:servicios\\serviciobasededatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\ventanas\\cartelerawindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\cartelerawindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\ventanas\\seleccionsesionwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\seleccionsesionwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\ventanas\\seleccionsesionwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\seleccionsesionwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\ventanas\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\modelos\\sesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:modelos\\sesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\modelos\\pelicula.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:modelos\\pelicula.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\servicios\\serviciosesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:servicios\\serviciosesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:.env||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\ventanas\\registrowindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\registrowindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\ventanas\\cartelerawindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:ventanas\\cartelerawindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\database\\cinema_database_mysql.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:database\\cinema_database_mysql.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\readme.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:readme.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\documentacion\\instalacion_rapida.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:documentacion\\instalacion_rapida.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|d:\\clases\\dam\\segundo_dam\\desarrollo_de_interfaces\\app-cine\\cine_app\\documentacion\\caracteristicas_avanzadas.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}",
+      "RelativeMoniker": "D:0:0:{CA4E8C5E-FBAF-0534-8F53-F1A8F7CE7D40}|Cine_app.csproj|solutionrelative:documentacion\\caracteristicas_avanzadas.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
     }
   ],
   "DocumentGroupContainers": [
@@ -209,7 +210,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -217,173 +218,225 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "Ventanas\\MainWindow.xaml.cs",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\MainWindow.xaml.cs",
-              "RelativeToolTip": "Ventanas\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-03T15:27:22.347Z",
+              "DocumentIndex": 54,
+              "Title": "CARACTERISTICAS_AVANZADAS.md",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Documentacion\\CARACTERISTICAS_AVANZADAS.md",
+              "RelativeDocumentMoniker": "Documentacion\\CARACTERISTICAS_AVANZADAS.md",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Documentacion\\CARACTERISTICAS_AVANZADAS.md",
+              "RelativeToolTip": "Documentacion\\CARACTERISTICAS_AVANZADAS.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUDAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-12-04T15:39:42.872Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
-              "Title": "CarteleraView.xaml",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Vistas\\CarteleraView.xaml",
-              "RelativeDocumentMoniker": "Vistas\\CarteleraView.xaml",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Vistas\\CarteleraView.xaml",
-              "RelativeToolTip": "Vistas\\CarteleraView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-12-03T15:21:06.975Z",
+              "DocumentIndex": 53,
+              "Title": "INSTALACION_RAPIDA.md",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Documentacion\\INSTALACION_RAPIDA.md",
+              "RelativeDocumentMoniker": "Documentacion\\INSTALACION_RAPIDA.md",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Documentacion\\INSTALACION_RAPIDA.md",
+              "RelativeToolTip": "Documentacion\\INSTALACION_RAPIDA.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF8BAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-12-04T15:37:17.184Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 52,
+              "Title": "README.md",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\README.md",
+              "RelativeDocumentMoniker": "README.md",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\README.md",
+              "RelativeToolTip": "README.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADYBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-12-04T15:36:19.643Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "SeleccionButacasWindow.xaml.cs",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\SeleccionButacasWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\SeleccionButacasWindow.xaml.cs",
               "RelativeDocumentMoniker": "Ventanas\\SeleccionButacasWindow.xaml.cs",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\SeleccionButacasWindow.xaml.cs",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\SeleccionButacasWindow.xaml.cs",
               "RelativeToolTip": "Ventanas\\SeleccionButacasWindow.xaml.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAhwCcAAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAhwB0AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-29T19:17:56.147Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 25,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\MainWindow.xaml",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\MainWindow.xaml",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\MainWindow.xaml",
               "RelativeToolTip": "MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-12-03T15:23:00.864Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 47,
-              "Title": "SeleccionSesionView.xaml.cs",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Vistas\\SeleccionSesionView.xaml.cs",
-              "RelativeDocumentMoniker": "Vistas\\SeleccionSesionView.xaml.cs",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Vistas\\SeleccionSesionView.xaml.cs",
-              "RelativeToolTip": "Vistas\\SeleccionSesionView.xaml.cs",
-              "ViewState": "AgIAANIAAAAAAAAAAABBwNMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-03T15:22:46.033Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 46,
-              "Title": "SeleccionSesionView.xaml",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Vistas\\SeleccionSesionView.xaml",
-              "RelativeDocumentMoniker": "Vistas\\SeleccionSesionView.xaml",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Vistas\\SeleccionSesionView.xaml",
-              "RelativeToolTip": "Vistas\\SeleccionSesionView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-12-03T15:22:03.77Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 45,
-              "Title": "CarteleraView.xaml.cs",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Vistas\\CarteleraView.xaml.cs",
-              "RelativeDocumentMoniker": "Vistas\\CarteleraView.xaml.cs",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Vistas\\CarteleraView.xaml.cs",
-              "RelativeToolTip": "Vistas\\CarteleraView.xaml.cs",
-              "ViewState": "AgIAAOIAAAAAAAAAAABBwOMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-03T15:21:41.927Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 49,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\MainWindow.xaml.cs",
-              "RelativeToolTip": "MainWindow.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-03T15:23:18.939Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-03T15:23:00.864Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "cinema_database_mysql.sql ",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Database\\cinema_database_mysql.sql",
+              "RelativeDocumentMoniker": "Database\\cinema_database_mysql.sql",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Database\\cinema_database_mysql.sql",
+              "RelativeToolTip": "Database\\cinema_database_mysql.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-11-28T13:29:37.07Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DOCUMENTACION_COMPLETA_PROYECTO.md",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Documentacion\\DOCUMENTACION_COMPLETA_PROYECTO.md",
+              "RelativeDocumentMoniker": "Documentacion\\DOCUMENTACION_COMPLETA_PROYECTO.md",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Documentacion\\DOCUMENTACION_COMPLETA_PROYECTO.md",
+              "RelativeToolTip": "Documentacion\\DOCUMENTACION_COMPLETA_PROYECTO.md",
+              "ViewState": "AgIAAKoDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-11-28T18:51:46.616Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "CarteleraView.xaml",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Vistas\\CarteleraView.xaml",
+              "RelativeDocumentMoniker": "Vistas\\CarteleraView.xaml",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Vistas\\CarteleraView.xaml",
+              "RelativeToolTip": "Vistas\\CarteleraView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-12-03T15:21:06.975Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Ventanas\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\MainWindow.xaml.cs",
+              "RelativeToolTip": "Ventanas\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-03T15:27:22.347Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "SeleccionSesionView.xaml.cs",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Vistas\\SeleccionSesionView.xaml.cs",
+              "RelativeDocumentMoniker": "Vistas\\SeleccionSesionView.xaml.cs",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Vistas\\SeleccionSesionView.xaml.cs",
+              "RelativeToolTip": "Vistas\\SeleccionSesionView.xaml.cs",
+              "ViewState": "AgIAANIAAAAAAAAAAABBwNMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-03T15:22:46.033Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "SeleccionSesionView.xaml",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Vistas\\SeleccionSesionView.xaml",
+              "RelativeDocumentMoniker": "Vistas\\SeleccionSesionView.xaml",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Vistas\\SeleccionSesionView.xaml",
+              "RelativeToolTip": "Vistas\\SeleccionSesionView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-12-03T15:22:03.77Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "CarteleraView.xaml.cs",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Vistas\\CarteleraView.xaml.cs",
+              "RelativeDocumentMoniker": "Vistas\\CarteleraView.xaml.cs",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Vistas\\CarteleraView.xaml.cs",
+              "RelativeToolTip": "Vistas\\CarteleraView.xaml.cs",
+              "ViewState": "AgIAAOIAAAAAAAAAAABBwOMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-03T15:21:41.927Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-03T15:23:18.939Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
               "Title": "RegistroWindow.xaml",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\RegistroWindow.xaml",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\RegistroWindow.xaml",
               "RelativeDocumentMoniker": "Ventanas\\RegistroWindow.xaml",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\RegistroWindow.xaml",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\RegistroWindow.xaml",
               "RelativeToolTip": "Ventanas\\RegistroWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-28T11:09:20.455Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-28T11:09:20.455Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 31,
               "Title": "LoginWindow.xaml",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\LoginWindow.xaml",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\LoginWindow.xaml",
               "RelativeDocumentMoniker": "Ventanas\\LoginWindow.xaml",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\LoginWindow.xaml",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\LoginWindow.xaml",
               "RelativeToolTip": "Ventanas\\LoginWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-29T18:52:44.005Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T18:52:44.005Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 32,
               "Title": "PagoWindow.xaml",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\PagoWindow.xaml",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\PagoWindow.xaml",
               "RelativeDocumentMoniker": "Ventanas\\PagoWindow.xaml",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\PagoWindow.xaml",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\PagoWindow.xaml",
               "RelativeToolTip": "Ventanas\\PagoWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-29T18:41:28.095Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T18:41:28.095Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 33,
               "Title": "SeleccionButacasWindow.xaml",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\SeleccionButacasWindow.xaml",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\SeleccionButacasWindow.xaml",
               "RelativeDocumentMoniker": "Ventanas\\SeleccionButacasWindow.xaml",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\SeleccionButacasWindow.xaml",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\SeleccionButacasWindow.xaml",
               "RelativeToolTip": "Ventanas\\SeleccionButacasWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-29T18:50:24.527Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T18:50:24.527Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 34,
               "Title": "PagoWindow.xaml.cs",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\PagoWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\PagoWindow.xaml.cs",
               "RelativeDocumentMoniker": "Ventanas\\PagoWindow.xaml.cs",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\PagoWindow.xaml.cs",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\PagoWindow.xaml.cs",
               "RelativeToolTip": "Ventanas\\PagoWindow.xaml.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAAYwCUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T18:41:06.569Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T18:41:06.569Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 35,
               "Title": "Butaca.cs",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Modelos\\Butaca.cs",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Modelos\\Butaca.cs",
               "RelativeDocumentMoniker": "Modelos\\Butaca.cs",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Modelos\\Butaca.cs",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Modelos\\Butaca.cs",
               "RelativeToolTip": "Modelos\\Butaca.cs",
               "ViewState": "AgIAACUAAAAAAAAAAADgvwAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -391,188 +444,175 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "cinema_database_mysql.sql",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Database\\cinema_database_mysql.sql",
-              "RelativeDocumentMoniker": "Database\\cinema_database_mysql.sql",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Database\\cinema_database_mysql.sql",
-              "RelativeToolTip": "Database\\cinema_database_mysql.sql",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-11-28T13:29:37.07Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 36,
               "Title": "PerfilUsuarioWindow.xaml",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\PerfilUsuarioWindow.xaml",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\PerfilUsuarioWindow.xaml",
               "RelativeDocumentMoniker": "Ventanas\\PerfilUsuarioWindow.xaml",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\PerfilUsuarioWindow.xaml",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\PerfilUsuarioWindow.xaml",
               "RelativeToolTip": "Ventanas\\PerfilUsuarioWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-11-28T11:59:36.721Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 37,
               "Title": "PerfilUsuarioWindow.xaml.cs",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\PerfilUsuarioWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\PerfilUsuarioWindow.xaml.cs",
               "RelativeDocumentMoniker": "Ventanas\\PerfilUsuarioWindow.xaml.cs",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\PerfilUsuarioWindow.xaml.cs",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\PerfilUsuarioWindow.xaml.cs",
               "RelativeToolTip": "Ventanas\\PerfilUsuarioWindow.xaml.cs",
               "ViewState": "AgIAABMCAAAAAAAAAEBVwMcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-28T12:07:32.58Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-28T12:07:32.58Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 38,
               "Title": "ServicioBaseDeDatos.cs",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Servicios\\ServicioBaseDeDatos.cs",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Servicios\\ServicioBaseDeDatos.cs",
               "RelativeDocumentMoniker": "Servicios\\ServicioBaseDeDatos.cs",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Servicios\\ServicioBaseDeDatos.cs",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Servicios\\ServicioBaseDeDatos.cs",
               "RelativeToolTip": "Servicios\\ServicioBaseDeDatos.cs",
               "ViewState": "AgIAAKACAAAAAAAAAEBVwKQCAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-28T10:58:10.748Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-28T10:58:10.748Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 39,
               "Title": "CarteleraWindow.xaml",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\CarteleraWindow.xaml",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\CarteleraWindow.xaml",
               "RelativeDocumentMoniker": "Ventanas\\CarteleraWindow.xaml",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\CarteleraWindow.xaml",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\CarteleraWindow.xaml",
               "RelativeToolTip": "Ventanas\\CarteleraWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-11-28T10:54:58.652Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 40,
               "Title": "SeleccionSesionWindow.xaml",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\SeleccionSesionWindow.xaml",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\SeleccionSesionWindow.xaml",
               "RelativeDocumentMoniker": "Ventanas\\SeleccionSesionWindow.xaml",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\SeleccionSesionWindow.xaml",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\SeleccionSesionWindow.xaml",
               "RelativeToolTip": "Ventanas\\SeleccionSesionWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-11-28T12:11:51.472Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 3,
               "Title": "verificar_caracteres.ps1",
               "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\verificar_caracteres.ps1",
-              "RelativeDocumentMoniker": "verificar_caracteres.ps1",
+              "RelativeDocumentMoniker": "..\\..\\App Cine\\Cine_app\\verificar_caracteres.ps1",
               "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\verificar_caracteres.ps1",
-              "RelativeToolTip": "verificar_caracteres.ps1",
+              "RelativeToolTip": "..\\..\\App Cine\\Cine_app\\verificar_caracteres.ps1",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-11-29T19:11:43.766Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 12,
               "Title": "SOLUCION_DEFINITIVA_EMOJIS.md",
               "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\SOLUCION_DEFINITIVA_EMOJIS.md",
-              "RelativeDocumentMoniker": "SOLUCION_DEFINITIVA_EMOJIS.md",
+              "RelativeDocumentMoniker": "..\\..\\App Cine\\Cine_app\\SOLUCION_DEFINITIVA_EMOJIS.md",
               "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\SOLUCION_DEFINITIVA_EMOJIS.md",
-              "RelativeToolTip": "SOLUCION_DEFINITIVA_EMOJIS.md",
+              "RelativeToolTip": "..\\..\\App Cine\\Cine_app\\SOLUCION_DEFINITIVA_EMOJIS.md",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAKkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
               "WhenOpened": "2025-11-29T19:19:45.782Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 11,
               "Title": "CORRECCION_FINAL_COMPLETA.md",
               "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\CORRECCION_FINAL_COMPLETA.md",
-              "RelativeDocumentMoniker": "CORRECCION_FINAL_COMPLETA.md",
+              "RelativeDocumentMoniker": "..\\..\\App Cine\\Cine_app\\CORRECCION_FINAL_COMPLETA.md",
               "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\CORRECCION_FINAL_COMPLETA.md",
-              "RelativeToolTip": "CORRECCION_FINAL_COMPLETA.md",
+              "RelativeToolTip": "..\\..\\App Cine\\Cine_app\\CORRECCION_FINAL_COMPLETA.md",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAMwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
               "WhenOpened": "2025-11-29T19:24:02.761Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 10,
               "Title": "limpiar_caracteres.ps1",
               "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\limpiar_caracteres.ps1",
-              "RelativeDocumentMoniker": "limpiar_caracteres.ps1",
+              "RelativeDocumentMoniker": "..\\..\\App Cine\\Cine_app\\limpiar_caracteres.ps1",
               "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\limpiar_caracteres.ps1",
-              "RelativeToolTip": "limpiar_caracteres.ps1",
+              "RelativeToolTip": "..\\..\\App Cine\\Cine_app\\limpiar_caracteres.ps1",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAJUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-11-29T19:08:27.141Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 9,
               "Title": "SOLUCION_FINAL_CARACTERES.md",
               "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\SOLUCION_FINAL_CARACTERES.md",
-              "RelativeDocumentMoniker": "SOLUCION_FINAL_CARACTERES.md",
+              "RelativeDocumentMoniker": "..\\..\\App Cine\\Cine_app\\SOLUCION_FINAL_CARACTERES.md",
               "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\SOLUCION_FINAL_CARACTERES.md",
-              "RelativeToolTip": "SOLUCION_FINAL_CARACTERES.md",
+              "RelativeToolTip": "..\\..\\App Cine\\Cine_app\\SOLUCION_FINAL_CARACTERES.md",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAALUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
               "WhenOpened": "2025-11-29T19:11:24.318Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 13,
               "Title": "corregir_encoding_completo.ps1",
               "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\corregir_encoding_completo.ps1",
-              "RelativeDocumentMoniker": "corregir_encoding_completo.ps1",
+              "RelativeDocumentMoniker": "..\\..\\App Cine\\Cine_app\\corregir_encoding_completo.ps1",
               "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\corregir_encoding_completo.ps1",
-              "RelativeToolTip": "corregir_encoding_completo.ps1",
+              "RelativeToolTip": "..\\..\\App Cine\\Cine_app\\corregir_encoding_completo.ps1",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAALkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-11-29T19:02:58.496Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 14,
               "Title": "fix_encoding.ps1",
               "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\fix_encoding.ps1",
-              "RelativeDocumentMoniker": "fix_encoding.ps1",
+              "RelativeDocumentMoniker": "..\\..\\App Cine\\Cine_app\\fix_encoding.ps1",
               "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\fix_encoding.ps1",
-              "RelativeToolTip": "fix_encoding.ps1",
+              "RelativeToolTip": "..\\..\\App Cine\\Cine_app\\fix_encoding.ps1",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAHIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-11-29T19:03:31.72Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 15,
               "Title": "SOLUCION_ENCODING.md",
               "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\SOLUCION_ENCODING.md",
-              "RelativeDocumentMoniker": "SOLUCION_ENCODING.md",
+              "RelativeDocumentMoniker": "..\\..\\App Cine\\Cine_app\\SOLUCION_ENCODING.md",
               "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\SOLUCION_ENCODING.md",
-              "RelativeToolTip": "SOLUCION_ENCODING.md",
+              "RelativeToolTip": "..\\..\\App Cine\\Cine_app\\SOLUCION_ENCODING.md",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
               "WhenOpened": "2025-11-29T19:05:16.594Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 16,
               "Title": "verificar_proyecto.ps1",
               "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\verificar_proyecto.ps1",
-              "RelativeDocumentMoniker": "verificar_proyecto.ps1",
+              "RelativeDocumentMoniker": "..\\..\\App Cine\\Cine_app\\verificar_proyecto.ps1",
               "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\verificar_proyecto.ps1",
-              "RelativeToolTip": "verificar_proyecto.ps1",
+              "RelativeToolTip": "..\\..\\App Cine\\Cine_app\\verificar_proyecto.ps1",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAIgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-11-29T19:05:41.576Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 41,
               "Title": "SeleccionSesionWindow.xaml.cs",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\SeleccionSesionWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\SeleccionSesionWindow.xaml.cs",
               "RelativeDocumentMoniker": "Ventanas\\SeleccionSesionWindow.xaml.cs",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\SeleccionSesionWindow.xaml.cs",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\SeleccionSesionWindow.xaml.cs",
               "RelativeToolTip": "Ventanas\\SeleccionSesionWindow.xaml.cs",
               "ViewState": "AgIAAMgAAAAAAAAAAEBVwMwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -580,23 +620,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 17,
               "Title": "corregir_namespaces.ps1",
               "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\corregir_namespaces.ps1",
-              "RelativeDocumentMoniker": "corregir_namespaces.ps1",
+              "RelativeDocumentMoniker": "..\\..\\App Cine\\Cine_app\\corregir_namespaces.ps1",
               "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\corregir_namespaces.ps1",
-              "RelativeToolTip": "corregir_namespaces.ps1",
+              "RelativeToolTip": "..\\..\\App Cine\\Cine_app\\corregir_namespaces.ps1",
               "ViewState": "AgIAAAoAAAAAAAAAAAAAAB0AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-11-29T18:46:25.087Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 42,
               "Title": "LoginWindow.xaml.cs",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\LoginWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\LoginWindow.xaml.cs",
               "RelativeDocumentMoniker": "Ventanas\\LoginWindow.xaml.cs",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\LoginWindow.xaml.cs",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\LoginWindow.xaml.cs",
               "RelativeToolTip": "Ventanas\\LoginWindow.xaml.cs",
               "ViewState": "AgIAAGwAAAAAAAAAAIBZwAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -604,83 +644,71 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 18,
               "Title": "RESUMEN_FINAL_Y_SOLUCION.md",
               "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\RESUMEN_FINAL_Y_SOLUCION.md",
-              "RelativeDocumentMoniker": "RESUMEN_FINAL_Y_SOLUCION.md",
+              "RelativeDocumentMoniker": "..\\..\\App Cine\\Cine_app\\RESUMEN_FINAL_Y_SOLUCION.md",
               "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\RESUMEN_FINAL_Y_SOLUCION.md",
-              "RelativeToolTip": "RESUMEN_FINAL_Y_SOLUCION.md",
+              "RelativeToolTip": "..\\..\\App Cine\\Cine_app\\RESUMEN_FINAL_Y_SOLUCION.md",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAANgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
               "WhenOpened": "2025-11-29T18:58:44.555Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 19,
               "Title": "corregir_euro.ps1",
               "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\corregir_euro.ps1",
-              "RelativeDocumentMoniker": "corregir_euro.ps1",
+              "RelativeDocumentMoniker": "..\\..\\App Cine\\Cine_app\\corregir_euro.ps1",
               "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\corregir_euro.ps1",
-              "RelativeToolTip": "corregir_euro.ps1",
+              "RelativeToolTip": "..\\..\\App Cine\\Cine_app\\corregir_euro.ps1",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-11-29T18:54:48.57Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 20,
               "Title": "corregir_encoding.ps1",
               "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\corregir_encoding.ps1",
-              "RelativeDocumentMoniker": "corregir_encoding.ps1",
+              "RelativeDocumentMoniker": "..\\..\\App Cine\\Cine_app\\corregir_encoding.ps1",
               "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\corregir_encoding.ps1",
-              "RelativeToolTip": "corregir_encoding.ps1",
+              "RelativeToolTip": "..\\..\\App Cine\\Cine_app\\corregir_encoding.ps1",
               "ViewState": "AgIAAJAAAAAAAAAAAABRwJMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-11-29T18:53:45.377Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 21,
               "Title": "GUIA_CORRECCION_FINAL.md",
               "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\GUIA_CORRECCION_FINAL.md",
-              "RelativeDocumentMoniker": "GUIA_CORRECCION_FINAL.md",
+              "RelativeDocumentMoniker": "..\\..\\App Cine\\Cine_app\\GUIA_CORRECCION_FINAL.md",
               "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\GUIA_CORRECCION_FINAL.md",
-              "RelativeToolTip": "GUIA_CORRECCION_FINAL.md",
+              "RelativeToolTip": "..\\..\\App Cine\\Cine_app\\GUIA_CORRECCION_FINAL.md",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAI0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
               "WhenOpened": "2025-11-29T18:53:14.25Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "DOCUMENTACION_COMPLETA_PROYECTO.md",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Documentacion\\DOCUMENTACION_COMPLETA_PROYECTO.md",
-              "RelativeDocumentMoniker": "Documentacion\\DOCUMENTACION_COMPLETA_PROYECTO.md",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Documentacion\\DOCUMENTACION_COMPLETA_PROYECTO.md",
-              "RelativeToolTip": "Documentacion\\DOCUMENTACION_COMPLETA_PROYECTO.md",
-              "ViewState": "AgIAAGECAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2025-11-28T18:51:46.616Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 22,
               "Title": "CORRECCIONES_PROYECTO.md",
               "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\CORRECCIONES_PROYECTO.md",
-              "RelativeDocumentMoniker": "CORRECCIONES_PROYECTO.md",
+              "RelativeDocumentMoniker": "..\\..\\App Cine\\Cine_app\\CORRECCIONES_PROYECTO.md",
               "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\CORRECCIONES_PROYECTO.md",
-              "RelativeToolTip": "CORRECCIONES_PROYECTO.md",
+              "RelativeToolTip": "..\\..\\App Cine\\Cine_app\\CORRECCIONES_PROYECTO.md",
               "ViewState": "AgIAAHsAAAAAAAAAAIBJwH0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
               "WhenOpened": "2025-11-29T18:44:14.844Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 43,
               "Title": "Sesion.cs",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Modelos\\Sesion.cs",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Modelos\\Sesion.cs",
               "RelativeDocumentMoniker": "Modelos\\Sesion.cs",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Modelos\\Sesion.cs",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Modelos\\Sesion.cs",
               "RelativeToolTip": "Modelos\\Sesion.cs",
               "ViewState": "AgIAAB0AAAAAAAAAAAAAwBMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -688,11 +716,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 44,
               "Title": "Pelicula.cs",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Modelos\\Pelicula.cs",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Modelos\\Pelicula.cs",
               "RelativeDocumentMoniker": "Modelos\\Pelicula.cs",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Modelos\\Pelicula.cs",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Modelos\\Pelicula.cs",
               "RelativeToolTip": "Modelos\\Pelicula.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAEBgwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -700,7 +728,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 6,
               "Title": "GUIA_PASO_A_PASO_PARTE_3.md",
               "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Guia paso a paso\\GUIA_PASO_A_PASO_PARTE_3.md",
               "RelativeDocumentMoniker": "..\\..\\Cine_app\\Guia paso a paso\\GUIA_PASO_A_PASO_PARTE_3.md",
@@ -712,7 +740,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 7,
               "Title": "GUIA_PASO_A_PASO_PARTE_2.md",
               "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Guia paso a paso\\GUIA_PASO_A_PASO_PARTE_2.md",
               "RelativeDocumentMoniker": "..\\..\\Cine_app\\Guia paso a paso\\GUIA_PASO_A_PASO_PARTE_2.md",
@@ -724,7 +752,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 5,
               "Title": "GUIA_PASO_A_PASO_PARTE_4.md",
               "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Guia paso a paso\\GUIA_PASO_A_PASO_PARTE_4.md",
               "RelativeDocumentMoniker": "..\\..\\Cine_app\\Guia paso a paso\\GUIA_PASO_A_PASO_PARTE_4.md",
@@ -736,7 +764,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 4,
               "Title": "README_GUIA_ESTUDIANTES.md",
               "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Guia paso a paso\\README_GUIA_ESTUDIANTES.md",
               "RelativeDocumentMoniker": "..\\..\\Cine_app\\Guia paso a paso\\README_GUIA_ESTUDIANTES.md",
@@ -748,7 +776,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 8,
               "Title": "GUIA_PASO_A_PASO.md",
               "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\Cine_app\\Guia paso a paso\\GUIA_PASO_A_PASO.md",
               "RelativeDocumentMoniker": "..\\..\\Cine_app\\Guia paso a paso\\GUIA_PASO_A_PASO.md",
@@ -760,11 +788,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 45,
               "Title": "ServicioSesion.cs",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Servicios\\ServicioSesion.cs",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Servicios\\ServicioSesion.cs",
               "RelativeDocumentMoniker": "Servicios\\ServicioSesion.cs",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Servicios\\ServicioSesion.cs",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Servicios\\ServicioSesion.cs",
               "RelativeToolTip": "Servicios\\ServicioSesion.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -772,11 +800,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 46,
               "Title": ".env",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\.env",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\.env",
               "RelativeDocumentMoniker": ".env",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\.env",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\.env",
               "RelativeToolTip": ".env",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAACFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
@@ -784,11 +812,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 47,
               "Title": "App.xaml.cs",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\App.xaml.cs",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\App.xaml.cs",
               "RelativeDocumentMoniker": "App.xaml.cs",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\App.xaml.cs",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\App.xaml.cs",
               "RelativeToolTip": "App.xaml.cs",
               "ViewState": "AgIAADYAAAAAAAAAAABRwAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -796,11 +824,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 48,
               "Title": "RegistroWindow.xaml.cs",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\RegistroWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\RegistroWindow.xaml.cs",
               "RelativeDocumentMoniker": "Ventanas\\RegistroWindow.xaml.cs",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\RegistroWindow.xaml.cs",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\RegistroWindow.xaml.cs",
               "RelativeToolTip": "Ventanas\\RegistroWindow.xaml.cs",
               "ViewState": "AgIAAM4AAAAAAAAAAEBVwDoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -808,11 +836,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 49,
               "Title": "CarteleraWindow.xaml.cs",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\CarteleraWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\CarteleraWindow.xaml.cs",
               "RelativeDocumentMoniker": "Ventanas\\CarteleraWindow.xaml.cs",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Ventanas\\CarteleraWindow.xaml.cs",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Ventanas\\CarteleraWindow.xaml.cs",
               "RelativeToolTip": "Ventanas\\CarteleraWindow.xaml.cs",
               "ViewState": "AgIAAKMAAAAAAAAAAEBVwKcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -820,15 +848,14 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 50,
               "Title": "App.xaml",
-              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\App.xaml",
+              "DocumentMoniker": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\App.xaml",
               "RelativeDocumentMoniker": "App.xaml",
-              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\App.xaml",
+              "ToolTip": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\App.xaml",
               "RelativeToolTip": "App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-27T21:20:23.735Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-27T21:20:23.735Z"
             }
           ]
         }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sA3JxzXh/cM=",
+  "dgSpecHash": "jSziYNaF1jQ=",
   "success": true,
-  "projectFilePath": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Cine_app.csproj",
+  "projectFilePath": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Cine_app.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nixon\\.nuget\\packages\\bouncycastle.cryptography\\2.6.2\\bouncycastle.cryptography.2.6.2.nupkg.sha512",
     "C:\\Users\\nixon\\.nuget\\packages\\dotnetenv\\3.1.1\\dotnetenv.3.1.1.nupkg.sha512",

@@ -495,11 +495,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Cine_app.csproj",
+      "projectUniqueName": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Cine_app.csproj",
       "projectName": "Cine_app",
-      "projectPath": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\Cine_app.csproj",
+      "projectPath": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\Cine_app.csproj",
       "packagesPath": "C:\\Users\\nixon\\.nuget\\packages\\",
-      "outputPath": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App Cine\\Cine_app\\obj\\",
+      "outputPath": "D:\\Clases\\DAM\\Segundo_DAM\\Desarrollo_de_interfaces\\App-Cine\\Cine_app\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
