@@ -56,8 +56,79 @@ namespace Cine_app.Vistas
                 catch { }
             }
 
-            // Cargar sesiones de hoy
-            _ = CargarSesiones(DateTime.Today);
+            // Actualizar calendario (habilitar solo dias con sesiones) y cargar sesiones de la fecha seleccionada
+            _ = InicializarFechasDisponiblesYSesiones();
+        }
+
+        private async Task InicializarFechasDisponiblesYSesiones()
+        {
+            if (_pelicula == null) return;
+
+            try
+            {
+                await ActualizarDiasDisponibles();
+
+                // Si la fecha seleccionada está vacía o no tiene sesiones, intentar seleccionar la primera disponible
+                if (!calendario.SelectedDate.HasValue || !(await HaySesionesEnFecha(calendario.SelectedDate.Value)))
+                {
+                    var primera = await ObtenerPrimerDiaConSesion();
+                    if (primera.HasValue)
+                        calendario.SelectedDate = primera.Value;
+                }
+
+                if (calendario.SelectedDate.HasValue)
+                {
+                    await CargarSesiones(calendario.SelectedDate.Value);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al inicializar fechas: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private async Task<bool> HaySesionesEnFecha(DateTime fecha)
+        {
+            if (_pelicula == null) return false;
+            var sesiones = await _dbService.ObtenerSesionesPorPeliculaAsync(_pelicula.Id, fecha);
+            return sesiones != null && sesiones.Any();
+        }
+
+        private async Task<DateTime?> ObtenerPrimerDiaConSesion()
+        {
+            if (_pelicula == null) return null;
+            var sesiones = await _dbService.ObtenerSesionesPorPeliculaAsync(_pelicula.Id);
+            var start = calendario.DisplayDateStart ?? DateTime.Today;
+            var end = calendario.DisplayDateEnd ?? DateTime.Today.AddMonths(2);
+            var primera = sesiones
+                .Select(s => s.FechaHora.Date)
+                .Where(d => d >= start.Date && d <= end.Date)
+                .OrderBy(d => d)
+                .FirstOrDefault();
+            if (primera == default(DateTime)) return null;
+            return primera;
+        }
+
+        private async Task ActualizarDiasDisponibles()
+        {
+            if (_pelicula == null) return;
+
+            // Obtener sesiones futuras para la película
+            var sesiones = await _dbService.ObtenerSesionesPorPeliculaAsync(_pelicula.Id);
+            var disponibles = new HashSet<DateTime>(sesiones.Select(s => s.FechaHora.Date));
+
+            calendario.BlackoutDates.Clear();
+
+            var start = (calendario.DisplayDateStart ?? DateTime.Today).Date;
+            var end = (calendario.DisplayDateEnd ?? DateTime.Today.AddMonths(2)).Date;
+
+            for (var dia = start; dia <= end; dia = dia.AddDays(1))
+            {
+                if (!disponibles.Contains(dia))
+                {
+                    calendario.BlackoutDates.Add(new CalendarDateRange(dia));
+                }
+            }
         }
 
         private void BtnVolver_Click(object sender, RoutedEventArgs e)
@@ -69,6 +140,19 @@ namespace Cine_app.Vistas
         {
             if (calendario.SelectedDate.HasValue)
             {
+                // Si no hay sesiones en la fecha seleccionada, ignorar la selección
+                if (!await HaySesionesEnFecha(calendario.SelectedDate.Value))
+                {
+                    // Revertir a la primera disponible
+                    var primera = await ObtenerPrimerDiaConSesion();
+                    if (primera.HasValue)
+                        calendario.SelectedDate = primera.Value;
+                    else
+                        calendario.SelectedDate = null;
+
+                    return;
+                }
+
                 await CargarSesiones(calendario.SelectedDate.Value);
             }
         }

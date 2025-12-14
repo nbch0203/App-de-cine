@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Cine_app")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+47b7572fa40ddc8cd37b9fdf1fc8d22cfb1364e8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1a7bc55f196badb85854592d1ca8643142c0336a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Cine_app")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Cine_app")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
